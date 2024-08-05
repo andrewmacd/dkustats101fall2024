@@ -1,2 +1,2 @@
-# dkustats101fall2024
-All files for teaching Stats 101 in the fall of 2024
+# DKU Stats 101 - Fall 2024
+Complete set of files for DKU Stats 101 - Fall 2024 edition.
