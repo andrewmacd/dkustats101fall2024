@@ -1,0 +1,152 @@
+---
+title: "Unit 3 Homework Instructions"
+author: "Anonymous"
+date: "4/17/2024"
+output:
+  html_document:
+    toc: true
+format:
+  html:
+    embed-resources: true
+subtitle: DKU Stats 101 Spring 2024
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# put any setup code here
+```
+
+![Mural of George Floyd](photos/george.floyd.jpeg){width="800"}
+
+# Assignment Background
+
+During the peak of Covid in May 2020, the [events surrounding the death](https://en.wikipedia.org/wiki/Murder_of_George_Floyd) of George Floyd launched a nation-wide protest movement in the United States. George Floyd was accused of using a counterfeit \$20 bill in an attempt to buy food at a convenience store in Minneapolis, Minnesota. The police arrived and, in an attempt to arrest George Floyd, knelt on his neck in such a way that he began suffocating. The policeman (Derek Chauvin) did not release his knee from George Floyd's neck for nine minutes, and by the time he had done so, George Floyd had died. A bystander filmed the events on his phone and, shortly after, the video of the event began circulating widely on the internet. George Floyd's death sparked a series of national and international protests against police violence, racial bias in policing, and the use of excessive force by police officers.
+
+Imagine you have been hired by a US Senator interested in introducing legislation to improve policing in the United States and are given this dataset to analyze to consider the trends in police violence and also whether the events of George Floyd had any significant impact on police behavior.
+
+The dataset is courtesy of [Kannan Ravinther](https://www.kaggle.com/datasets/kannan1314/innocent-deaths-caused-by-police-all-time)
+
+# Assignment Instructions
+
+-   Save this document as a new document (Save As...) and rename it `Unit 3 Homework answers`.
+-   Delete the Assignment Background and Assignment Instructions sections.
+-   If I say "Interpret..." that means I want at least 1-2 good quality sentences that show that you really understand your output and try to say something meaningful about what you see. Short, incomplete sentences that fail to demonstrate you understand your output or you are just repeating or rephrasing your output will have points deducted.
+-   Remember to appropriately label all of your graphs, construct easy to read tables, and nicely format your document. While the homework isn't a published document, it is the final product of exploratory data analysis so should be written as if you are presenting it to someone not familiar with the dataset.
+
+***NOTE:*** For questions in this dataset, we are going to consider the police violence reports after May 25, 2020 as our sample. We are going to treat the entire dataset as the population. Make a subset of the data after George Floyd's death to get information you need for your sample and get the population information from the non-subsetted data. Even though we know the population SD, please treat the population SD as unknown and therefore you will need to rely on your sample SD.
+
+# Part 1: Up to Q2b - must submit for checking by Sunday, April 21st at 11:59 pm (except Q2c)
+
+## Q1: Literature review (5 points)
+
+Find a couple of news articles online that discuss some trends that you expect to see in police violence. Based on these articles, what should we expect to find in this dataset and why? Make a bulleted list below with three specific expectations according to the data we have in our dataset.
+
+## Q2: Confidence intervals (25 points)
+
+### Q2a: Proportion of black victims of police violence
+
+One of the most pressing questions that the death of George Floyd raised is whether black citizens are subject to police violence at a greater rate than those of other races.
+
+-   Find the 90% confidence interval of the proportion of African-American/Black victims - calculate this by hand and show your work
+-   Check the conditions of the confidence interval
+-   Interpret your confidence interval
+-   What sample size would you need to say with 95% confidence that true proportion of African-American victims lies within a plus/minus 0.06 range?
+-   In this case, what is the sampling frame?
+-   What are some ways this result could be misleading? What is some additional information you would be interested in collecting?
+
+### Q2b: Number of deaths per month
+
+Another important question is whether the frequency of police violence changed after the events of George Floyd. For this question you are going to have to work with dates, as you did in the DataCamp lab. You may also find this StackOverflow [posting](https://stackoverflow.com/questions/71406135/count-unique-values-per-month-in-r) helpful.
+
+-   Make a histogram of the number of deaths per month from your sample - what does this histogram indicate about the suitability of the data for making a confidence interval?
+-   Make a line graph indicating the number of deaths per month by moonth. Visually, what does this indicate to you?
+-   Find the 95% confidence interval of the number of deaths per month from your sample - calculate this by hand and show your work
+-   Check the conditions of the confidence interval
+-   Interpret your confidence interval
+-   How much larger would $n$ have to be to decrease by a factor of two the size of your confidence interval?
+
+
+### Q2c: Bootstrapping a confidence interval
+
+-   Using the existing data, create a 95% bootstrapped confidence interval for the number of deaths per month and show the code you used to create the bootstrapped confidence interval
+-   Compare the results of the bootstrapped confidence interval (with 100000 samples) to the confidence interval you calculated by hand in Q2b - why were your results similar to or different than what you achieved by hand?
+-   Generally speaking, when would using the bootstrap method be helpful? When would the regular confidence interval be more useful?
+
+## Q3: Hypothesis testing (30 points)
+
+![The intersection where George Floyd was killed[^1]](photos/george.floyd.intersection.jpeg){width="800"}
+
+[^1]: Photo courtesy of [Fibonacci Blue](https://www.flickr.com/people/44550450@N04)
+
+Now let's turn to comparing your sample to some hypotheses on the same issues.
+
+### Q3a Proportion of black victims of police violence
+
+-   Write a specific hypothesis, fully specified, as to whether the proportion of black victims are different than the overall dataset.
+-   What do you think is a reasonable critical value to select in this case? Why? Consider the tradeoffs here and what it would mean for public policy. Choose your own critical value for your hypotheses tests.
+-   In this case should you use a one-sided test or two-sided test?
+-   Does this test pass the conditions for a hypothesis test?
+-   Find the $p$ value for the difference and interpret it with respect to your hypothesis test.
+-   What are some possible lurking variables that might make our conclusion unreliable?
+-   What can you infer from the results of your hypothesis test?
+
+### Q3b Number of deaths per month
+
+-   If we observe that the number of deaths per month in our sample is greater than the number of deaths per month in the population at $p$=0.06, should we reject the null hypothesis? Why or why not?
+-   Write out a specific hypothesis, fully specified with correct notation, as to whether the number of deaths per months are higher than the population at an alpha of 0.10.
+-   Does this test pass the conditions for hypothesis testing?
+-   Find the $p$ value for whether the number of deaths per month from the sample is higher than the population average.
+-   What are some possible lurking variables that might make our conclusion unreliable?
+-   What can you conclude about the police violence situation after the death of George Floyd?
+
+# Part 2: Finish by assigment deadline on Sunday, April 28th at 23:59 (all parts after this plus Q2c)
+
+## Q4: Hypothesis testing wisdom (25 points)
+
+In your work for the US Senator, you may also find it interesting to consider changing patterns of police violence over time that is not related directly to race.
+
+### Q4a Deadly force by age
+
+-   Write out the hypothesis for whether the average age of the victim in the sample is different than the population average age.
+-   If we fail to reject the null hypothesis in this case, does that mean that the null hypothesis is true? Why?
+-   Explain what the difference between a Type I and a Type II error is here
+-   Which error type do you think would be more serious for a policy analyst in this case? Why?
+-   What are two ways we could reduce the possibility of a Type I error? What are the reasons we may not take those actions to reduce the error?
+-   What is the power of this test (no need for a formula, just answer conceptually)?
+-   Let's say the data suggests that you should reject the null hypothesis. What size of difference in average age would you need to see to feel there is a *practically* significant difference?
+
+### Q4b Doing the work
+
+-   Using the formulas from the textbook, calculate your hypothesis test and interpret the results. Show your calculation steps.
+
+![Police](photos/police.jpeg){width="800"}
+
+## Q5 Two sample $t$ and $z$ test (30 points)
+
+Now let's compare, from our sample (post-May 2020), the case of police violence in Florida vs. California.
+
+### Q5a Proportion of black victims of police violence
+
+-   Write appropriate hypotheses that the difference in the proportion of black victims is the same in California as it is in Florida.
+-   Are the assumptions and conditions necessary for inference satisfied?
+-   Test the hypothesis and state your conclusion.
+-   Explain in this context what your $p$ value means.
+-   What type of error might your hypothesis conclusion be making? How could you correct for it?
+-   Create a 95% confidence interval for the difference.
+-   Interpret your interval from a statistical perspective and explain its practical meaning.
+-   What factor(s) do you think lead to this result? What is some additional information that would be helpful to know to in understanding this difference?
+
+### Q5b Age of victims of police violence
+
+-   Write out the hypothesis for whether there is a difference in the age of police victims of violence between Florida and California.
+-   Are the assumptions and conditions necessary for inference satisfied? Explain.
+-   In this case, should you be using pooled variance?
+-   Create a 95% confidence interval for the difference.
+-   Interpret your interval in this context.
+-   What are some reasons that the conclusions you draw from this test might not be valid?
+
+## Q6: Putting it all together (20 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (an additional graph, table, or calculation)**, write at least two to three paragraphs outlining what you think are the main findings from Q1-Q5 and your own additional analysis. Based on these results, what policies or additional research would you recommend to the US senator? What information are we missing in this dataset that we would need to better understand the state of police violence in the US?

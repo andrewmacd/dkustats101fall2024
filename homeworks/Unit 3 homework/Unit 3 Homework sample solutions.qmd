@@ -1,0 +1,621 @@
+---
+title: "Unit 3 Homework sample solutions"
+author: "Anonymous"
+date: "5/5/2024"
+output:
+  html_document:
+    toc: true
+format:
+  html:
+    embed-resources: true
+subtitle: DKU Stats 101 Spring 2024
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+
+# put any setup code here
+library(naniar)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+library(infer)
+library(lubridate)
+library(zoo)
+
+set.seed(88888888)
+options(scipen=888888)
+
+# load(<filename>)
+police.deaths <- read.csv("police.deaths.csv")
+
+# Sets the graphical theme
+theme_set(theme_classic()+theme(plot.title = element_text(hjust = 0.5)))
+
+police.deaths <- police.deaths %>% 
+  mutate(is.black = case_when(Race == "African-American/Black" ~ 1,
+                              is.na(Race) ~ NA,
+                              TRUE ~ 0)) %>% 
+  mutate(date = mdy(Date.of.injury.resulting.in.death..month.day.year.)) %>% 
+  mutate(age.numeric = as.numeric(Age))
+
+after.floyd <- police.deaths %>% 
+  filter(date > mdy("5/25/2020"))
+
+p.d.by.month <- police.deaths %>% 
+  mutate(ym = as.yearmon(date)) %>%
+  group_by(ym) %>% 
+  summarise(`Number of dead`=n())
+
+a.f.by.month <- p.d.by.month %>% 
+  filter(ym > as.yearmon("May 2020"))
+```
+
+# Part 1
+
+## Q1: Literature review (5 points)
+
+Find a couple of news articles online that discuss some trends that you expect to see in police violence. Based on these articles, what should we expect to find in this dataset and why? Make a bulleted list below with three specific expectations according to the data we have in our dataset.
+
+> Example: [Perceptions Are Not Reality: What Americans Get Wrong About Police Violence](https://manhattan.institute/article/perceptions-are-not-reality-what-americans-get-wrong-about-police-violence)
+>
+> From the articles, we know blacks are a relatively low share of police violence recipients, police violence generally has been decreasing in the last few years, and the average age is relatively high (44). Thus, I expect:
+>
+> -   `Race` should show a reasonably low percentage of black victims.
+>
+> -   `Date`, when aggregated, should show a downward trend
+>
+> -   `Age` should be relatively high.
+
+> **Points of emphasis:**
+>
+> -   Any reasonable articles work here. Need clear expectations about specific variables.
+
+## Q2: Confidence intervals (25 points)
+
+### Q2a: Proportion of black victims of police violence
+
+One of the most pressing questions that the death of George Floyd raised is whether black citizens are subject to police violence at a greater rate than those of other races.
+
+-   Find the 90% confidence interval of the proportion of African-American/Black victims - calculate this by hand and show your work
+
+```{r}
+#| label: q2a
+
+p <- mean(after.floyd$is.black, na.rm=T)
+q <- 1-mean(after.floyd$is.black, na.rm=T)
+
+n <- sum(!is.na(after.floyd$is.black))
+         
+se <- round(sqrt(p*q / n), digits=4)
+cv <- round(qnorm(0.95), digits=4)
+moe <- round(cv * se, digits=4)
+p <- round(p, digits=4)
+q <- round(q, digits=4)
+
+ci.lower <- p - moe
+ci.upper <- p + moe
+```
+
+> The 90% confidence interval is:
+
+$$p\pm z_{0.95}\times \sqrt{\frac{p(1-p)}{n}}=`r p`\pm `r cv` \times `r moe`=(`r ci.lower`, `r ci.upper`)$$
+
+-   Check the conditions of the confidence interval
+
+> Conditions: Independence, Randomization, 10% Condition, Success/Failure Condition
+>
+> -   **Independence**: yes, samples are independent.
+> -   **Randomization**: probably not, it is neither a random sample of all police violence nor is it random with respect to time.
+> -   **10% condition**: yes, the sample is less than 10% of the population 
+> -   **Success/failure**: yes, the expected number of successes and failure are both greater than 10.
+
+-   Interpret your confidence interval
+
+> We are 90% confident that the proportion of black police violence victims is between `r ci.lower` and `r ci.upper`. Practically speaking, given that black people are about 10% of the population, 20% is double that of the population. However, there is the large category of race unknown also.
+
+-   What sample size would you need to say with 95% confidence that true proportion of African-American victims lies within a plus/minus 0.06 range?
+
+> With a MOE of 0.06, the sample size is at least **`r round((1.96/0.06)^2 * p*q, digits=0)`**
+>
+> -   $0.06=z_{0.975}\times \sqrt{\frac{p(1-p)}{n}}$
+>
+> -   $n=(\frac{1.96}{0.06})^2\times`r p`\times(1-`r p`)=598.9799$
+
+$0.06=z_{0.975}\times \sqrt{\frac{p(1-p)}{n}}$
+$n=(\frac{1.96}{0.06})^2\times`r p`\times(1-`r p`)=`r round((1.96/0.06)^2 * p*q, digits=0)`$
+
+-   In this case, what is the sampling frame?
+
+> *Following* is an example. As long as your answer is reasonable/logical, that is fine.
+
+> The sampling frame in this case is a bit theoretical. It is all victims of police violence after George Floyd died, in some unspecified time frame.
+
+-   What are some ways this result could be misleading? What is some additional information you would be interested in collecting?
+
+> The results could be misleading for several reasons. The first is the category of race - unspecified. We don't know what race those victims are and some could be black. The data may not capture all victims of police violence - some may be unreported. Finally, other events could be happening at around the same time (Covid) that change the true percentage over time.
+
+### Q2b: Number of deaths per month
+
+Another important question is whether the frequency of police violence changed after the events of George Floyd. For this question you are going to have to work with dates, as you did in the DataCamp lab. You may also find this StackOverflow [posting](https://stackoverflow.com/questions/71406135/count-unique-values-per-month-in-r) helpful.
+
+-   Make a histogram of the number of deaths per month from your sample - what does this histogram indicate about the suitability of the data for making a confidence interval?
+
+```{r}
+#| label: q2b1
+ggplot(a.f.by.month, aes(x=`Number of dead`)) + 
+  geom_histogram(fill="lightblue",color="darkblue", bins=4)+
+  labs(title="Distibution of police violence after George Floyd's death",
+       x="Deaths",
+       y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
+```
+
+> The first thing to note is that May should be considered an outlier month, as there were only six days in the month after George Floyd was killed. The second thing to note is that due to the small number of cases, the distribution is quite uneven and not exactly normal. This may mean the sampling distribution will possibly not be normally distributed and therefore our estimates of the standard error will be biased.
+
+-   Make a line graph indicating the number of deaths per month by moonth. Visually, what does this indicate to you?
+
+```{r}
+#| label: q2b2
+overall <- ggplot(p.d.by.month, aes(x=ym, y=`Number of dead`)) + 
+  geom_point() +
+  geom_line() + 
+  labs(title="Line plot of police violence overall",
+       x="Month",
+       y="Deaths") 
+
+a.f <- ggplot(a.f.by.month, aes(x=ym, y=`Number of dead`)) + 
+  geom_point() +
+  geom_line() + 
+  labs(title="Line plot of police violence after GF death",
+       x="Month",
+       y="Deaths") 
+
+grid.arrange(overall, a.f, ncol=1)
+```
+
+> Overall, the trend is toward more police violence, but there is not an obvious trend after George Floyd's death. One possibility for the upward trend is better police reporting over time, something to keep in mind.
+
+-   Find the 95% confidence interval of the number of deaths per month from your sample - calculate this by hand and show your work
+
+```{r}
+#| label: q2b3
+#| echo: true
+
+xbar.deaths <- mean(a.f.by.month$`Number of dead`, na.rm=T)
+sd.deaths <- sd(a.f.by.month$`Number of dead`, na.rm=T)
+n.deaths <- sum(!is.na(a.f.by.month$`Number of dead`))
+
+se <- sd.deaths / sqrt(n.deaths)
+cv <- qt(0.975, df=n.deaths-1)
+moe <- se*cv
+ci <- xbar.deaths + (c(-moe, moe))
+```
+
+> The 95% CI is:
+>
+> $$
+> \bar{x}\pm t_{0.975, df=`r n.deaths-1`} \frac{s}{\sqrt{n}}=`r round(xbar.deaths, 2)`\pm `r round(cv, 2)` \times \frac{`r round(sd.deaths, 2)`}{\sqrt{`r n.deaths` }}=(`r round(ci[1], 2)`, `r round(ci[2], 2)`)
+> $$
+
+-   Check the conditions of the confidence interval
+
+> -   **Randomization condition**: probably not for the reasons discussed in the earlier section. Also, it is probable that they are not independent due to the time trend.
+> -   **Nearly normal condition**: not really. we should be careful about over-interpreting the size of the confidence interval given the small sample size.
+
+-   Interpret your confidence interval
+
+> We are 95% confident that the true mean price is between `r round(ci[1], 2)` and `r round(ci[2], 2)`. Practically speaking, our estimate of the true range of deaths per month due to police violence is fairly wide so it may be hard to see if there is a change after the death of George Floyd.
+
+-   How much larger would $n$ have to be to decrease by a factor of two the size of your confidence interval?
+
+> It would have to be **4** times larger. The size of the confidence interval decreases according to the square of the sample size.
+
+### Q2c: Bootstrapping a confidence interval
+
+-   Using the existing data, create a 95% bootstrapped confidence interval for the number of deaths per month and show the code you used to create the bootstrapped confidence interval
+
+```{r}
+#|label: q2c
+#|echo: TRUE
+
+deaths.ci <- a.f.by.month %>% 
+  specify(response=`Number of dead`) %>% 
+  generate(reps=100000, type="bootstrap") %>% 
+  calculate(stat="mean") %>% 
+  get_confidence_interval(level = 0.95, type = "percentile")
+kbl(deaths.ci, col.names = c("Lower Bound", "Upper Bound")) %>% 
+  kable_styling()
+```
+
+-   Compare the results of the bootstrapped confidence interval (with 100000 samples) to the confidence interval you calculated by hand in Q3b - why were your results similar to or different than what you achieved by hand?
+
+> The values are fairly similar (only off by a small amount) which is a bit surprising given that the conditions for a confidence interval were not met. This indicates (to me) that bootstrapping also works well to create confidence intervals.
+
+-   Generally speaking, when would using the bootstrap method be helpful? When would the regular confidence interval be more useful?
+
+> -   **Bootstrap**: if our data does not meet some of the conditions of confidence intervals.
+> -   **Confidence Interval**: if the data meet the conditions for using a mathematical method for calculating confidence intervals, using it may be faster and more theoretically accurate than bootstrapping.
+
+> **Points of emphasis:**
+>
+> -   Know how to bootstrap and when to use it.
+
+## Q3: Hypothesis testing (30 points)
+
+![The intersection where George Floyd was killed[^1]](photos/george.floyd.intersection.jpeg){width="800"}
+
+[^1]: Photo courtesy of [Fibonacci Blue](https://www.flickr.com/people/44550450@N04)
+
+Now let's turn to comparing your sample to some hypotheses on the same issues.
+
+### Q3a Proportion of black victims of police violence
+
+-   Write a specific hypothesis, fully specified, as to whether the proportion of black victims are different than the overall dataset.
+
+> $H_0:p = `r round(p, digits=3)`, H_a: p \neq `r round(p, digits=3)`$
+
+-   What do you think is a reasonable critical value to select in this case? Choose your own critical value for your hypotheses tests. 
+
+> Answers may vary, remember that a critical value is the $z^*$ value, not $\alpha$. Here I assume the critical value is -1.96 or 1.96, and the coresponding confidence level is 0.95.
+
+-   In this case should you use a one-sided test or two-sided test?
+
+> I would use the **two-sided test**. Because we are looking for a "change" (could be increase or decrease) in $H_a$, in which case should use two-side test. An one-tailed test looks for an "increase" or "decrease" in the parameter.
+
+-   Does this test pass the conditions for a hypothesis test?
+
+> -   **Randomization, Independence**: as before, seems somewhat unlikely, due to the time series nature of the dataset and the way the data was (possibly) collected
+> -   **10% Condition**: yes
+> -   **Success/failure**: yes
+
+-   Find the $p$ value for the difference and interpret it with respect to your hypothesis test.
+
+```{r}
+#| label: q3a
+#| echo: TRUE
+
+true.p <- mean(police.deaths$is.black)
+p <- mean(after.floyd$is.black)
+n <- nrow(after.floyd)
+
+#z=(p−P)/σ
+z <- (p-true.p)/sqrt(true.p*(1-true.p)/n)
+
+#calculate p-value
+p.value <- round(pnorm(-abs(z))*2, 4)
+```
+> $p=`r p.value`$
+
+> $p$ is very small, therefore we can reject the null hypothesis
+>
+> -   $p$ has **statistical significance**, it is smaller than $\alpha$ (0.05).
+> -   As to **practical significance**, a difference of 3%, I am not so sure I would interpret this as being a meaningful change or difference.
+
+-   What are some possible lurking variables that might make our conclusion unreliable?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> It could be some other trends are changing over time, such as the effects of Covid. It could also be that there were changes to the way police reported race (as seen by the large number of unknown race victims)
+
+-   What can you infer from the results of your hypothesis test?
+
+> It is perhaps a bit positive to see the percent of black victims decline after the George Floyd incident, though the amount of the change is not very large. There are a number of other factors that could also explain the small but statistically significant difference.
+
+### Q3b Number of deaths per month
+
+-   If we observe that the number of deaths per month in our sample is greater than the number of deaths per month in the population at $p$=0.06, should we reject the null hypothesis? Why or why not?
+
+> It depends on the significance level. For example, we cannot reject the null hypothesis at a significance level of 0.05, but we can reject the null hypothesis at the 0.1 significance level. We need to know the $\alpha$ to make a conclusion.
+
+-   Write out a specific hypothesis, fully specified with correct notation, as to whether the number of deaths per months are higher than the population at an alpha of 0.10.
+
+```{r}
+#| label: q3b1
+
+true.x <- mean(p.d.by.month$`Number of dead`)
+```
+
+
+> $H_0:\mu = `r round(true.x, 2)`$
+>
+> $H_a:\mu > `r round(true.x, 2)`; \alpha=0.10$
+
+-   Does this test pass the conditions for hypothesis testing?
+
+> -   **Randomization and Independence**: as before, the time series nature of the dataset and the other factors discuss make it fairly unlikely
+> -   **10% condition**: yes.
+> -   **Nearly normal**: as before, the distribution indicates that this condition is probably also not met. Though our bootstrapping test indicated that the standard error derived via the CLT is similar to the simulated values.
+
+-   Find the $p$ value for whether the number of deaths per month from the sample is higher than the population average.
+
+```{r}
+#| label: q3b2
+#| echo: TRUE
+
+t <- (xbar.deaths-true.x)/
+  (sd.deaths/sqrt(n.deaths))
+
+p.value.deaths = 1-pt(t, df=n.deaths-1)
+
+round(p.value.deaths, digits=4)
+```
+
+> The test statistic is:
+>
+> $t=\frac{`r round(xbar.deaths, 2)`-`r round(true.x, 2)`}{\frac{`r round(sd.deaths, 2)`}{\sqrt{`r n.deaths`}}}=`r round(t, 2)`$
+> 
+> Note that since this is a upper-tail one-sided hypothesis test, $p$ needs to be > 0.1 
+> The p-value is **$`r round(p.value.deaths, digits=4)` < 0.1$, reject $H_0$**. That means there is sufficient evidence to say the number of deaths per month is higher than the population at an $\alpha$ of 0.10.
+
+-   What are some possible lurking variables that might make our conclusion unreliable?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> - **General trend over time**: We can see from the line graph in Question 2 that the number of victims of police violence has been increasing over time, so whatever is causing that trend is likely produces the result we see here.
+> - **Other factors that changed at the same time**: As previously mentioned, George Floyd died right at the start of the Covid pandemic so it is possible any difference may be attributed to that factor.
+
+-   What can you conclude about the police violence situation after the death of George Floyd?
+
+> Answers may vary here but should be thoughtful and show a reasonable interpretation of the data
+
+> **Points of emphasis:**
+>
+> -   Know how to storytelling based on the numbers, interpret hypothesis test results clearly.
+> -   Know how to bulid hypothesis.
+
+## Q4: Hypothesis testing wisdom (25 points)
+
+In your work for the US Senator, you may also find it interesting to consider changing patterns of police violence over time that is not related directly to race.
+
+### Q4a Deadly force by age
+
+-   Write out the hypothesis for whether the average age of the victim in the sample is different than the population average age.
+
+```{r}
+#| label: q4a
+
+af.mean.age <- mean(after.floyd$age.numeric, na.rm=TRUE)
+pop.mean.age <- mean(police.deaths$age.numeric, na.rm=TRUE)
+```
+
+
+> $H_0: \mu=`r round(pop.mean.age, 2)`$
+>
+> $H_a: \mu \neq `r round(pop.mean.age, 2)`$
+
+-   If we fail to reject the null hypothesis in this case, does that mean that the null hypothesis is true? Why?
+
+> No, failing to reject the null hypothesis just means we don't have enough **evidence** to say that the null hypothesis is not true. For example, it could still be possible that the true population mean age ois different than the hypothesized average of `r round(pop.mean.age, 2)` years, but our sample data was not large enough or significant enough to detect this difference.
+
+-   Explain what the difference between a Type I and a Type II error is here
+
+> -   **A type I**: null is true but we mistakenly reject it. We conclude that the average age is different from `r round(pop.mean.age, 2)` when it is `r round(pop.mean.age, 2)`.
+> -   **A type II**: the alternative is true but we mistakenly fail to reject the null hypothesis. We conclude the average age is `r round(pop.mean.age, 2)` when actually the age is different from `r round(pop.mean.age, 2)`.
+
+-   Which error type do you think would be more serious for a policy analyst in this case? Why?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> A type II error would be more serious than a Type I error. Because this could mean that the analyst fails to identify important trends or patterns in the changing patterns of age (indicating some underlying changes in the type of people experiencing police violence), we miss understanding a key social problem.
+
+-   What are two ways we could reduce the possibility of a Type I error? What are the reasons we may not take those actions to reduce the error?
+
+> -   **Reducing the significance level**
+> -   **Increasing the sample size**
+
+> -   Reducing the significance level may decrease the power of the test: By setting a lower significance level, we are requiring stronger evidence before rejecting the null hypothesis. This makes it less likely to make a Type I error, but it also decreases the power of the test, making it more difficult to detect real differences or effects if they do exist.
+> -   Increasing the sample size can be expensive and time-consuming. In some cases, it may not be possible or practical to collect data from a larger sample.
+
+-   What is the power of this test (no need for a formula, just answer conceptually)?
+
+> The power is $1−\beta$, where $\beta$ is the probability of committing a Type II error.
+
+-   Let's say the data suggests that you should reject the null hypothesis. What size of difference in average age would you need to see to feel there is a *practically* significant difference?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> An average age difference of five years seems like a reasonable threshold to start to take the difference seriouly. Such a difference would lead to different understanding of the police violence problem.
+
+### Q4b Doing the work
+
+-   Using the formulas from the textbook, calculate your hypothesis test and interpret the results. Show your calculation steps.
+
+```{r}
+#| label: q4b
+
+sd.age <- sd(after.floyd$age.numeric, na.rm=TRUE)
+n.age <- sum(!is.na(after.floyd$age.numeric))
+
+t <- (af.mean.age - pop.mean.age)/
+  (sd.age/sqrt(n.age))
+
+p.value.age = 2*pt(-abs(t), df=n.age-1)
+```
+
+> The test statistic is:
+>
+> $t=\frac{`r round(af.mean.age, 2)`-`r round(pop.mean.age)`}{\frac{`r round(sd.age, 2)`}{\sqrt{`r n.age`}}}=`r round(t, 2)`$
+
+> $p=`r round(p.value.age, digits=4)`$
+
+## Q5 Two sample $t$ and $z$ test (30 points)
+
+Now let's compare, from our sample (post-May 2020), the case of police violence in Florida vs. California.
+
+### Q5a Proportion of black victims of police violence
+
+-   Write appropriate hypotheses that the difference in the proportion of black victims is the same in California as it is in Florida.
+
+> $H_0: p_{\text{Florida}} = p_{\text{California}}$
+>
+> $H_a: p_{\text{Florida}} \neq p_{\text{California}}$
+
+-   Are the assumptions and conditions necessary for inference satisfied?
+
+> -   **Independence**: yes, seems so
+> -   **Randomization**: probably not, these are not randomly selected cases
+> -   **Independent Groups**: probably not, there are a lot of factors that could explain the difference
+> -   **Success/failure**: both p and q are over 10
+
+-   Test the hypothesis and state your conclusion.
+
+```{r}
+#| label: q5a1
+#| echo: TRUE
+
+california <- after.floyd %>% filter(State=="CA")
+florida <- after.floyd %>% filter(State=="FL")
+
+p1 <- mean(california$is.black, na.rm=T)
+p2 <- mean(florida$is.black, na.rm=T)
+n1 <- sum(!is.na(california$is.black))
+n2 <- sum(!is.na(florida$is.black))
+
+est <- sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)
+
+z.state.comp <- (p1-p2)/est
+
+p.state.comp <- (pnorm(-abs(z.state.comp))*2)
+
+round(p.state.comp, 4)
+```
+
+> The $p$ value is `r round(p.state.comp, 4)` < 0.05, we can **reject the null hypothesis**.
+
+-   Explain in this context what your $p$ value means.
+
+> we have calculated a $p$ value of `r round(p.state.comp, 4)`. This means that **assuming the null hypothesis were true**, we would expect to see `r round(p.state.comp, 2)*100`% of samples have a difference this large or larger between the two groups just by chance.
+
+-   What type of error might your hypothesis conclusion be making? How could you correct for it?
+
+> We may make a **Type I error**. To correct for a Type I error, we can decrease the significance level (alpha) used in the statistical test. This would make it less likely for us to reject the null hypothesis when it is actually true.
+
+-   Create a 95% confidence interval for the difference.
+
+```{r}
+#| label: q5a2
+#| echo: TRUE
+
+ci.state.comp <- p1-p2 +c(-1,1)*qnorm(0.975)*est
+
+ci.state.comp
+```
+
+> The 95% confidence interval is (`r round(ci.state.comp[1], 2)`, `r round(ci.state.comp[2], 2)`).
+
+-   Interpret your interval from a statistical perspective and explain its practical meaning.
+
+> It means that we can be 95% confident that the true difference in the proportion of black police violence victimes lies between `r round(ci.state.comp[1], 2)` and `r round(ci.state.comp[2], 2)`. Practically speaking, there is a significant difference between the two and it is substantively fairly large, though, for the reasons explained in the next section, we may want to be suspicious.
+
+-   What factor(s) do you think lead to this result? What is some additional information that would be helpful to know to in understanding this difference?
+
+> The following is a reasonable sample answer. Other answers are acceptable.
+
+> -   **Demographics**: The difference in police violence victims could entirely be up to different base percentage of black residents in both states. 
+> -   **Method of reporting**: Each state may have different standards as to when the victim is assigned to the unknown category versus one of the other racial categories.
+> -   **Additional information to know**:  How is the data collected, state by state racial makeup percentages
+
+### Q5b Age of victims of police violence
+
+-   Write out the hypothesis for whether there is a difference in the age of police victims of violence between Florida and California.
+
+> $H_0: p_{\text{Florida}} = p_{\text{California}}$
+>
+> $H_a: p_{\text{Florida}} \neq p_{\text{California}}$
+
+-   Are the assumptions and conditions necessary for inference satisfied? Explain.
+
+> -   **Independence**: yes, seems so
+> -   **Randomization**: probably not, these are not randomly selected cases
+> -   **Independent Groups**: probably not, there are a lot of factors that could explain the difference
+> -   **Nearly normal**: no, but CLT should hold here
+
+```{r}
+#| label: q5b1
+
+ca.hist <- ggplot(california, aes(x=age.numeric)) +
+  geom_histogram(fill="lightblue",color="darkblue") +
+  labs(title="Distribution of age of police violence victims in California", x="Age of victim", y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
+
+fl.hist <- ggplot(florida, aes(x=age.numeric)) + geom_histogram(fill="lightblue",color="darkblue") + 
+  labs(title="Distribution of age of police violence victims in Florida", x="Age of victim", y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
+
+grid.arrange(ca.hist, fl.hist, ncol=1)
+```
+
+-   In this case, should you be using pooled variance?
+
+> **No**. Since this is a hypothesis of a difference in means (not proportions) and it is not an experiment, we should not be using pooled variance here.
+
+-   Create a 95% confidence interval for the difference.
+
+```{r}
+#| label: q6b2
+#| echo: TRUE
+
+ca.death.data <- california %>%
+summarize(mean.age = mean(age.numeric, na.rm=TRUE),
+        size = sum(!is.na(age.numeric)),
+        se.age = sd(age.numeric, na.rm=TRUE))
+
+fl.death.data <- florida %>% 
+summarize(mean.age = mean(age.numeric, na.rm=TRUE),
+        size = sum(!is.na(age.numeric)),
+        se.age = sd(age.numeric, na.rm=TRUE))
+
+ca.age.xbar <- ca.death.data$mean.age
+fl.age.xbar <- fl.death.data$mean.age
+ca.age.n <- ca.death.data$size
+fl.age.n <- fl.death.data$size
+
+# Use the df of the smaller of the two sample sizes
+df <- ifelse(ca.age.n > fl.age.n, fl.age.n, ca.age.n)
+
+# formula is sqrt(se1^2/n1 + se2^2/n2)
+est.sigma <- sqrt((ca.death.data$se.age^2 / ca.age.n) +
+                    (fl.death.data$se.age^2 / fl.age.n))
+
+se <- round(est.sigma, digits=4)
+
+age.diff <- ca.age.xbar - fl.age.xbar
+conf.int <- c(age.diff - qt(0.975, df=df)*est.sigma, 
+              age.diff + qt(0.975, df=df)*est.sigma)
+
+conf.int
+```
+
+> The 95% confidence interval is (`r round(conf.int[1], 2)`, `r round(conf.int[2], 2)`).
+
+-   Interpret your interval in this context.
+
+> We are 95% confident that the true difference in age of police violence victims in California and Florida is between `r round(conf.int[1], 2)` and `r round(conf.int[2], 2)`.
+
+-   What are some reasons that the conclusions you draw from this test might not be valid?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> -   **Sample bias**: We assumed that the sample is representative, but if not representative, or if there were factors that influenced the selection of the sample, then the results of the test may not be generalized to the entire population.
+> -   **Non-random sampling**: We assumed that the sampling is random, but we need further information.
+
+> **Points of emphasis:**
+>
+> -   Know when to use pooled variance.
+> -   Know how to deal with two sample $t$ and $z$ test.
+
+## Q6: Putting it all together (15 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (an additional graph, table, or calculation)**, write at least two to three paragraphs outlining what you think are the main findings from Q1-Q5 and your own additional analysis. Based on these results, what policies or additional research would you recommend to the US senator? What information are we missing in this dataset that we would need to better understand the state of police violence in the US?
+
+> **Points of emphasis:**
+>
+> -   Know how to summarize all data and give overall business recommendations.
+> -   Know how to tell your story clearly.

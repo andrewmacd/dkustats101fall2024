@@ -1,0 +1,15 @@
+---
+title: "Homework"
+---
+
+# Unit 1 homework (due Sunday, March 31 at 23:59:00): [Unit 1 homework]
+
+  - [Unit 1 homework sample solutions]
+
+# Unit 2 homework - midterm project (due Sunday, April 14 at 23:59:00) [Unit 2 homework]
+
+# Unit 3 homework (due Sunday, April 28 at 23:59:00) [Unit 3 homework]
+
+# Unit 4 homework - paper analysis (due Sunday, May 5 at 23:59:00) [Unit 4 paper analysis]
+
+# Final project (due Wednesday, May 8 at 23:59:00) [Final project]

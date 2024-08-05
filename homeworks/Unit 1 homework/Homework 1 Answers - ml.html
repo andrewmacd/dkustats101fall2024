@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Anounymous">
+
+<title>Homework 1</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Homework 1 Answers - ml_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Homework 1 Answers - ml_files/libs/quarto-html/quarto.js"></script>
+<script src="Homework 1 Answers - ml_files/libs/quarto-html/popper.min.js"></script>
+<script src="Homework 1 Answers - ml_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Homework 1 Answers - ml_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Homework 1 Answers - ml_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Homework 1 Answers - ml_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Homework 1 Answers - ml_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Homework 1 Answers - ml_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Homework 1 Answers - ml_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+<script src="Homework 1 Answers - ml_files/libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="Homework 1 Answers - ml_files/libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Homework 1</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Anounymous </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="load-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-dataset">Load the dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>boats <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"boats.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="variable-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="variable-analysis">1. Variable analysis</h2>
+<p>The dataset comes from the online website <strong>boattrader.com</strong>, which is the marketplace for buying and selling boats in the United States.</p>
+<section id="a." class="level3">
+<h3 class="anchored" data-anchor-id="a.">1. A.</h3>
+</section>
+<section id="five-ws" class="level3">
+<h3 class="anchored" data-anchor-id="five-ws">Five W’s</h3>
+<p><strong><em>Who?<br>
+</em></strong>- The respondents/subjects/participants are boat dealers.<br>
+<strong><em>What?<br>
+</em></strong>- The experimental units are boats. Each row is a record for a boat to sell.<br>
+<strong><em>When?</em></strong><br>
+- The earliest boat listing date recorded is September 14th, 2011. The latest is November, 2nd, 2019.<br>
+<strong><em>Where?<br>
+</em></strong>- The boat marketplace described is in the United States. Listings include cities like Bridgeport, CT; Reston, VA; Miami, FL; etc.<br>
+<strong><em>Why?<br>
+</em></strong>- Provide valuable information about the boat marketplace in the United States, like variations of price, types of models, most interesting locations, etc.</p>
+<p>This dataset (from boattrader.com) is a collection of boats listed by boat dealers from 2011 to 2019 from locations in the United States to help potential buyers or data analysts better analyze this specific market.</p>
+</section>
+<section id="variable-type" class="level3">
+<h3 class="anchored" data-anchor-id="variable-type">Variable type</h3>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Variable name</th>
+<th>Type</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id</td>
+<td>Categorical</td>
+<td>Not applicable</td>
+</tr>
+<tr class="even">
+<td>type</td>
+<td>Categorical</td>
+<td>Not applicable</td>
+</tr>
+<tr class="odd">
+<td>boatClass</td>
+<td>Categorical</td>
+<td>Not applicable</td>
+</tr>
+<tr class="even">
+<td>year</td>
+<td>Quantitative (discrete)</td>
+<td>No unit</td>
+</tr>
+<tr class="odd">
+<td>condition</td>
+<td>Categorical</td>
+<td>Not applicable</td>
+</tr>
+<tr class="even">
+<td>length_ft</td>
+<td>Quantitative (continuous)</td>
+<td>ft (feet)</td>
+</tr>
+<tr class="odd">
+<td>beam_ft</td>
+<td>Quantitative (continuous)</td>
+<td>ft (feet)</td>
+</tr>
+<tr class="even">
+<td>dryWeight_lb</td>
+<td>Quantitative (continuous)</td>
+<td>lb (pounds)</td>
+</tr>
+<tr class="odd">
+<td>price</td>
+<td>Quantitative (continuous)</td>
+<td>$ (dollars)</td>
+</tr>
+<tr class="even">
+<td>sellerID</td>
+<td>Categorical</td>
+<td>Not applicable</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="b.-literature-review" class="level3">
+<h3 class="anchored" data-anchor-id="b.-literature-review">1. B. Literature review</h3>
+<section id="news-article" class="level4">
+<h4 class="anchored" data-anchor-id="news-article">News article:</h4>
+<p><em>Ten things to consider when buying a boat -</em> <a href="https://www.thesilverlining.com/westbendcares/blog/ten-things-to-consider-when-buying-a-boat" class="uri">https://www.thesilverlining.com/westbendcares/blog/ten-things-to-consider-when-buying-a-boat</a></p>
+</section>
+<section id="expectations" class="level4">
+<h4 class="anchored" data-anchor-id="expectations">Expectations:</h4>
+<ol type="1">
+<li><strong>Unused boats are more expensive.</strong> The article mentions that new boats are a much better choice because they are more durable, repairing them won’t cost much, etc. Therefore, I expect that a boat seller indicating new as their boat’s <code>condition</code> will probably raise its <code>price</code> because they know their offer will have much more demand.</li>
+<li><strong>Big boats are more expensive.</strong> Naturally, companies require more time, materials, and money to manufacture big boats. Therefore, the boat sellers will have bought them at high prices. And because boat sellers would usually expect a gain margin from selling their boat, they will raise the price even more. Thus, I expect that the bigger the boat’s <code>length</code>, the bigger its <code>price</code>.</li>
+<li><strong>A recently manufactured boat is unused.</strong> Naturally, boats that are manufactured recently can either be left unused or very little used by them. This is why I expect that as the <code>year</code> is recent, the probability for <code>condition</code> to be equal to <em>new</em> is high.</li>
+</ol>
+</section>
+</section>
+<section id="c.-describing-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="c.-describing-the-data">1. C. Describing the data</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># boats_prices: contains prices as numeric values without NA values</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>boats_prices <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">as.numeric</span>(boats<span class="sc">$</span>price))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram generation</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(boats_prices,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of Boat Prices"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Price (in dollars)"</span>, </span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Number of boats"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">100</span>)  <span class="co"># 100 bars, adjustable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(boats_prices,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Box plot of boat price"</span>,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="st">"Price"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">horizontal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">notch =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="the-three-features-of-quantitative-data" class="level4">
+<h4 class="anchored" data-anchor-id="the-three-features-of-quantitative-data">The three features of quantitative data</h4>
+<ul>
+<li><p>Shape: the histogram is right-skewed (or positive-skewed), as most boats have smaller prices.</p></li>
+<li><p>Center: the median is the appropriate measure of the center than the mean because the shape of the data is skewed.</p></li>
+<li><p>Spread: the data is spread very wide, as the price range is quite important.</p></li>
+</ul>
+<p>The observed distribution is not very surprising because first of all, we expect to have a wide range of prices in the boat marketplace. However, boat sellers will tend to sell their boats at lower prices because they want to maximize the probability of making deals with customers. Needless to say for customers, the price is generally one of the most important factors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>summary <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Minimum =</span> <span class="fu">min</span>(boats_prices),</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FirstQuartile =</span> <span class="fu">quantile</span>(boats_prices, <span class="fl">0.25</span>),</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Median =</span> <span class="fu">median</span>(boats_prices),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ThirdQuartile =</span> <span class="fu">quantile</span>(boats_prices, <span class="fl">0.75</span>),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Maximum =</span> <span class="fu">max</span>(boats_prices)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(summary) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">kable</span>(summary, <span class="at">caption =</span> <span class="st">"The 5 number summary of boat prices"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"Boat Prices"</span> <span class="ot">=</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Boat Prices 
+          1           5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>summary_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>The 5 number summary of boat prices</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Minimum</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">FirstQuartile</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ThirdQuartile</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">519</td>
+<td style="text-align: right;">19995</td>
+<td style="text-align: right;">35680</td>
+<td style="text-align: right;">59947.5</td>
+<td style="text-align: right;">1799900</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the standard deviation of boat prices</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>prices_sd <span class="ot">&lt;-</span> <span class="fu">sd</span>(boats_prices)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>prices_sd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 153042.5</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>prices_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(boats_prices)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>prices_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 71643.59</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boats_prices, <span class="fl">0.25</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> <span class="fu">quantile</span>(boats_prices, <span class="fl">0.75</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>IQR <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>IQR</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    75% 
+39952.5 </code></pre>
+</div>
+</div>
+<p>We notice that the mean price ($71,643) is two times smaller than the standard deviation ($153,042.5), indicating that the standard deviation is much bigger than the mean.</p>
+<p>We notice that the IQR of boat prices ($39,952.5) is almost 4 times smaller than the standard deviation ($153,042.5), indicating that the standard deviation is much bigger than the IQR.</p>
+<p>Therefore, the boats’ prices vary widely from the mean and the IQR. The range of prices in this dataset is very big, which makes sense considering that the lowest price recorded is $519, and the highest is $1,799,900. Such results indicate that there might be a long tail in the distribution: the prices are potentially skewed.</p>
+<p>Based on the histogram that we had generated before, the boat prices are indeed right-skewed. Therefore, this histogram would benefit from a transformation to make it look more symmetric. The log is a good choice.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Log transformation of boat prices</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>boats_prices_log <span class="ot">&lt;-</span> <span class="fu">log</span>(boats_prices)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(boats_prices_log, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histogram of boat prices (log transformed)"</span>, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"log(price)"</span>, </span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frequency"</span>,</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"black"</span>,</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">50</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>boats<span class="sc">$</span>log_price <span class="ot">&lt;-</span> <span class="fu">log</span>(boats<span class="sc">$</span>price)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boats, <span class="fu">aes</span>(<span class="at">x =</span> condition, <span class="at">y =</span> log_price, <span class="at">fill =</span> condition)) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"-- Boxplot of log(price) by condition"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Condition"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"log(price)"</span>) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Based on the box plots above, we notice that both used and new boats have pretty close medians. However, the new boats have a smaller IQR, indicating that the price range is much less spread out than the used boats that have a bigger IQR. Used boats seem to have more price variety than the new boats. The important presence of outliers in the new boats compared to the used ones indicates that we are more likely to find extravagant prices (whether very expensive or very cheap) in the new boats section, compared to the used section.</p>
+</section>
+</section>
+<section id="d.-comparing-categorical-variables" class="level3">
+<h3 class="anchored" data-anchor-id="d.-comparing-categorical-variables">1. D. Comparing categorical variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:kableExtra':
+
+    group_rows</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Without adding margins</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>contingency_table <span class="ot">&lt;-</span> <span class="fu">table</span>(boats<span class="sc">$</span>type, boats<span class="sc">$</span>fuelType)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(contingency_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           
+                diesel gasoline other
+  power      53     18      136   172
+  sail        0      5        1     1
+  unpowered   1      0        0     0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adding margins</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>contingency_table_with_margins <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(contingency_table)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(contingency_table_with_margins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           
+                diesel gasoline other Sum
+  power      53     18      136   172 379
+  sail        0      5        1     1   7
+  unpowered   1      0        0     0   1
+  Sum        54     23      137   173 387</code></pre>
+</div>
+</div>
+<p>Comment: the column with no name corresponds to no fuel used. (fuelType = ““)</p>
+<p>Adding margins gives us the corresponding sums of frequencies. We are trying to see if some fuel types are becoming less popular and therefore more difficult to sell. The sums give us the number of boats using certain types of fuels so that we see which fuel types are more popular in the market. Thus, the margins are a good indicator to interpret the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>boat_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(boats<span class="sc">$</span>type)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>pie_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">type =</span> <span class="fu">names</span>(boat_counts), <span class="at">count =</span> <span class="fu">as.numeric</span>(boat_counts))</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pie_data, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> count, <span class="at">fill =</span> type)) <span class="sc">+</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">width =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Boats by Type"</span>, <span class="at">fill =</span> <span class="st">"Boat Type"</span>) <span class="sc">+</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequencies to proportions</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>proportions_table <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(contingency_table_with_margins, <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(proportions_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           
+                             diesel    gasoline       other         Sum
+  power     0.490740741 0.391304348 0.496350365 0.497109827 0.489664083
+  sail      0.000000000 0.108695652 0.003649635 0.002890173 0.009043928
+  unpowered 0.009259259 0.000000000 0.000000000 0.000000000 0.001291990
+  Sum       0.500000000 0.500000000 0.500000000 0.500000000 0.500000000</code></pre>
+</div>
+</div>
+<p>The proportions table is very important because it gives the overall constitution of the market based on the two variables we selected (the boat’s type and the fuel’s type.) For example, from this proportions table, we can deduce that approximately 49% of the boats in the dataset are power boats that use gasoline.</p>
+<p>Based on these results, I recommend staying away from unpowered boats and sailboats. Powered boats seem to be much more in demand in the market. Particularely, powered boats using gasoline fuel types seem to be very present.</p>
+</section>
+<section id="e.-understanding-and-comparing-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="e.-understanding-and-comparing-distributions">1. E. Understanding and comparing distributions</h3>
+<section id="numbers-summary-of-length" class="level4">
+<h4 class="anchored" data-anchor-id="numbers-summary-of-length">5 numbers summary of length</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>boats_lengths <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">as.numeric</span>(boats<span class="sc">$</span>length_ft))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>summary2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Minimum =</span> <span class="fu">min</span>(boats_lengths),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FirstQuartile =</span> <span class="fu">quantile</span>(boats_lengths, <span class="fl">0.25</span>),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Median =</span> <span class="fu">median</span>(boats_lengths),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">ThirdQuartile =</span> <span class="fu">quantile</span>(boats_lengths, <span class="fl">0.75</span>),</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Maximum =</span> <span class="fu">max</span>(boats_lengths)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="fu">rownames</span>(summary2) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>summary_table <span class="ot">&lt;-</span> <span class="fu">kable</span>(summary2, <span class="at">caption =</span> <span class="st">"The 5 number summary of boat prices"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>(<span class="at">full_width =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_header_above</span>(<span class="fu">c</span>(<span class="st">" "</span> <span class="ot">=</span> <span class="dv">1</span>, <span class="st">"Boat Prices"</span> <span class="ot">=</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Boat Prices 
+          1           5 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>summary_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>The 5 number summary of boat prices</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;" data-quarto-table-cell-role="th">Minimum</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">FirstQuartile</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Median</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">ThirdQuartile</th>
+<th style="text-align: right;" data-quarto-table-cell-role="th">Maximum</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">18.58</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">120</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>boats_lengths <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">as.numeric</span>(boats<span class="sc">$</span>length_ft))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(boats_lengths,</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"--- Boxplot of boat lengths"</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Length (in ft)"</span>,</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Boats"</span>,</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="checking-for-outliers-in-length" class="level4">
+<h4 class="anchored" data-anchor-id="checking-for-outliers-in-length">Checking for outliers in length</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>Q1 <span class="ot">&lt;-</span> summary2<span class="sc">$</span>FirstQuartile</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>Q3 <span class="ot">&lt;-</span> summary2<span class="sc">$</span>ThirdQuartile</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>IQR <span class="ot">&lt;-</span> Q3 <span class="sc">-</span> Q1</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Lower and upper fences</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>lower_bound <span class="ot">&lt;-</span> Q1 <span class="sc">-</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>upper_bound <span class="ot">&lt;-</span> Q3 <span class="sc">+</span> <span class="fl">1.5</span> <span class="sc">*</span> IQR</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>length_outliers <span class="ot">&lt;-</span> boats_lengths[boats_lengths <span class="sc">&lt;</span> lower_bound <span class="sc">|</span> boats_lengths <span class="sc">&gt;</span> upper_bound]</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(length_outliers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  35.00   3.00  75.00  41.00  55.00   8.00  46.00  36.00  35.00  39.00
+[11]   1.00   1.00  72.00  49.00  35.00  60.00  41.00 120.00  48.00  70.00
+[21]  35.00   5.00   1.00  38.00  37.92  62.00  35.58  37.99  35.00  48.00
+[31]  44.00  45.00  45.00  40.00  35.00  38.00  35.00   1.00  35.00   1.00
+[41]  45.00   1.00  36.00  36.58  50.00  41.00  50.00   1.00  76.00  36.00
+[51]  39.00  38.00</code></pre>
+</div>
+</div>
+<p>I believe that there could be some anomalies in the data, like the 1ft values. However, most of the other lengths seem to make sense, after some research.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(length_ft <span class="sc">~</span> fuelType, </span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> boats, </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Boxplot of Boat Lengths by Fuel Type"</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Fuel Type"</span>,</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Length (in feet)"</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"skyblue"</span>,</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>From this display, we can deduce that the diesel fuel type has more variability in boat length, with only one outlier. Moreover, the gasoline fuel type and all other fuel types have less variability, and also present skewness in the data, in addition to a significant number of outliers. Therefore, we can benefit from re-expressing the variable <code>length_ft</code>.</p>
+</section>
+</section>
+<section id="f.-the-normal-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="f.-the-normal-distribution">1. F. The Normal Distribution</h3>
+<p>The Normal model of human weight: W ~ N(m, std²)<br>
+- m: mean weight in the human population<br>
+- std: standard deviation of weight in the human population</p>
+<p>In a 2006 study of Americans, the average weight was approximately 70 kilos with a standard deviation of 11 kilos.</p>
+<p>Therefore, we can formally denote the Normal model in the United States: W ~ N(70, 11²)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>boats_less_than_20ft <span class="ot">&lt;-</span> boats[boats<span class="sc">$</span>length_ft <span class="sc">&lt;</span> <span class="dv">20</span>, ]</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>selected_boats <span class="ot">&lt;-</span> boats_less_than_20ft[<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>, ]</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(selected_boats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        id  type      boatClass             make                   model year
+10 7055543 power      power-jon          Tracker Topper 1036 Riveted Jon 2019
+11 6219877 power    power-other Yamaha Outboards                     F20 2019
+15 7041942 power     power-bass            Nitro                     Z18 2019
+16 6792969 power     power-bass            Nitro                     Z18 2019
+19 6700594 power power-aluminum          Tracker           Targa V-18 WT 2018
+23 6969120 power   power-center               G3      Gator Tough 18 CCT 2019
+   condition length_ft beam_ft dryWeight_lb hullMaterial fuelType numEngines
+10       new      9.83    4.33          112     aluminum                   1
+11       new      3.00    1.00           NA        other gasoline          1
+15       new     18.67    7.83         1700   fiberglass gasoline          1
+16       new     18.67    7.83         1700   fiberglass gasoline          1
+19       new     19.08    8.50         2060     aluminum                   1
+23       new     18.08    6.67          870     aluminum gasoline          1
+   totalHP maxEngineYear minEngineYear engineCategory price sellerId
+10       0            NA            NA       outboard   789     2933
+11      20            NA            NA       outboard  3299    34547
+15     150            NA            NA       outboard 34155     1114
+16     150            NA            NA       outboard 34585   155595
+19     150            NA            NA       outboard 29945    60580
+23      90          2019          2019       outboard 23499    34692
+              city state   zip created_date created_month created_year
+10       Millville    NJ 08332   2019-04-19             4         2019
+11          Searcy    AR 72143   2017-04-28             4         2017
+15   New Braunfels    TX 78132   2019-04-08             4         2019
+16 Hoffman Estates    IL 60192   2018-08-01             8         2018
+19      Bridgeport    CT 06608   2018-05-03             5         2018
+23       Goldsboro    NC 27534   2019-01-25             1         2019
+   log_price
+10  6.670766
+11  8.101375
+15 10.438664
+16 10.451175
+19 10.307118
+23 10.064713</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>z_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>boat_table <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> <span class="dv">6</span>, <span class="at">ncol =</span> <span class="fu">length</span>(z_scores)))</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(boat_table) <span class="ot">&lt;-</span> z_scores</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) {</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  boat <span class="ot">&lt;-</span> selected_boats[i, ]</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  boat_table[i, ] <span class="ot">&lt;-</span> boat<span class="sc">$</span>length_ft <span class="sc">+</span> z_scores</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(boat_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     -2    -1     0     1     2
+1  7.83  8.83  9.83 10.83 11.83
+2  1.00  2.00  3.00  4.00  5.00
+3 16.67 17.67 18.67 19.67 20.67
+4 16.67 17.67 18.67 19.67 20.67
+5 17.08 18.08 19.08 20.08 21.08
+6 16.08 17.08 18.08 19.08 20.08</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>z_scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>passenger_weight <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>max_passengers <span class="ot">&lt;-</span> boat_table <span class="sc">+</span> z_scores <span class="sc">*</span> passenger_weight</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(max_passengers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       -2      -1       0       1       2
+1 -132.17  -61.17    9.83   80.83  151.83
+2  -69.00    2.00   73.00  144.00 -135.00
+3   16.67   87.67  158.67 -120.33  -49.33
+4   86.67  157.67 -121.33  -50.33   20.67
+5  157.08 -121.92  -50.92   20.08   91.08
+6 -123.92  -52.92   18.08   89.08  160.08</code></pre>
+</div>
+</div>
+<p>For boats under 20 feet, a rough rule of thumb is that the maximum weight capacity in kilograms of a boat is approximately the length in feet times the width (or beam) of the boat times 5.</p>
+<p>Maximum weight capacity(kg) = length(ft) * beam(ft) * 5</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>selected_boats<span class="sc">$</span>max_weight_capacity <span class="ot">&lt;-</span> selected_boats<span class="sc">$</span>length_ft <span class="sc">*</span> selected_boats<span class="sc">$</span>beam_ft <span class="sc">*</span> <span class="dv">5</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(selected_boats<span class="sc">$</span>max_weight_capacity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 212.8195  15.0000 730.9305 730.9305 810.9000 602.9680</code></pre>
+</div>
+</div>
+<p>The maximum of passengers that a boat can hold is its maximum weight capacity by the average weight per passenger.</p>
+<p>Maximum passengers = maximum weight capacity(kg) / average weight per passenger(kg)</p>
+<p>The formula for z scores is: z = (y - mean) / std</p>
+<table class="table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>-2 (48kg)</th>
+<th>-1 (59kg)</th>
+<th>0 (70kg)</th>
+<th>1 (80kg)</th>
+<th>2 (92kg)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Boat 1 (213kg)</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>Boat 2 (15kg)</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Boat 3 (731kg)</td>
+<td>15</td>
+<td>12</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>Boat 4 (731kg)</td>
+<td>15</td>
+<td>12</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>Boat 5 (811kg)</td>
+<td>17</td>
+<td>14</td>
+<td>12</td>
+<td>10</td>
+<td>9</td>
+</tr>
+<tr class="even">
+<td>Boat 6 (603kg)</td>
+<td>13</td>
+<td>10</td>
+<td>9</td>
+<td>8</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>Topper 1036 Riveted Jon: 3 passengers: The manufacturer chose the exact number of passengers.</p>
+<p>Yamaha Outboards F20: 0 passengers (motor, no passengers are supposed to board it)</p>
+<p>Nitro Z18: 4 passengers: The manufacturer chose this value to ensure maximum safety, as our table showed that around 10 passengers is okay.</p>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="two-variables-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="two-variables-analysis">2. Two variables analysis</h2>
+<section id="a.-relationship-between-variables" class="level3">
+<h3 class="anchored" data-anchor-id="a.-relationship-between-variables">2. A. Relationship between variables</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co">#outlier_details &lt;- boats[outliers, c("id", "price", "length_ft")]</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="co">#kable(outlier_details, caption = "Details of outliers")</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co">#model &lt;- lm(price ~ length_ft, data = boats)</span></span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">#residuals &lt;- residuals(model)</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#outlier_details &lt;- which(abs(residuals) &gt; 2 * sd(residuals))</span></span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#ggplot(boats, aes(x = length_ft, y = price)) +</span></span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_point() +</span></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_smooth(method = "lm", se = FALSE, color = "brown") +</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co">#  geom_text(data = outlier_details, aes(label = id), check_overlap = TRUE, vjust = -0.5, color = "red") +</span></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="co">#  labs(x = "Length (ft)", y = "Price", title = "Price and length of boats") +</span></span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="co">#  theme_minimal()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The association between price and length is positive, linear, moderately strong, with many outliers. There seems to be some pattern in data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(knitr)</span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#outlier_details &lt;- boats[outliers, c("id", "price", "length_ft")]</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#kable(outlier_details, caption = "Details of outliers")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>According to this information, we can conclude that some data points are indeed outliers which need to be removed because they are anomalies or false entries. For example, the 120-feet boat which costs only $4999 is highly likely to be a mistake. However, the other outliers are just natural occurences which need to be taken into account when analyzing the data.</p>
+<p>Additionally, we can remove all boats with length smaller than 13ft:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>num_boats_length_1ft <span class="ot">&lt;-</span> <span class="fu">sum</span>(boats<span class="sc">$</span>length_ft <span class="sc">&lt;</span> <span class="dv">13</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(num_boats_length_1ft)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>boats_filtered <span class="ot">&lt;-</span> boats[<span class="sc">!</span>(boats<span class="sc">$</span>length_ft <span class="sc">==</span> <span class="dv">120</span> <span class="sc">&amp;</span> boats<span class="sc">$</span>price <span class="sc">==</span> <span class="dv">4999</span>) <span class="sc">&amp;</span> <span class="sc">!</span>(boats<span class="sc">$</span>length_ft <span class="sc">&lt;</span> <span class="dv">13</span>) <span class="sc">&amp;</span> <span class="sc">!</span>(boats<span class="sc">$</span>length_ft <span class="sc">==</span> <span class="dv">60</span>), ]</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boats_filtered, <span class="fu">aes</span>(<span class="at">x =</span> length_ft, <span class="at">y =</span> price)) <span class="sc">+</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Length (ft)"</span>, <span class="at">y =</span> <span class="st">"Price"</span>, <span class="at">title =</span> <span class="st">"Price vs. Length of Boats (Excluding Outliers)"</span>) <span class="sc">+</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Roughly, I estimate the correlation to be around 0.60</p>
+<p>Conditions for correlation:<br>
+- The variables <code>price</code> and <code>length_ft</code> are both quantitative.<br>
+- The scatter plot is straight enough.<br>
+- There are no outliers.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>correlation <span class="ot">&lt;-</span> <span class="fu">cor</span>(boats_filtered<span class="sc">$</span>length_ft, boats_filtered<span class="sc">$</span>price)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(correlation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.7660747</code></pre>
+</div>
+</div>
+<p>Such a correlation coefficient indicates a strong positive linear relationship between the two variables.</p>
+<p>These results indicate that an important factor directly related to a boat’s price is its length. The longer a boat, the more expensive it is.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(boats_filtered, <span class="fu">aes</span>(<span class="at">x =</span> length_ft, <span class="at">y =</span> price, <span class="at">color =</span> condition)) <span class="sc">+</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Length (ft)"</span>, <span class="at">y =</span> <span class="st">"Price"</span>, <span class="at">color =</span> <span class="st">"Condition"</span>, <span class="at">title =</span> <span class="st">"Price vs. length of boats by condition"</span>) <span class="sc">+</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>On this display, we notice that new unused boats tend to be much more expensive than used boats as the length increases. This validates one of the expectations in the beginning of our analysis. Therefore, in addition to length, the boat’s condition is also another factor controlling the price. And the reason for that is that customers tend to be more attracted by unused items, because for example, new items are much easier to repair than old ones in case of a problem. On the other hand, we can notice that boats on length less than 30 feet are quite cheap.</p>
+<p>For additional investigation, we can ask whether the type of the boats would affect this relationship. Also, why are long boats mostly used? And finally, for the data points in the bottom, do they have similar manufacturing dates?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>condition_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(boats<span class="sc">$</span>condition)</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>condition_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Condition =</span> <span class="fu">names</span>(condition_counts), <span class="at">Count =</span> <span class="fu">as.numeric</span>(condition_counts))</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(condition_df, <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">""</span>, <span class="at">y =</span> Count, <span class="at">fill =</span> Condition)) <span class="sc">+</span></span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_polar</span>(<span class="st">"y"</span>, <span class="at">start =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Boats by Condition"</span>, <span class="at">fill =</span> <span class="st">"Condition"</span>) <span class="sc">+</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>manufacturer_counts <span class="ot">&lt;-</span> <span class="fu">table</span>(boats_filtered<span class="sc">$</span>make)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>manufacturer_counts_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(manufacturer_counts)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(manufacturer_counts_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Manufacturer"</span>, <span class="st">"Number of Boats"</span>)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>manufacturer_counts_df <span class="ot">&lt;-</span> manufacturer_counts_df[<span class="fu">order</span>(<span class="sc">-</span>manufacturer_counts_df<span class="sc">$</span><span class="st">`</span><span class="at">Number of Boats</span><span class="st">`</span>), ]</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>top_10_manufacturers <span class="ot">&lt;-</span> <span class="fu">head</span>(manufacturer_counts_df, <span class="dv">10</span>)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#FF9999"</span>, <span class="st">"#FFCC99"</span>, <span class="st">"#FFFF99"</span>, <span class="st">"#CCFF99"</span>, <span class="st">"#99FF99"</span>, <span class="st">"#99FFFF"</span>, <span class="st">"#9999FF"</span>, <span class="st">"#CC99FF"</span>, <span class="st">"#FF99FF"</span>, <span class="st">"#FF9999"</span>)</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="co"># BAR CHART CREATION</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(top_10_manufacturers, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Manufacturer, <span class="sc">-</span><span class="st">`</span><span class="at">Number of Boats</span><span class="st">`</span>), <span class="at">y =</span> <span class="st">`</span><span class="at">Number of Boats</span><span class="st">`</span>, <span class="at">fill =</span> Manufacturer)) <span class="sc">+</span></span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> colors) <span class="sc">+</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Top 10 Manufacturers by Number of Boats"</span>, <span class="at">x =</span> <span class="st">"Manufacturer"</span>, <span class="at">y =</span> <span class="st">"Number of Boats"</span>) <span class="sc">+</span></span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Homework-1-Answers---ml_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="b.-putting-it-all-together" class="level3">
+<h3 class="anchored" data-anchor-id="b.-putting-it-all-together">2. B. Putting it all together</h3>
+<p>Our goal from this analysis was to better understand the boat marketplace in the United States to understand which features control the prices’ tendencies. To do that, we got a dataset from the online website <em>boattrader.com</em>. It contains more than 300 boats listed for sale, described by many features like type, price, fuel type, etc. Our analysis of the data guided us to many conclusions.</p>
+<p>The range of boat prices is very large (from $500 up to $1,800,000), but most of the prices are in the relatively cheap range (less than $250,000.) After calculating the standard deviation and doing the necessary comparisons, we have concluded that the distribution of prices is highly skewed. Also, used boats tend to have more regular prices compared to new boats, which have extravagant prices. Using contingency tables and proportion tables, we were able to see what kinds of combinations between boats’ type and boats’ fuel type. Based on the box plot of boat length by fuel type, we deduced that diesel boats tend to be larger than other fuel types. The association between price and length is positive, linear, moderately strong, with many outliers. The outliers can be anomalies and errors in entry, but they can also be valid data points which should be taken into consideration.</p>
+<p>What we can deduce is that the longer the boat, the more expensive it is. Also, manufacturing companies like Tracker, Sun Tracker and Bennington sell the most at convenient prices. Moreover, new boats are much more present in the market than old boats. Additionally, powered boats fueled by diesel and gasoline are good deals.</p>
+<p>An element we lack in this study is feedback from the customers: ratings, budget ranges for different people, etc.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
