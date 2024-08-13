@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -45,7 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,6 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -68,9 +75,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">DKU Stats 101 - Spring 2024</span>
     </a>
@@ -82,32 +89,32 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
- <span class="menu-text">Course Introduction</span></a>
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Course Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./schedulematerials.html" rel="" target="">
- <span class="menu-text">Schedule and Course Materials</span></a>
+    <a class="nav-link" href="./schedulematerials.html"> 
+<span class="menu-text">Schedule and Course Materials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./homework.html" rel="" target="">
- <span class="menu-text">Homework</span></a>
+    <a class="nav-link" href="./homework.html"> 
+<span class="menu-text">Homework</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./rmanual.html" rel="" target="">
- <span class="menu-text">R Help Manual</span></a>
+    <a class="nav-link" href="./rmanual.html"> 
+<span class="menu-text">R Help Manual</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/andrewmacd/dkustats101spring2024" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/andrewmacd/dkustats101spring2024"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -157,17 +164,19 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <section id="course-at-a-glance" class="level1">
 <h1>Course at a glance</h1>
 <ul>
-<li>Monday/Wednesday class at 12:00 pm to 2:30 pm in AB1079</li>
-<li>Tuesday lab 6:00 pm to 7:15 pm in AB1079</li>
+<li>Tuesday/Thursday class at 8:30 am to 11:00 am in IB3106</li>
+<li>Wednesday lab 1:15 pm to 2:30 pm in IB3106</li>
 <li>Office hours -
 <ul>
-<li>Monday, Wednesday 2:45 pm to 4:00 pm in WDR 3114</li>
-<li>Tuesday, Thursday 1:00 pm to 2:15 pm in WDR 3114</li>
+<li>Tuesday 1:00 pm to 3:00 pm in WDR 3114</li>
+<li>Wednesday, 10:30 am to 11:45 am in WDR 3114</li>
 </ul></li>
 <li>Homeworks are all due on Sunday at 11:59 pm</li>
 <li>All other announcements and information are posted on the class Teams site</li>
@@ -177,11 +186,12 @@ ul.task-list li input[type="checkbox"] {
 <h1>Course description</h1>
 <p>How can we use data to shed light on age-old and new human problems such as pollution, discrimination, and economic growth? How can we be “sure” that the evidence we have points us in the right direction? How meaningful are our findings? Do our results suggest the relationships we find between factors such smoking and cancer are meaningful or meaningless? How would we know? How should one properly display and explain your statistical results to these important issues?</p>
 <p>This class introduces you to the tools and concepts that begin to tackle these questions. We will cover topics such as data summaries, sampling, data analysis, production of graphical displays, and regression techniques. The goal at the end of the course is that you will be able to conduct basic data manipulation, know how to properly summarize and display data, and make basic statistical inferences using real datasets.</p>
-<p>The emphasis in the course will not be on learning mathematical formulas related to statistics but rather to develop an intuitive understanding of statistical inference and measures of uncertainty. For those interested in developing this intuitive understanding of statistics in a more rigorous way, you may also consider taking the following courses:</p>
+<p>The emphasis in the course will not be on learning mathematical formulas related to statistics but rather to develop an intuitive understanding of statistical inference and measures of uncertainty. For those interested in further study of statistics in a more rigorous way, you may also consider taking the following courses:</p>
 <ul>
 <li>Math 205: the mathematical foundations of statistics</li>
-<li>Econ 203: advanced study of modern regression techniques</li>
-<li>Social Sciences 350: advanced statistical techniques applied to real-world problems</li>
+<li>Econ 203: advanced study of modern regression techniques for Economists</li>
+<li>PoliSci 301: Statistical techniques to infer causation</li>
+<li>Social Sciences 320: advanced statistical techniques applied to real-world problems</li>
 </ul>
 <p>A third set of goals for the course is that you will also be able to read more fluently research literature that employs statistics. During this course I will reference, in class, a number of historically important academic articles and we will analyze the data from those articles. Doing so should help you understand how data is used (and misused) to construct social science arguments.</p>
 </section>
@@ -213,9 +223,9 @@ ul.task-list li input[type="checkbox"] {
 <p><em>In general</em>, each week will proceed roughly as follows:</p>
 <ul>
 <li><strong>Monday-Thursday</strong>: Read the textbook chapter, make progress on the lab(s) and homework</li>
-<li><strong>Monday 12:00 pm-2:30 pm</strong>: Class session with a conceptual review of the chapter material</li>
-<li><strong>Tuesday 6:00 pm-7:15 pm</strong>: Lab activities designed to help gain familiarity with the technical aspects of using R, RStudio and Quarto.</li>
-<li><strong>Wednesday 12:00 pm-2:30 pm</strong>: Second weekly class session</li>
+<li><strong>Tuesday 8:30 am-11:00 am</strong>: Class session with a conceptual review of the chapter material</li>
+<li><strong>Wednesday 1:15 pm-2:30 pm</strong>: Lab activities designed to help gain familiarity with the technical aspects of using R, RStudio and Quarto.</li>
+<li><strong>Thursday 8:30 am-11:00 am</strong>: Second weekly class session</li>
 <li><strong>Friday</strong>: Complete DataCamp lab(s) before <strong>midnight</strong></li>
 <li><strong>Sunday</strong>: Complete the homework that is due before <strong>midnight</strong> on Sunday</li>
 </ul>
@@ -227,7 +237,7 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://www.microsoft.com/en/microsoft-teams/download-app">Teams</a>: Teams works a bit like WeChat and a bit like Sakai and is perfect for collaboration. I encourage you to post often on Teams, including interesting statistical things you find in the world, questions about statistics you see in the news, and any other thoughts you have. Make sure to fill out your profile and upload a profile picture so we can keep track of who you are!</li>
 <li><a href="https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu">R and RStudio</a>: These software packages that implement the R statistical programming language are free and very popular tools for conducting statistical investigations, including all of the homeworks for this class.
 <ul>
-<li><a href="https://quarto.org/docs/computations/r.html">Quarto</a>: Quarto is a flexible document formatting standard that allows you to create nice looking documents that easily mix text and R code output (I made this website with Quarto - you can view the code <a href="https://github.com/andrewmacd/dkustats101spring2023">here</a>). All your homeworks, midterm, and final projects will be written inside of Quarto documents. Instructions on how to use the Quarto syntax will be provided with the first homework assignment.</li>
+<li><a href="https://quarto.org/docs/computations/r.html">Quarto</a>: Quarto is a flexible document formatting standard that allows you to create nice looking documents that easily mix text and R code output (I made this website with Quarto - you can view the code <a href="https://github.com/andrewmacd/dkustats101fall2024">here</a>). All your homeworks, midterm, and final projects will be written inside of Quarto documents. Instructions on how to use the Quarto syntax will be provided with the first homework assignment.</li>
 </ul></li>
 <li><a href="https://www.datacamp.com/groups/stats-101-5f35cd3d-9ec2-4341-bfdf-855dcc9a397f/shared_links/6360308e1f54e3c2c4c97b85756568a7f6557d8560ab89da0742bfba3839bdaf">DataCamp</a>: DataCamp has a lot of very useful tutorials that will help you learn how to code in R.</li>
 </ol>
@@ -242,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="assessment" class="level2">
 <h2 class="anchored" data-anchor-id="assessment">Assessment</h2>
 <ul>
-<li><p>Beginning of class warmup quiz <strong>10%</strong>: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades.</p></li>
+<li><p>Beginning of class warmup quiz <strong>10%</strong>: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades. I will also curve the grade such that the student with the highest overall quiz grade will receive 100% and all other students will receive a corresponding boost to their grade.</p></li>
 <li><p>Homework <strong>50%</strong>: At the end of a group of content, a homework will be assigned that will ask you to analyze a dataset and answer questions related to that concept group. These homeworks are always due the Sunday after assigned at 11:59 pm China time. Each homework/midterm will also have a best graph contest, where the person whose classmates vote as having the best graph wins some extra credit points.</p></li>
 <li><p>Homework checks <strong>4%</strong>: To make sure you are making good progress on your homework, the Sunday before the homework is due (except for the first homework) you will be required to submit your progress on the homework so far. You are required to have tried to have answered all the questions covered by the lectures and textbook up to that Sunday. I will not check your answers but rather check to see if you have made a good effort to answer all the questions derived from the material already covered. If you have a reasonable answer for each question checked you will get full points. If you have not made an effort to answer all the questions reviewed you will get a zero.</p></li>
 <li><p>Unit 4 homework - paper analysis <strong>5%</strong>: At the end of Unit 4, you will select a news article and then do some research on the underlying statistics presented in the news article, critiquing if the news article accurately represented the study reference in the article.</p></li>
@@ -282,13 +292,13 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="chatgpt-and-similar-policy" class="level2">
 <h2 class="anchored" data-anchor-id="chatgpt-and-similar-policy">ChatGPT (and similar) Policy</h2>
-<p>Unless otherwise specified on an assignment, you may use ChatGPT to your heart’s content. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes.</p>
+<p>Unless otherwise specified on an assignment, you may use ChatGPT as much as you wish. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes.</p>
 </section>
 <section id="academic-dishonesty-policy" class="level2">
 <h2 class="anchored" data-anchor-id="academic-dishonesty-policy">Academic Dishonesty Policy</h2>
 <p>Don’t cheat. Don’t be that person. Yes, you. You know exactly what I’m talking about too.</p>
 <p>More specifically, you are expected to strictly adhere to the Duke Kunshan University Community Standard in all of your work and participation, and violations will be enforced. More details can be found <a href="https://ugstudies.dukekunshan.edu.cn/academic-integrity/">here</a>.</p>
-<p>All work must be done exclusively by the individual to whom it has been assigned. You should assume that collaboration on assignments, the use of previously-assigned homework, quizzes and answer keys, outside sources or outside aids (both written and electronic) are not allowed unless explicitly noted in the assignment guidelines. All cases of suspected cheating will be referred for adjudication to the Dean’s Office. Any violation for which a student is found responsible is considered grounds for failure in the course.</p>
+<p>All work must be done exclusively by the individual to whom it has been assigned. You should assume that collaboration on assignments, the use of previously-assigned homework, quizzes and answer keys, outside sources or outside aids (both written and electronic) are not allowed unless explicitly noted in the assignment guidelines or in this syllabus. All cases of suspected cheating will be referred for adjudication to the Dean’s Office. Any violation for which a student is found responsible is considered grounds for failure in the course.</p>
 <p>It may sound cliché to say, but if you cheat and borrow other’s code or answers you are only cheating yourself; you will not learn how to do statistics and doing so will mean you will do worse on the midterm and the final anyway. Cheating is ultimately self-defeating so for both of our benefit, please, don’t do it. If you are having trouble completing the assignment and feel tempted to cheat, please contact me directly instead with the difficulties you are having.</p>
 </section>
 <section id="disabilities-policy" class="level2">
@@ -379,10 +389,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -392,8 +419,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -405,7 +441,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -449,6 +608,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -474,6 +634,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -534,6 +720,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

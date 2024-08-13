@@ -8,11 +8,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Course at a glance
 
--   Monday/Wednesday class at 12:00 pm to 2:30 pm in AB1079
--   Tuesday lab 6:00 pm to 7:15 pm in AB1079
+-   Tuesday/Thursday class at 8:30 am to 11:00 am in IB3106
+-   Wednesday lab 1:15 pm to 2:30 pm in IB3106
 -   Office hours -
-    -   Monday, Wednesday 2:45 pm to 4:00 pm in WDR 3114
-    -   Tuesday, Thursday 1:00 pm to 2:15 pm in WDR 3114
+    -   Tuesday 1:00 pm to 3:00 pm in WDR 3114
+    -   Wednesday, 10:30 am to 11:45 am in WDR 3114
 -   Homeworks are all due on Sunday at 11:59 pm
 -   All other announcements and information are posted on the class Teams site
 
@@ -22,10 +22,10 @@ How can we use data to shed light on age-old and new human problems such as poll
 
 This class introduces you to the tools and concepts that begin to tackle these questions. We will cover topics such as data summaries, sampling, data analysis, production of graphical displays, and regression techniques. The goal at the end of the course is that you will be able to conduct basic data manipulation, know how to properly summarize and display data, and make basic statistical inferences using real datasets.
 
-The emphasis in the course will not be on learning mathematical formulas related to statistics but rather to develop an intuitive understanding of statistical inference and measures of uncertainty. For those interested in developing this intuitive understanding of statistics in a more rigorous way, you may also consider taking the following courses:
+The emphasis in the course will not be on learning mathematical formulas related to statistics but rather to develop an intuitive understanding of statistical inference and measures of uncertainty. For those interested in further study of statistics in a more rigorous way, you may also consider taking the following courses:
 
 -   Math 205: the mathematical foundations of statistics
--   Econ 203: advanced study of modern regression techniques
+-   Econ 203: advanced study of modern regression techniques for Economists
 -   PoliSci 301: Statistical techniques to infer causation
 -   Social Sciences 320: advanced statistical techniques applied to real-world problems
 
@@ -59,9 +59,9 @@ Because of the pandemic situation this term, the course structure is going to be
 *In general*, each week will proceed roughly as follows:
 
 -   **Monday-Thursday**: Read the textbook chapter, make progress on the lab(s) and homework
--   **Monday 12:00 pm-2:30 pm**: Class session with a conceptual review of the chapter material
--   **Tuesday 6:00 pm-7:15 pm**: Lab activities designed to help gain familiarity with the technical aspects of using R, RStudio and Quarto.
--   **Wednesday 12:00 pm-2:30 pm**: Second weekly class session
+-   **Tuesday 8:30 am-11:00 am**: Class session with a conceptual review of the chapter material
+-   **Wednesday 1:15 pm-2:30 pm**: Lab activities designed to help gain familiarity with the technical aspects of using R, RStudio and Quarto.
+-   **Thursday 8:30 am-11:00 am**: Second weekly class session
 -   **Friday**: Complete DataCamp lab(s) before **midnight**
 -   **Sunday**: Complete the homework that is due before **midnight** on Sunday
 
@@ -71,7 +71,7 @@ We will be using three different online tools for this class, you will need to s
 
 1.  [Teams](https://www.microsoft.com/en/microsoft-teams/download-app): Teams works a bit like WeChat and a bit like Sakai and is perfect for collaboration. I encourage you to post often on Teams, including interesting statistical things you find in the world, questions about statistics you see in the news, and any other thoughts you have. Make sure to fill out your profile and upload a profile picture so we can keep track of who you are!
 2.  [R and RStudio](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu): These software packages that implement the R statistical programming language are free and very popular tools for conducting statistical investigations, including all of the homeworks for this class.
-    -   [Quarto](https://quarto.org/docs/computations/r.html): Quarto is a flexible document formatting standard that allows you to create nice looking documents that easily mix text and R code output (I made this website with Quarto - you can view the code [here](https://github.com/andrewmacd/dkustats101spring2023)). All your homeworks, midterm, and final projects will be written inside of Quarto documents. Instructions on how to use the Quarto syntax will be provided with the first homework assignment.
+    -   [Quarto](https://quarto.org/docs/computations/r.html): Quarto is a flexible document formatting standard that allows you to create nice looking documents that easily mix text and R code output (I made this website with Quarto - you can view the code [here](https://github.com/andrewmacd/dkustats101fall2024)). All your homeworks, midterm, and final projects will be written inside of Quarto documents. Instructions on how to use the Quarto syntax will be provided with the first homework assignment.
 3.  [DataCamp](https://www.datacamp.com/groups/stats-101-5f35cd3d-9ec2-4341-bfdf-855dcc9a397f/shared_links/6360308e1f54e3c2c4c97b85756568a7f6557d8560ab89da0742bfba3839bdaf): DataCamp has a lot of very useful tutorials that will help you learn how to code in R.
 
 # Required texts
@@ -84,7 +84,7 @@ I will detail the policy for this course below. Basically, try to learn stuff, d
 
 ## Assessment
 
--   Beginning of class warmup quiz **10%**: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades.
+-   Beginning of class warmup quiz **10%**: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades. I will also curve the grade such that the student with the highest overall quiz grade will receive 100% and all other students will receive a corresponding boost to their grade.
 
 -   Homework **50%**: At the end of a group of content, a homework will be assigned that will ask you to analyze a dataset and answer questions related to that concept group. These homeworks are always due the Sunday after assigned at 11:59 pm China time. Each homework/midterm will also have a best graph contest, where the person whose classmates vote as having the best graph wins some extra credit points.
 
@@ -126,7 +126,7 @@ Class will be highly interactive and therefore it is to your advantage to attend
 
 ## ChatGPT (and similar) Policy
 
-Unless otherwise specified on an assignment, you may use ChatGPT to your heart's content. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes. 
+Unless otherwise specified on an assignment, you may use ChatGPT as much as you wish. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes. 
 
 ## Academic Dishonesty Policy
 
@@ -134,7 +134,7 @@ Don't cheat. Don't be that person. Yes, you. You know exactly what I'm talking a
 
 More specifically, you are expected to strictly adhere to the Duke Kunshan University Community Standard in all of your work and participation, and violations will be enforced. More details can be found [here](https://ugstudies.dukekunshan.edu.cn/academic-integrity/).
 
-All work must be done exclusively by the individual to whom it has been assigned. You should assume that collaboration on assignments, the use of previously-assigned homework, quizzes and answer keys, outside sources or outside aids (both written and electronic) are not allowed unless explicitly noted in the assignment guidelines. All cases of suspected cheating will be referred for adjudication to the Dean's Office. Any violation for which a student is found responsible is considered grounds for failure in the course.
+All work must be done exclusively by the individual to whom it has been assigned. You should assume that collaboration on assignments, the use of previously-assigned homework, quizzes and answer keys, outside sources or outside aids (both written and electronic) are not allowed unless explicitly noted in the assignment guidelines or in this syllabus. All cases of suspected cheating will be referred for adjudication to the Dean's Office. Any violation for which a student is found responsible is considered grounds for failure in the course.
 
 It may sound cliché to say, but if you cheat and borrow other's code or answers you are only cheating yourself; you will not learn how to do statistics and doing so will mean you will do worse on the midterm and the final anyway. Cheating is ultimately self-defeating so for both of our benefit, please, don't do it. If you are having trouble completing the assignment and feel tempted to cheat, please contact me directly instead with the difficulties you are having.
 

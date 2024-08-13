@@ -7,242 +7,235 @@
     "text": "Important: class schedule is subject to change, contingent on mitigating circumstances and the progress we make as a class. If there are any changes, I will announce them on the Teams site."
   },
   {
-    "objectID": "schedulematerials.html#lecture-1.1-class-welcome-wednesday-march-20",
-    "href": "schedulematerials.html#lecture-1.1-class-welcome-wednesday-march-20",
+    "objectID": "schedulematerials.html#lecture-1.1-class-welcome-tuesday-august-20",
+    "href": "schedulematerials.html#lecture-1.1-class-welcome-tuesday-august-20",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 1.1: Class welcome (Wednesday, March 20)",
-    "text": "Lecture 1.1: Class welcome (Wednesday, March 20)\nReading to do before class: Chapter 1, 2.1 and 2.2, and 3\nTopics covered:\n\nWhat are data and variables?\nHow to display quantitative and qualitative variables\nContingency tables"
+    "section": "Lecture 1.1: Class welcome (Tuesday, August 20)",
+    "text": "Lecture 1.1: Class welcome (Tuesday, August 20)\nReading to do before class: Chapter 1, 2.1 and 2.2, and 3\nTopics covered:\n\nWhat are data and variables?\nHow to display quantitative and qualitative variables\nContingency tables"
   },
   {
-    "objectID": "schedulematerials.html#lab-1.1-r-and-quarto-familiarization-thursday-march-21",
-    "href": "schedulematerials.html#lab-1.1-r-and-quarto-familiarization-thursday-march-21",
+    "objectID": "schedulematerials.html#lab-1.1-r-and-quarto-familiarization-wednesday-august-21",
+    "href": "schedulematerials.html#lab-1.1-r-and-quarto-familiarization-wednesday-august-21",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 1.1: R and Quarto familiarization (Thursday, March 21)",
-    "text": "Lab 1.1: R and Quarto familiarization (Thursday, March 21)\n\nLab files: Lab 1.1\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
+    "section": "Lab 1.1: R and Quarto familiarization (Wednesday, August 21)",
+    "text": "Lab 1.1: R and Quarto familiarization (Wednesday, August 21)\n\nLab files: [Lab 1.1]\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
   },
   {
-    "objectID": "schedulematerials.html#lecture-1.2-characteristics-of-distributions-friday-march-22",
-    "href": "schedulematerials.html#lecture-1.2-characteristics-of-distributions-friday-march-22",
+    "objectID": "schedulematerials.html#lecture-1.2-characteristics-of-distributions-thursday-august-22",
+    "href": "schedulematerials.html#lecture-1.2-characteristics-of-distributions-thursday-august-22",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 1.2: Characteristics of distributions (Friday, March 22)",
-    "text": "Lecture 1.2: Characteristics of distributions (Friday, March 22)\nReading to do before class: Chapter 2.3-5 and 4\nTopics covered:\n\nHow to describe the shape, center, and spread of a distribution\nHow to compare distributions\nDealing with problem distributions (outliers, reexpression)\nLecture webpage: Lecture 1.2\nLecture activity: Lecture 1.2 activity\nQuality YouTube content: Tidyverse music video"
+    "section": "Lecture 1.2: Characteristics of distributions (Thursday, August 22)",
+    "text": "Lecture 1.2: Characteristics of distributions (Thursday, August 22)\nReading to do before class: Chapter 2.3-5 and 4\nTopics covered:\n\nHow to describe the shape, center, and spread of a distribution\nHow to compare distributions\nDealing with problem distributions (outliers, reexpression)\nLecture webpage: [Lecture 1.2]\nLecture activity: [Lecture 1.2 activity]"
   },
   {
-    "objectID": "schedulematerials.html#online-lab-1.1-due-sunday-march-24-at-115900-pm",
-    "href": "schedulematerials.html#online-lab-1.1-due-sunday-march-24-at-115900-pm",
+    "objectID": "schedulematerials.html#online-lab-1.1-due-sunday-march-25-at-115900-pm",
+    "href": "schedulematerials.html#online-lab-1.1-due-sunday-march-25-at-115900-pm",
     "title": "Course Schedule and Class Materials",
-    "section": "Online lab 1.1 (due Sunday, March 24 at 11:59:00 pm)",
-    "text": "Online lab 1.1 (due Sunday, March 24 at 11:59:00 pm)\n\nIntroduction to R\nIntroduction to the Tidyverse"
+    "section": "Online lab 1.1 (due Sunday, March 25 at 11:59:00 pm)",
+    "text": "Online lab 1.1 (due Sunday, March 25 at 11:59:00 pm)\n\nIntroduction to R\nIntroduction to the Tidyverse"
   },
   {
-    "objectID": "schedulematerials.html#lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25",
-    "href": "schedulematerials.html#lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25",
+    "objectID": "schedulematerials.html#lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27",
+    "href": "schedulematerials.html#lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 1.3: Comparing distributions and the Normal distribution (Monday, March 25)",
-    "text": "Lecture 1.3: Comparing distributions and the Normal distribution (Monday, March 25)\nReading to do before class: Chapter 5\nTopics covered:\n\nStandard deviation and standardizing values\nNormal models\nNormal percentiles\nLecture webpage: Lecture 1.3\nLecture activity: Lecture 1.3 activity"
+    "section": "Lecture 1.3: Comparing distributions and the Normal distribution (Tuesday, August 27)",
+    "text": "Lecture 1.3: Comparing distributions and the Normal distribution (Tuesday, August 27)\nReading to do before class: Chapter 5\nTopics covered:\n\nStandard deviation and standardizing values\nNormal models\nNormal percentiles\nLecture webpage: [Lecture 1.3]\nLecture activity: [Lecture 1.3 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lab-1.2-advanced-quarto-editing-tuesday-march-26",
-    "href": "schedulematerials.html#lab-1.2-advanced-quarto-editing-tuesday-march-26",
+    "objectID": "schedulematerials.html#lab-1.2-advanced-quarto-editing-wednesday-august-28",
+    "href": "schedulematerials.html#lab-1.2-advanced-quarto-editing-wednesday-august-28",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 1.2: Advanced Quarto editing (Tuesday, March 26)",
-    "text": "Lab 1.2: Advanced Quarto editing (Tuesday, March 26)\n\nLab files: Lab 1.2\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
+    "section": "Lab 1.2: Advanced Quarto editing (Wednesday, August 28)",
+    "text": "Lab 1.2: Advanced Quarto editing (Wednesday, August 28)\n\nLab files: [Lab 1.2]\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
   },
   {
-    "objectID": "schedulematerials.html#unit-1-homework-due-march-31-at-235900-pm",
-    "href": "schedulematerials.html#unit-1-homework-due-march-31-at-235900-pm",
+    "objectID": "schedulematerials.html#unit-1-homework-due-september-1-at-235900-pm",
+    "href": "schedulematerials.html#unit-1-homework-due-september-1-at-235900-pm",
     "title": "Course Schedule and Class Materials",
-    "section": "Unit 1 homework (due March 31 at 23:59:00 pm)",
-    "text": "Unit 1 homework (due March 31 at 23:59:00 pm)\n\nHomework files: Unit 1 homework\nHomework sample solutions: Unit 1 homework sample solutions"
+    "section": "Unit 1 homework (due September 1 at 23:59:00 pm)",
+    "text": "Unit 1 homework (due September 1 at 23:59:00 pm)\n\nHomework files: [Unit 1 homework]\nHomework sample solutions: [Unit 1 homework sample solutions]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-2.1-association-and-correlation-wednesday-march-27",
-    "href": "schedulematerials.html#lecture-2.1-association-and-correlation-wednesday-march-27",
+    "objectID": "schedulematerials.html#lecture-2.1-association-and-correlation-thursday-august-29",
+    "href": "schedulematerials.html#lecture-2.1-association-and-correlation-thursday-august-29",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 2.1: Association and correlation (Wednesday, March 27)",
-    "text": "Lecture 2.1: Association and correlation (Wednesday, March 27)\nReading to do before class: Chapter 6\nTopics covered:\n\nScatterplots\nCorrelations\nDoes correlation imply causation?\nLecture webpage: Lecture 2.1\nLecture activity: Lecture 2.1 activity"
+    "section": "Lecture 2.1: Association and correlation (Thursday, August 29)",
+    "text": "Lecture 2.1: Association and correlation (Thursday, August 29)\nReading to do before class: Chapter 6\nTopics covered:\n\nScatterplots\nCorrelations\nDoes correlation imply causation?\nLecture webpage: [Lecture 2.1]\nLecture activity: [Lecture 2.1 activity]"
   },
   {
-    "objectID": "schedulematerials.html#online-lab-2.1-due-on-friday-march-29-at-235900",
-    "href": "schedulematerials.html#online-lab-2.1-due-on-friday-march-29-at-235900",
+    "objectID": "schedulematerials.html#online-lab-2.1-due-on-friday-august-30-at-235900",
+    "href": "schedulematerials.html#online-lab-2.1-due-on-friday-august-30-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Online lab 2.1 (due on Friday, March 29 at 23:59:00)",
-    "text": "Online lab 2.1 (due on Friday, March 29 at 23:59:00)\n\nIntroduction to Data Visualization with ggplot2"
+    "section": "Online lab 2.1 (due on Friday, August 30 at 23:59:00)",
+    "text": "Online lab 2.1 (due on Friday, August 30 at 23:59:00)\n\nIntroduction to Data Visualization with ggplot2"
   },
   {
-    "objectID": "schedulematerials.html#lecture-2.2-simple-linear-regression-monday-april-1",
-    "href": "schedulematerials.html#lecture-2.2-simple-linear-regression-monday-april-1",
+    "objectID": "schedulematerials.html#lecture-2.2-simple-linear-regression-tuesday-september-3",
+    "href": "schedulematerials.html#lecture-2.2-simple-linear-regression-tuesday-september-3",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 2.2: Simple Linear Regression (Monday, April 1)",
-    "text": "Lecture 2.2: Simple Linear Regression (Monday, April 1)\nReading to do before class: Chapter 7\nTopics covered:\n\nLine of best fit: least squares\nThe linear model\nWhat are residuals\nRegression assumptions\nLecture webpage: Lecture 2.2\nLecture activity: Lecture 2.2 activity"
+    "section": "Lecture 2.2: Simple Linear Regression (Tuesday, September 3)",
+    "text": "Lecture 2.2: Simple Linear Regression (Tuesday, September 3)\nReading to do before class: Chapter 7\nTopics covered:\n\nLine of best fit: least squares\nThe linear model\nWhat are residuals\nRegression assumptions\nLecture webpage: [Lecture 2.2]\nLecture activity: [Lecture 2.2 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lab-2.1-working-with-regressions-tuesday-april-2",
-    "href": "schedulematerials.html#lab-2.1-working-with-regressions-tuesday-april-2",
+    "objectID": "schedulematerials.html#lab-2.1-working-with-regressions-tuesday-september-3-700-pm",
+    "href": "schedulematerials.html#lab-2.1-working-with-regressions-tuesday-september-3-700-pm",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 2.1: Working with regressions (Tuesday, April 2)",
-    "text": "Lab 2.1: Working with regressions (Tuesday, April 2)\n\nLab files: Lab 2.1\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
+    "section": "Lab 2.1: Working with regressions (Tuesday, September 3 @ 7:00 pm)",
+    "text": "Lab 2.1: Working with regressions (Tuesday, September 3 @ 7:00 pm)\n\nNote the special class time!\nLab files: Lab 2.1\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
   },
   {
-    "objectID": "schedulematerials.html#lecture-2.3-regression-wisdom-wednesday-april-3",
-    "href": "schedulematerials.html#lecture-2.3-regression-wisdom-wednesday-april-3",
+    "objectID": "schedulematerials.html#online-lab-2.2-due-on-friday-september-6-at-235900",
+    "href": "schedulematerials.html#online-lab-2.2-due-on-friday-september-6-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 2.3: Regression Wisdom (Wednesday, April 3)",
-    "text": "Lecture 2.3: Regression Wisdom (Wednesday, April 3)\nReading to do before class: Chapter 8\nTopics covered:\n\nBeware extrapolation\nOutliers and leverage\nLurking variables\nStraightening scatterplots\nLecture webpage: Lecture 2.3\nLecture activity: Lecture 2.3 activity"
+    "section": "Online lab 2.2 (due on Friday, September 6 at 23:59:00)",
+    "text": "Online lab 2.2 (due on Friday, September 6 at 23:59:00)\n\nIntermediate Data Visualization with ggplot2"
   },
   {
-    "objectID": "schedulematerials.html#online-lab-2.2-due-on-friday-april-5-at-235900",
-    "href": "schedulematerials.html#online-lab-2.2-due-on-friday-april-5-at-235900",
+    "objectID": "schedulematerials.html#unit-2-homework---progress-check-due-sunday-september-8-at-235900",
+    "href": "schedulematerials.html#unit-2-homework---progress-check-due-sunday-september-8-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Online lab 2.2 (due on Friday, April 5 at 23:59:00)",
-    "text": "Online lab 2.2 (due on Friday, April 5 at 23:59:00)\n\nWorking with Dates and Times in R"
+    "section": "Unit 2 homework - progress check (due Sunday, September 8 at 23:59:00)",
+    "text": "Unit 2 homework - progress check (due Sunday, September 8 at 23:59:00)\n\nHomework files: [Unit 2 homework instructions]"
   },
   {
-    "objectID": "schedulematerials.html#unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900",
-    "href": "schedulematerials.html#unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900",
+    "objectID": "schedulematerials.html#lecture-2.3-regression-wisdom-thursday-september-12",
+    "href": "schedulematerials.html#lecture-2.3-regression-wisdom-thursday-september-12",
     "title": "Course Schedule and Class Materials",
-    "section": "Unit 2 homework - midterm project - progress check (due Sunday, April 7 at 23:59:00)",
-    "text": "Unit 2 homework - midterm project - progress check (due Sunday, April 7 at 23:59:00)\n\nHomework files: Unit 2 homework instructions"
+    "section": "Lecture 2.3: Regression Wisdom (Thursday, September 12)",
+    "text": "Lecture 2.3: Regression Wisdom (Thursday, September 12)\n\nNote the special class time!\n\nReading to do before class: Chapter 8\nTopics covered:\n\nBeware extrapolation\nOutliers and leverage\nLurking variables\nStraightening scatterplots\nLecture webpage: [Lecture 2.3]\nLecture activity: [Lecture 2.3 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-2.4-multiple-regression-monday-april-8",
-    "href": "schedulematerials.html#lecture-2.4-multiple-regression-monday-april-8",
+    "objectID": "schedulematerials.html#lecture-2.4-multiple-regression-friday-september-13-1000-am",
+    "href": "schedulematerials.html#lecture-2.4-multiple-regression-friday-september-13-1000-am",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 2.4: Multiple Regression (Monday, April 8)",
-    "text": "Lecture 2.4: Multiple Regression (Monday, April 8)\nReading to do before class: Chapter 9\nTopics covered:\n\nWhat is multiple regression?\nInterpreting multiple regression coefficients\nPartial regression plots\nIndicator variables\nLecture webpage: Lecture 2.4\nLecture activity: Lecture 2.4 activity"
+    "section": "Lecture 2.4: Multiple Regression (Friday, September 13 @ 10:00 am)",
+    "text": "Lecture 2.4: Multiple Regression (Friday, September 13 @ 10:00 am)\n\nNote the special class time!\n\nReading to do before class: Chapter 9\nTopics covered:\n\nWhat is multiple regression?\nInterpreting multiple regression coefficients\nPartial regression plots\nIndicator variables\nLecture webpage: [Lecture 2.4]\nLecture activity: [Lecture 2.4 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lab-2.2-interpreting-coefficients-tuesday-april-9",
-    "href": "schedulematerials.html#lab-2.2-interpreting-coefficients-tuesday-april-9",
+    "objectID": "schedulematerials.html#online-lab-2.3-due-on-friday-september-13-at-115900",
+    "href": "schedulematerials.html#online-lab-2.3-due-on-friday-september-13-at-115900",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 2.2: Interpreting coefficients (Tuesday, April 9)",
-    "text": "Lab 2.2: Interpreting coefficients (Tuesday, April 9)\n\nLab files: Lab 2.2\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
+    "section": "Online lab 2.3 (due on Friday, September 13 at 11:59:00)",
+    "text": "Online lab 2.3 (due on Friday, September 13 at 11:59:00)\n\nModeling with Basic Regression"
   },
   {
-    "objectID": "schedulematerials.html#online-lab-2.3-due-on-friday-april-12-at-115900",
-    "href": "schedulematerials.html#online-lab-2.3-due-on-friday-april-12-at-115900",
+    "objectID": "schedulematerials.html#unit-2-homework-due-tuesday-september-17-at-115900",
+    "href": "schedulematerials.html#unit-2-homework-due-tuesday-september-17-at-115900",
     "title": "Course Schedule and Class Materials",
-    "section": "Online lab 2.3 (due on Friday, April 12 at 11:59:00)",
-    "text": "Online lab 2.3 (due on Friday, April 12 at 11:59:00)\n\nIntermediate Data Visualization with ggplot2"
+    "section": "Unit 2 homework (due Tuesday, September 17 at 11:59:00)",
+    "text": "Unit 2 homework (due Tuesday, September 17 at 11:59:00)\n\nHomework files: [Unit 2 homework instructions]"
   },
   {
-    "objectID": "schedulematerials.html#unit-2-homework---midterm-project-due-sunday-april-14-at-115900",
-    "href": "schedulematerials.html#unit-2-homework---midterm-project-due-sunday-april-14-at-115900",
+    "objectID": "schedulematerials.html#lecture-3.1-confidence-intervals---proportions-thursday-september-19",
+    "href": "schedulematerials.html#lecture-3.1-confidence-intervals---proportions-thursday-september-19",
     "title": "Course Schedule and Class Materials",
-    "section": "Unit 2 homework - midterm project (due Sunday, April 14 at 11:59:00)",
-    "text": "Unit 2 homework - midterm project (due Sunday, April 14 at 11:59:00)\n\nHomework files: Unit 2 homework instructions"
+    "section": "Lecture 3.1: Confidence intervals - proportions (Thursday, September 19)",
+    "text": "Lecture 3.1: Confidence intervals - proportions (Thursday, September 19)\nReading to do before class: Chapter 13\nTopics covered:\n\nWhat is a sampling distribution?\nWhen does the normal model apply?\nConstructing a confidence interval\nInterpreting a confidence interval\nLecture webpage: [Lecture 3.1]\nLecture activity: [Lecture 3.1 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-3.1-confidence-intervals---proportions-wednesday-april-10",
-    "href": "schedulematerials.html#lecture-3.1-confidence-intervals---proportions-wednesday-april-10",
+    "objectID": "schedulematerials.html#lecture-3.2-confidence-intervals---means-friday-september-20",
+    "href": "schedulematerials.html#lecture-3.2-confidence-intervals---means-friday-september-20",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 3.1: Confidence intervals - proportions (Wednesday, April 10)",
-    "text": "Lecture 3.1: Confidence intervals - proportions (Wednesday, April 10)\nReading to do before class: Chapter 13\nTopics covered:\n\nWhat is a sampling distribution?\nWhen does the normal model apply?\nConstructing a confidence interval\nInterpreting a confidence interval\nLecture webpage: Lecture 3.1\nLecture activity: Lecture 3.1 activity"
+    "section": "Lecture 3.2: Confidence intervals - means (Friday, September 20)",
+    "text": "Lecture 3.2: Confidence intervals - means (Friday, September 20)\n\nNote the special class time!\n\nReading to do before class: Chapter 14\nTopics covered:\n\nThe Central Limit Theorem\nConfidence interval for means\nInterpreting a confidence interval\nFinal thoughts on confidence intervals\nLecture webpage: [Lecture 3.2]\nLecture activity: [Lecture 3.2 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-3.2-confidence-intervals---means-monday-april-15",
-    "href": "schedulematerials.html#lecture-3.2-confidence-intervals---means-monday-april-15",
+    "objectID": "schedulematerials.html#lecture-3.3-hypothesis-testing-saturday-september-21",
+    "href": "schedulematerials.html#lecture-3.3-hypothesis-testing-saturday-september-21",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 3.2: Confidence intervals - means (Monday, April 15)",
-    "text": "Lecture 3.2: Confidence intervals - means (Monday, April 15)\nReading to do before class: Chapter 14\nTopics covered:\n\nThe Central Limit Theorem\nConfidence interval for means\nInterpreting a confidence interval\nFinal thoughts on confidence intervals\nLecture webpage: Lecture 3.2\nLecture activity: Lecture 3.2 activity"
+    "section": "Lecture 3.3: Hypothesis testing (Saturday, September 21)",
+    "text": "Lecture 3.3: Hypothesis testing (Saturday, September 21)\nReading to do before class: Chapter 15\nTopics covered:\n\nWhat are hypotheses?\n\\(p\\) values\n\\(p\\) values and decisions – how to make a decision\nLecture webpage: [Lecture 3.3]\nLecture activity: [Lecture 3.3 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lab-3.1-sampling-tuesday-april-16",
-    "href": "schedulematerials.html#lab-3.1-sampling-tuesday-april-16",
+    "objectID": "schedulematerials.html#unit-3-homework---progress-check-due-sunday-september-22-at-235900",
+    "href": "schedulematerials.html#unit-3-homework---progress-check-due-sunday-september-22-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 3.1: Sampling (Tuesday, April 16)",
-    "text": "Lab 3.1: Sampling (Tuesday, April 16)\n\nLab files: Lab 3.1\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
+    "section": "Unit 3 homework - progress check (due Sunday, September 22 at 23:59:00)",
+    "text": "Unit 3 homework - progress check (due Sunday, September 22 at 23:59:00)\n\nHomework files: [Unit 3 homework instructions]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-3.3-hypothesis-testing-wednesday-april-17",
-    "href": "schedulematerials.html#lecture-3.3-hypothesis-testing-wednesday-april-17",
+    "objectID": "schedulematerials.html#lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24",
+    "href": "schedulematerials.html#lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 3.3: Hypothesis testing (Wednesday, April 17)",
-    "text": "Lecture 3.3: Hypothesis testing (Wednesday, April 17)\nReading to do before class: Chapter 15\nTopics covered:\n\nWhat are hypotheses?\n\\(p\\) values\n\\(p\\) values and decisions – how to make a decision\nLecture webpage: Lecture 3.3\nLecture activity: Lecture 3.3 activity"
+    "section": "Lecture 3.4: Hypothesis testing wisdom (Tuesday, September 24)",
+    "text": "Lecture 3.4: Hypothesis testing wisdom (Tuesday, September 24)\nReading to do before class: Chapter 16\nTopics covered:\n\nInterpreting p-values\nAlpha and critical values\nPractical vs. statistical significance\nType I and II errors\nPower of a test\nLecture webpage: [Lecture 3.4]\nLecture activity: [Lecture 3.4 activity]"
   },
   {
-    "objectID": "schedulematerials.html#unit-3-homework---progress-check-due-sunday-april-21-at-235900",
-    "href": "schedulematerials.html#unit-3-homework---progress-check-due-sunday-april-21-at-235900",
+    "objectID": "schedulematerials.html#lab-3.1-bootstrapping-wednesday-september-25",
+    "href": "schedulematerials.html#lab-3.1-bootstrapping-wednesday-september-25",
     "title": "Course Schedule and Class Materials",
-    "section": "Unit 3 homework - progress check (due Sunday, April 21 at 23:59:00)",
-    "text": "Unit 3 homework - progress check (due Sunday, April 21 at 23:59:00)\n\nHomework files: Unit 3 homework instructions"
+    "section": "Lab 3.1: Bootstrapping (Wednesday, September 25)",
+    "text": "Lab 3.1: Bootstrapping (Wednesday, September 25)\n\nLab files: [Lab 3.2]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-3.4-hypothesis-testing-wisdom-monday-april-22",
-    "href": "schedulematerials.html#lecture-3.4-hypothesis-testing-wisdom-monday-april-22",
+    "objectID": "schedulematerials.html#unit-3-homework-due-sunday-october-6-at-235900",
+    "href": "schedulematerials.html#unit-3-homework-due-sunday-october-6-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 3.4: Hypothesis testing wisdom (Monday, April 22)",
-    "text": "Lecture 3.4: Hypothesis testing wisdom (Monday, April 22)\nReading to do before class: Chapter 16\nTopics covered:\n\nInterpreting p-values\nAlpha and critical values\nPractical vs. statistical significance\nType I and II errors\nPower of a test\nLecture webpage: Lecture 3.4\nLecture activity: Lecture 3.4 activity"
+    "section": "Unit 3 homework (due Sunday, October 6 at 23:59:00)",
+    "text": "Unit 3 homework (due Sunday, October 6 at 23:59:00)\n\nHomework files: [Unit 3 homework instructions]"
   },
   {
-    "objectID": "schedulematerials.html#lab-3.2-bootstrapping-tueday-april-23",
-    "href": "schedulematerials.html#lab-3.2-bootstrapping-tueday-april-23",
+    "objectID": "schedulematerials.html#lecture-4.1-comparing-groups-thursday-september-26",
+    "href": "schedulematerials.html#lecture-4.1-comparing-groups-thursday-september-26",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 3.2: Bootstrapping (Tueday, April 23)",
-    "text": "Lab 3.2: Bootstrapping (Tueday, April 23)\n\nLab files: Lab 3.2"
+    "section": "Lecture 4.1: Comparing groups (Thursday, September 26)",
+    "text": "Lecture 4.1: Comparing groups (Thursday, September 26)\nReading to do before class: Chapter 17\nTopics covered:\n\nConfidence intervals for comparing two samples\nAssumptions and conditions for two-sample hypothesis tests\nTwo-sample \\(z\\) test\nTwo-sample \\(t\\) test\nLecture webpage: [Lecture 4.1]\nLecture activity: [Lecture 4.1 activity]"
   },
   {
-    "objectID": "schedulematerials.html#unit-3-homework-due-sunday-april-28-at-235900",
-    "href": "schedulematerials.html#unit-3-homework-due-sunday-april-28-at-235900",
+    "objectID": "schedulematerials.html#lecture-4.2-returning-to-regression-tuesday-october-8",
+    "href": "schedulematerials.html#lecture-4.2-returning-to-regression-tuesday-october-8",
     "title": "Course Schedule and Class Materials",
-    "section": "Unit 3 homework (due Sunday, April 28 at 23:59:00)",
-    "text": "Unit 3 homework (due Sunday, April 28 at 23:59:00)\n\nHomework files: Unit 3 homework instructions"
+    "section": "Lecture 4.2: Returning to regression (Tuesday, October 8)",
+    "text": "Lecture 4.2: Returning to regression (Tuesday, October 8)\nReading to do before class: Chapter 20\nTopics covered:\n\nRegression inference and intuition\nThe regression table\nConfidence and prediction intervals\nLecture webpage: [Lecture 4.2]\nLecture activity: [Lecture 4.2 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lecture-4.1-comparing-groups-wednesday-april-24",
-    "href": "schedulematerials.html#lecture-4.1-comparing-groups-wednesday-april-24",
+    "objectID": "schedulematerials.html#lab-4.1-model-building-wednesday-october-9",
+    "href": "schedulematerials.html#lab-4.1-model-building-wednesday-october-9",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 4.1: Comparing groups (Wednesday, April 24)",
-    "text": "Lecture 4.1: Comparing groups (Wednesday, April 24)\nReading to do before class: Chapter 17\nTopics covered:\n\nConfidence intervals for comparing two samples\nAssumptions and conditions for two-sample hypothesis tests\nTwo-sample \\(z\\) test\nTwo-sample \\(t\\) test\nLecture webpage: Lecture 4.1\nLecture activity: Lecture 4.1 activity"
+    "section": "Lab 4.1: Model building (Wednesday, October 9)",
+    "text": "Lab 4.1: Model building (Wednesday, October 9)\n\nLab tbd"
   },
   {
-    "objectID": "schedulematerials.html#lecture-4.2-returning-to-regression-monday-april-29",
-    "href": "schedulematerials.html#lecture-4.2-returning-to-regression-monday-april-29",
+    "objectID": "schedulematerials.html#final-class-4.3-interpretation-activity-thursday-october-10",
+    "href": "schedulematerials.html#final-class-4.3-interpretation-activity-thursday-october-10",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 4.2: Returning to regression (Monday, April 29)",
-    "text": "Lecture 4.2: Returning to regression (Monday, April 29)\nReading to do before class: Chapter 20\nTopics covered:\n\nRegression inference and intuition\nThe regression table\nConfidence and prediction intervals\nLecture webpage: Lecture 4.2\nLecture activity: Lecture 4.2 activity"
+    "section": "Final class 4.3: Interpretation activity (Thursday, October 10)",
+    "text": "Final class 4.3: Interpretation activity (Thursday, October 10)\n\nHow to read academic statistical results\nLocating the model\nInterpreting the test\nDetermining possible weaknesses of the model\nFinal class activity: [Final class 4.3 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lab-4.1-model-building-tueday-april-30",
-    "href": "schedulematerials.html#lab-4.1-model-building-tueday-april-30",
+    "objectID": "schedulematerials.html#online-lab-4.1-due-on-friday-october-11-at-115900",
+    "href": "schedulematerials.html#online-lab-4.1-due-on-friday-october-11-at-115900",
     "title": "Course Schedule and Class Materials",
-    "section": "Lab 4.1: Model building (Tueday, April 30)",
-    "text": "Lab 4.1: Model building (Tueday, April 30)\n\nLab cancelled"
+    "section": "Online lab 4.1 (due on Friday, October 11 at 11:59:00)",
+    "text": "Online lab 4.1 (due on Friday, October 11 at 11:59:00)\n\nYour choice of any DataCamp course (as long as it relates to statistics)\n\nSend the completion certificate from the end of the course"
   },
   {
-    "objectID": "schedulematerials.html#lecture-4.3-interpretation-activity-thursday-may-2",
-    "href": "schedulematerials.html#lecture-4.3-interpretation-activity-thursday-may-2",
+    "objectID": "schedulematerials.html#final-project---progress-check-due-sunday-october-13-at-235900",
+    "href": "schedulematerials.html#final-project---progress-check-due-sunday-october-13-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Lecture 4.3: Interpretation activity (Thursday, May 2)",
-    "text": "Lecture 4.3: Interpretation activity (Thursday, May 2)\n\nHow to read academic statistical results\nLocating the model\nInterpreting the test\nDetermining possible weaknesses of the model\nLecture paper discussion: Paper\nLecture activity: [Lecture 4.3 activity]"
+    "section": "Final project - progress check (due Sunday, October 13 at 23:59:00)",
+    "text": "Final project - progress check (due Sunday, October 13 at 23:59:00)\n\nHomework files: [Final project instructions]"
   },
   {
-    "objectID": "schedulematerials.html#unit-4-homework---paper-analysis-due-sunday-may-5-at-235900",
-    "href": "schedulematerials.html#unit-4-homework---paper-analysis-due-sunday-may-5-at-235900",
+    "objectID": "schedulematerials.html#final-project-due-wednesday-october-16-at-235900",
+    "href": "schedulematerials.html#final-project-due-wednesday-october-16-at-235900",
     "title": "Course Schedule and Class Materials",
-    "section": "Unit 4 homework - paper analysis (due Sunday, May 5 at 23:59:00)",
-    "text": "Unit 4 homework - paper analysis (due Sunday, May 5 at 23:59:00)\n\nHomework files: Unit 4 homework - paper analysis instructions"
-  },
-  {
-    "objectID": "schedulematerials.html#final-project-due-wednesday-may-8-at-235900",
-    "href": "schedulematerials.html#final-project-due-wednesday-may-8-at-235900",
-    "title": "Course Schedule and Class Materials",
-    "section": "Final project (due Wednesday, May 8 at 23:59:00)",
-    "text": "Final project (due Wednesday, May 8 at 23:59:00)\n\nHomework files: Final project instructions"
+    "section": "Final project (due Wednesday, October 16 at 23:59:00)",
+    "text": "Final project (due Wednesday, October 16 at 23:59:00)\n\nHomework files: [Final project instructions]"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Course Introduction",
     "section": "",
-    "text": "Monday/Wednesday class at 12:00 pm to 2:30 pm in AB1079\nTuesday lab 6:00 pm to 7:15 pm in AB1079\nOffice hours -\n\nMonday, Wednesday 2:45 pm to 4:00 pm in WDR 3114\nTuesday, Thursday 1:00 pm to 2:15 pm in WDR 3114\n\nHomeworks are all due on Sunday at 11:59 pm\nAll other announcements and information are posted on the class Teams site"
+    "text": "Tuesday/Thursday class at 8:30 am to 11:00 am in IB3106\nWednesday lab 1:15 pm to 2:30 pm in IB3106\nOffice hours -\n\nTuesday 1:00 pm to 3:00 pm in WDR 3114\nWednesday, 10:30 am to 11:45 am in WDR 3114\n\nHomeworks are all due on Sunday at 11:59 pm\nAll other announcements and information are posted on the class Teams site"
   },
   {
     "objectID": "index.html#assessment",
     "href": "index.html#assessment",
     "title": "Course Introduction",
     "section": "Assessment",
-    "text": "Assessment\n\nBeginning of class warmup quiz 10%: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades.\nHomework 50%: At the end of a group of content, a homework will be assigned that will ask you to analyze a dataset and answer questions related to that concept group. These homeworks are always due the Sunday after assigned at 11:59 pm China time. Each homework/midterm will also have a best graph contest, where the person whose classmates vote as having the best graph wins some extra credit points.\nHomework checks 4%: To make sure you are making good progress on your homework, the Sunday before the homework is due (except for the first homework) you will be required to submit your progress on the homework so far. You are required to have tried to have answered all the questions covered by the lectures and textbook up to that Sunday. I will not check your answers but rather check to see if you have made a good effort to answer all the questions derived from the material already covered. If you have a reasonable answer for each question checked you will get full points. If you have not made an effort to answer all the questions reviewed you will get a zero.\nUnit 4 homework - paper analysis 5%: At the end of Unit 4, you will select a news article and then do some research on the underlying statistics presented in the news article, critiquing if the news article accurately represented the study reference in the article.\nFinal project 25%: Similar to the Unit 2 homework, the final exam will ask you to analyze a dataset using all the strategies we have learned in class. The paper for this project should be about 2000 words.\nData Camp labs 5%: A number of labs on the website Data Camp will be assigned to you; these labs are pass/fail and you will receive full credit if you complete each of the labs by the specified due date.\nSyllabus quiz 1%: A short quiz after the first class regarding the course requirements.\nExtra credit maximum 3%: You have several opportunities to earn extra credit. There will be three graph contests, whereby the student who is voted by the other students as having the best graph will receive extra credit points. Additionally, those who respond to other students questions on Teams will also be eligible to earn extra credit points."
+    "text": "Assessment\n\nBeginning of class warmup quiz 10%: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades. I will also curve the grade such that the student with the highest overall quiz grade will receive 100% and all other students will receive a corresponding boost to their grade.\nHomework 50%: At the end of a group of content, a homework will be assigned that will ask you to analyze a dataset and answer questions related to that concept group. These homeworks are always due the Sunday after assigned at 11:59 pm China time. Each homework/midterm will also have a best graph contest, where the person whose classmates vote as having the best graph wins some extra credit points.\nHomework checks 4%: To make sure you are making good progress on your homework, the Sunday before the homework is due (except for the first homework) you will be required to submit your progress on the homework so far. You are required to have tried to have answered all the questions covered by the lectures and textbook up to that Sunday. I will not check your answers but rather check to see if you have made a good effort to answer all the questions derived from the material already covered. If you have a reasonable answer for each question checked you will get full points. If you have not made an effort to answer all the questions reviewed you will get a zero.\nUnit 4 homework - paper analysis 5%: At the end of Unit 4, you will select a news article and then do some research on the underlying statistics presented in the news article, critiquing if the news article accurately represented the study reference in the article.\nFinal project 25%: Similar to the Unit 2 homework, the final exam will ask you to analyze a dataset using all the strategies we have learned in class. The paper for this project should be about 2000 words.\nData Camp labs 5%: A number of labs on the website Data Camp will be assigned to you; these labs are pass/fail and you will receive full credit if you complete each of the labs by the specified due date.\nSyllabus quiz 1%: A short quiz after the first class regarding the course requirements.\nExtra credit maximum 3%: You have several opportunities to earn extra credit. There will be three graph contests, whereby the student who is voted by the other students as having the best graph will receive extra credit points. Additionally, those who respond to other students questions on Teams will also be eligible to earn extra credit points."
   },
   {
     "objectID": "index.html#lateness-policy",
@@ -270,14 +263,14 @@
     "href": "index.html#chatgpt-and-similar-policy",
     "title": "Course Introduction",
     "section": "ChatGPT (and similar) Policy",
-    "text": "ChatGPT (and similar) Policy\nUnless otherwise specified on an assignment, you may use ChatGPT to your heart’s content. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes."
+    "text": "ChatGPT (and similar) Policy\nUnless otherwise specified on an assignment, you may use ChatGPT as much as you wish. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes."
   },
   {
     "objectID": "index.html#academic-dishonesty-policy",
     "href": "index.html#academic-dishonesty-policy",
     "title": "Course Introduction",
     "section": "Academic Dishonesty Policy",
-    "text": "Academic Dishonesty Policy\nDon’t cheat. Don’t be that person. Yes, you. You know exactly what I’m talking about too.\nMore specifically, you are expected to strictly adhere to the Duke Kunshan University Community Standard in all of your work and participation, and violations will be enforced. More details can be found here.\nAll work must be done exclusively by the individual to whom it has been assigned. You should assume that collaboration on assignments, the use of previously-assigned homework, quizzes and answer keys, outside sources or outside aids (both written and electronic) are not allowed unless explicitly noted in the assignment guidelines. All cases of suspected cheating will be referred for adjudication to the Dean’s Office. Any violation for which a student is found responsible is considered grounds for failure in the course.\nIt may sound cliché to say, but if you cheat and borrow other’s code or answers you are only cheating yourself; you will not learn how to do statistics and doing so will mean you will do worse on the midterm and the final anyway. Cheating is ultimately self-defeating so for both of our benefit, please, don’t do it. If you are having trouble completing the assignment and feel tempted to cheat, please contact me directly instead with the difficulties you are having."
+    "text": "Academic Dishonesty Policy\nDon’t cheat. Don’t be that person. Yes, you. You know exactly what I’m talking about too.\nMore specifically, you are expected to strictly adhere to the Duke Kunshan University Community Standard in all of your work and participation, and violations will be enforced. More details can be found here.\nAll work must be done exclusively by the individual to whom it has been assigned. You should assume that collaboration on assignments, the use of previously-assigned homework, quizzes and answer keys, outside sources or outside aids (both written and electronic) are not allowed unless explicitly noted in the assignment guidelines or in this syllabus. All cases of suspected cheating will be referred for adjudication to the Dean’s Office. Any violation for which a student is found responsible is considered grounds for failure in the course.\nIt may sound cliché to say, but if you cheat and borrow other’s code or answers you are only cheating yourself; you will not learn how to do statistics and doing so will mean you will do worse on the midterm and the final anyway. Cheating is ultimately self-defeating so for both of our benefit, please, don’t do it. If you are having trouble completing the assignment and feel tempted to cheat, please contact me directly instead with the difficulties you are having."
   },
   {
     "objectID": "index.html#disabilities-policy",
@@ -298,7 +291,7 @@
     "href": "homework.html",
     "title": "Homework",
     "section": "",
-    "text": "Unit 1 homework (due Sunday, March 31 at 23:59:00): Unit 1 homework\n\nUnit 1 homework sample solutions\n\n\n\nUnit 2 homework - midterm project (due Sunday, April 14 at 23:59:00) Unit 2 homework\n\n\nUnit 3 homework (due Sunday, April 28 at 23:59:00) Unit 3 homework\n\n\nUnit 4 homework - paper analysis (due Sunday, May 5 at 23:59:00) Unit 4 paper analysis\n\n\nFinal project (due Wednesday, May 8 at 23:59:00) Final project"
+    "text": "Unit 1 homework (due Sunday, September 1 at 23:59:00): [Unit 1 homework]\n\n[Unit 1 homework sample solutions]\n\n\n\nUnit 2 homework (due Tuesday, September 17 at 23:59:00) [Unit 2 homework]\n\n[Unit 2 homework sample solutions]\n\n\n\nUnit 3 homework (due Sunday, October 6 at 23:59:00) [Unit 3 homework]\n\n[Unit 3 homework sample solutions]\n\n\n\nFinal project (due Wednesday, October 16 at 23:59:00) [Final project]"
   },
   {
     "objectID": "rmanual.html",
@@ -403,7 +396,7 @@
     "href": "rmanual.html#helpful-summary-functions",
     "title": "R Manual",
     "section": "Helpful summary functions",
-    "text": "Helpful summary functions\n\nSummarizing data\nThe simpliest way to summarize data is the summary() command.\n\nsummary(mtcars$mpg)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  10.40   15.43   19.20   20.09   22.80   33.90 \n\n\nTo develop more complex summary statistics, you can use longer piped structures from dplyr as follows:\n\nmtcars %&gt;%\n  group_by(cyl) %&gt;%\n  summarise(mean = mean(wt), n = n())\n\n# A tibble: 3 × 3\n    cyl  mean     n\n  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;\n1     4  2.29    11\n2     6  3.12     7\n3     8  4.00    14\n\n\nTo view more samples of the summarize() function, see here:\nSummarize documetation\n\n\nFinding normal distribution & quantile information\nIf you want to find out details of the normal distribution, there are a suite of function in R that can report the quantile of a specific number of standard deviations from the center of a normal distribution or the reverse.\n\n# What is the amount of area under the normal curve cumulative up to +2 sd from the mean \npnorm(2, mean=0, sd=1)\n\n[1] 0.9772499\n\n# At how many standard deviations away from the mean is 97.5% of the area under the normal curve\nqnorm(0.975, mean=0, sd=1)\n\n[1] 1.959964\n\n\nIf you have an arbitrary distribution (that may not necessarily be normally distributed), you can find a quantile for a given percentage of area under the curve with the quantile() function.\n\n# generate a uniform distribution\ndist&lt;-runif(1000, min=0, max=1)\n\n# theoretically, the quantile should match the probability for a uniform distribution\nquantile(dist, probs=0.5)\n\n      50% \n0.5212443"
+    "text": "Helpful summary functions\n\nSummarizing data\nThe simpliest way to summarize data is the summary() command.\n\nsummary(mtcars$mpg)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  10.40   15.43   19.20   20.09   22.80   33.90 \n\n\nTo develop more complex summary statistics, you can use longer piped structures from dplyr as follows:\n\nmtcars %&gt;%\n  group_by(cyl) %&gt;%\n  summarise(mean = mean(wt), n = n())\n\n# A tibble: 3 × 3\n    cyl  mean     n\n  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;\n1     4  2.29    11\n2     6  3.12     7\n3     8  4.00    14\n\n\nTo view more samples of the summarize() function, see here:\nSummarize documetation\n\n\nFinding normal distribution & quantile information\nIf you want to find out details of the normal distribution, there are a suite of function in R that can report the quantile of a specific number of standard deviations from the center of a normal distribution or the reverse.\n\n# What is the amount of area under the normal curve cumulative up to +2 sd from the mean \npnorm(2, mean=0, sd=1)\n\n[1] 0.9772499\n\n# At how many standard deviations away from the mean is 97.5% of the area under the normal curve\nqnorm(0.975, mean=0, sd=1)\n\n[1] 1.959964\n\n\nIf you have an arbitrary distribution (that may not necessarily be normally distributed), you can find a quantile for a given percentage of area under the curve with the quantile() function.\n\n# generate a uniform distribution\ndist&lt;-runif(1000, min=0, max=1)\n\n# theoretically, the quantile should match the probability for a uniform distribution\nquantile(dist, probs=0.5)\n\n      50% \n0.4889081"
   },
   {
     "objectID": "rmanual.html#frequency-table-and-contingency-table",
@@ -417,56 +410,56 @@
     "href": "rmanual.html#histogram",
     "title": "R Manual",
     "section": "Histogram",
-    "text": "Histogram\nHistograms are quite easy using ggplot.\n\nggplot(mtcars, aes(x=wt)) +\n  geom_histogram()\n\n\n\n\nDetails on how to modify the graphical parameters of geom_histogram() can be found here:\nHistogram documetation\n\nRemember, histograms should only be use for quantitative data. Even if a categorical variable is numeric (cylinders, for example), you should represent that variable with a bar chart."
+    "text": "Histogram\nHistograms are quite easy using ggplot.\n\nggplot(mtcars, aes(x=wt)) +\n  geom_histogram()\n\n\n\n\n\n\n\n\nDetails on how to modify the graphical parameters of geom_histogram() can be found here:\nHistogram documetation\n\nRemember, histograms should only be use for quantitative data. Even if a categorical variable is numeric (cylinders, for example), you should represent that variable with a bar chart."
   },
   {
     "objectID": "rmanual.html#boxplot",
     "href": "rmanual.html#boxplot",
     "title": "R Manual",
     "section": "Boxplot",
-    "text": "Boxplot\nBoxplots are useful if you want to compare the distribution of a variable across several different categories. For example, boxplots are a good way to compare the distribution of car weight by number of cylinders in a car.\n\nggplot(mtcars, aes(x=factor(cyl), y=wt)) +\n  geom_boxplot()\n\n\n\n\n\nThe grouping variable x must be categorical in the box plot call\n\nDetails on how to modify the graphical parameters of geom_boxplot() can be found here:\nBoxplot documetation"
+    "text": "Boxplot\nBoxplots are useful if you want to compare the distribution of a variable across several different categories. For example, boxplots are a good way to compare the distribution of car weight by number of cylinders in a car.\n\nggplot(mtcars, aes(x=factor(cyl), y=wt)) +\n  geom_boxplot()\n\n\n\n\n\n\n\n\n\nThe grouping variable x must be categorical in the box plot call\n\nDetails on how to modify the graphical parameters of geom_boxplot() can be found here:\nBoxplot documetation"
   },
   {
     "objectID": "rmanual.html#bar-chart",
     "href": "rmanual.html#bar-chart",
     "title": "R Manual",
     "section": "Bar chart",
-    "text": "Bar chart\nBar charts are the best way to display the distribution of categorical variables. Since we generally don’t assign importance to the order or distance between categories, we can only simply show the count of each category independently.\n\nggplot(mtcars, aes(x=factor(cyl))) +\n  geom_bar()\n\n\n\n\nDetails on how to modify the graphical parameters of geom_bar() can be found here:\nBar chart documetation"
+    "text": "Bar chart\nBar charts are the best way to display the distribution of categorical variables. Since we generally don’t assign importance to the order or distance between categories, we can only simply show the count of each category independently.\n\nggplot(mtcars, aes(x=factor(cyl))) +\n  geom_bar()\n\n\n\n\n\n\n\n\nDetails on how to modify the graphical parameters of geom_bar() can be found here:\nBar chart documetation"
   },
   {
     "objectID": "rmanual.html#qq-plot-in-ggplot",
     "href": "rmanual.html#qq-plot-in-ggplot",
     "title": "R Manual",
     "section": "QQ Plot in ggplot",
-    "text": "QQ Plot in ggplot\nQQ plots are useful to determine if a distribution is normal shaped. While we won’t discuss it in this class, it may be helpful for certain projects you work on. Similar to other singe variable ggplots, you can create one as follows:\n\nggplot(mtcars, aes(sample=wt)) +\n  geom_qq() +\n  geom_qq_line()\n\n\n\n\nInformation on how to interpret these plots can be found in Chapter 5 of the textbok.\nDetails on how to modify the graphical parameters of geom_qq() can be found here:\nQQ plot documetation"
+    "text": "QQ Plot in ggplot\nQQ plots are useful to determine if a distribution is normal shaped. While we won’t discuss it in this class, it may be helpful for certain projects you work on. Similar to other singe variable ggplots, you can create one as follows:\n\nggplot(mtcars, aes(sample=wt)) +\n  geom_qq() +\n  geom_qq_line()\n\n\n\n\n\n\n\n\nInformation on how to interpret these plots can be found in Chapter 5 of the textbok.\nDetails on how to modify the graphical parameters of geom_qq() can be found here:\nQQ plot documetation"
   },
   {
     "objectID": "rmanual.html#scatterplot-in-ggplot",
     "href": "rmanual.html#scatterplot-in-ggplot",
     "title": "R Manual",
     "section": "Scatterplot in ggplot",
-    "text": "Scatterplot in ggplot\nScatterplots are the most common way to display a two-variable relationship and are one of the most common graphical displays.\n\nggplot(mtcars, aes(x=wt, y=mpg)) +\n  geom_point()\n\n\n\n\n\nRemember that your response variable should always be on the y axis on a scatterplot\n\nIt is relatively common to add a line of best fit into a scatterplot to summarize the relationship between the two variables. You can do so by using the geom_smooth() function.\n\nggplot(mtcars, aes(x=wt, y=mpg)) +\n  geom_point() +\n  geom_smooth(method=lm, se=FALSE)\n\n\n\n\nThere are a number of different options for how to choose a best fit line, remember to select the one that you think best represents the relationship between the two variables.\nDetails on how to modify the graphical parameters of geom_point() and geom_smooth() can be found here:\nScatterplot documetation\nSmoother documetation"
+    "text": "Scatterplot in ggplot\nScatterplots are the most common way to display a two-variable relationship and are one of the most common graphical displays.\n\nggplot(mtcars, aes(x=wt, y=mpg)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\nRemember that your response variable should always be on the y axis on a scatterplot\n\nIt is relatively common to add a line of best fit into a scatterplot to summarize the relationship between the two variables. You can do so by using the geom_smooth() function.\n\nggplot(mtcars, aes(x=wt, y=mpg)) +\n  geom_point() +\n  geom_smooth(method=lm, se=FALSE)\n\n\n\n\n\n\n\n\nThere are a number of different options for how to choose a best fit line, remember to select the one that you think best represents the relationship between the two variables.\nDetails on how to modify the graphical parameters of geom_point() and geom_smooth() can be found here:\nScatterplot documetation\nSmoother documetation"
   },
   {
     "objectID": "rmanual.html#correlation-in-ggcorrplot",
     "href": "rmanual.html#correlation-in-ggcorrplot",
     "title": "R Manual",
     "section": "Correlation in ggcorrplot",
-    "text": "Correlation in ggcorrplot\nOne helpful graphical display to quickly summarize the relationship between many variables is a correlation plot. It displays the correlation between the variables you specify in your dataset. First, you need to work out which variables you want to include in the correlation matrix.\n\nmtcars.subset &lt;- mtcars %&gt;% \n  select(c(mpg, cyl, wt, disp))\n\n# use = complete.obs here in case of missing values\nmtcars.cor &lt;- cor(mtcars.subset, use=\"complete.obs\")\n\nmtcars.cor\n\n            mpg        cyl         wt       disp\nmpg   1.0000000 -0.8521620 -0.8676594 -0.8475514\ncyl  -0.8521620  1.0000000  0.7824958  0.9020329\nwt   -0.8676594  0.7824958  1.0000000  0.8879799\ndisp -0.8475514  0.9020329  0.8879799  1.0000000\n\n\nThen simply use the ggcorrplot() function.\n\nggcorrplot(mtcars.cor)\n\n\n\n\nDetails on how to modify the graphical parameters of ggcorrplot() can be found here:\nggcorrplot documetation"
+    "text": "Correlation in ggcorrplot\nOne helpful graphical display to quickly summarize the relationship between many variables is a correlation plot. It displays the correlation between the variables you specify in your dataset. First, you need to work out which variables you want to include in the correlation matrix.\n\nmtcars.subset &lt;- mtcars %&gt;% \n  select(c(mpg, cyl, wt, disp))\n\n# use = complete.obs here in case of missing values\nmtcars.cor &lt;- cor(mtcars.subset, use=\"complete.obs\")\n\nmtcars.cor\n\n            mpg        cyl         wt       disp\nmpg   1.0000000 -0.8521620 -0.8676594 -0.8475514\ncyl  -0.8521620  1.0000000  0.7824958  0.9020329\nwt   -0.8676594  0.7824958  1.0000000  0.8879799\ndisp -0.8475514  0.9020329  0.8879799  1.0000000\n\n\nThen simply use the ggcorrplot() function.\n\nggcorrplot(mtcars.cor)\n\n\n\n\n\n\n\n\nDetails on how to modify the graphical parameters of ggcorrplot() can be found here:\nggcorrplot documetation"
   },
   {
     "objectID": "rmanual.html#adding-features-to-ggplots",
     "href": "rmanual.html#adding-features-to-ggplots",
     "title": "R Manual",
     "section": "Adding features to ggplots",
-    "text": "Adding features to ggplots\nYou can modify ggplots to add many different features. Below is a short list of basic things you can add but this is not by far a complete list.\n\nChange the colors and lines\n\nggplot (mtcars, aes(x = wt)) + \n  geom_histogram(fill = \"#FF6666\", alpha = 0.8, color = \"black\", linetype = \"dashed\", size = 1)\n\n\n\n\n\n\nAdd labels and title\n\nggplot(mtcars, aes (x = wt)) + \n  geom_histogram() +\n  xlab(\"Weight\") +\n  ylab (\"Count\") + \n  ggtitle(\"Weight of Cars in the MPG Dataset\")\n\n\n\n\n\n\nAdd lines to the graph\n\nggplot(mtcars, aes(x = wt)) + \n  geom_histogram () + \n  geom_vline(aes(xintercept = mean(wt))) + \n  geom_hline(aes(yintercept = 3))"
+    "text": "Adding features to ggplots\nYou can modify ggplots to add many different features. Below is a short list of basic things you can add but this is not by far a complete list.\n\nChange the colors and lines\n\nggplot (mtcars, aes(x = wt)) + \n  geom_histogram(fill = \"#FF6666\", alpha = 0.8, color = \"black\", linetype = \"dashed\", size = 1)\n\n\n\n\n\n\n\n\n\n\nAdd labels and title\n\nggplot(mtcars, aes (x = wt)) + \n  geom_histogram() +\n  xlab(\"Weight\") +\n  ylab (\"Count\") + \n  ggtitle(\"Weight of Cars in the MPG Dataset\")\n\n\n\n\n\n\n\n\n\n\nAdd lines to the graph\n\nggplot(mtcars, aes(x = wt)) + \n  geom_histogram () + \n  geom_vline(aes(xintercept = mean(wt))) + \n  geom_hline(aes(yintercept = 3))"
   },
   {
     "objectID": "rmanual.html#arrange-multiple-ggplot-plots",
     "href": "rmanual.html#arrange-multiple-ggplot-plots",
     "title": "R Manual",
     "section": "Arrange multiple ggplot plots",
-    "text": "Arrange multiple ggplot plots\nOften it can be helpful to combine many plots of the same time (histograms, for example) into one larger plot. To do this, you will need to install the gridExtra package.\n\nlibrary(gridExtra)\n\np1 &lt;- ggplot(mtcars, aes(x = wt)) + \n  geom_histogram ()\n\np2 &lt;- ggplot(mtcars, aes(x = hp)) + \n  geom_histogram ()\n\ngrid.arrange(p1, p2)\n\n\n\n\nDetails on how to modify the graphical parameters of grid.arrange() can be found here:\ngridExtra documentation"
+    "text": "Arrange multiple ggplot plots\nOften it can be helpful to combine many plots of the same time (histograms, for example) into one larger plot. To do this, you will need to install the gridExtra package.\n\nlibrary(gridExtra)\n\np1 &lt;- ggplot(mtcars, aes(x = wt)) + \n  geom_histogram ()\n\np2 &lt;- ggplot(mtcars, aes(x = hp)) + \n  geom_histogram ()\n\ngrid.arrange(p1, p2)\n\n\n\n\n\n\n\n\nDetails on how to modify the graphical parameters of grid.arrange() can be found here:\ngridExtra documentation"
   },
   {
     "objectID": "rmanual.html#correlation",
@@ -480,14 +473,14 @@
     "href": "rmanual.html#simple-regression",
     "title": "R Manual",
     "section": "Simple regression",
-    "text": "Simple regression\n\nCalculating the regression coefficients\nThe standard way to calculate a regression is as follows, with the response variable on the left and the predictor variable on the right:\n\nfit &lt;- lm(data=mtcars, mpg ~ wt)\n\nsummary(fit)\n\n\nCall:\nlm(formula = mpg ~ wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.5432 -2.3647 -0.1252  1.4096  6.8727 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***\nwt           -5.3445     0.5591  -9.559 1.29e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.046 on 30 degrees of freedom\nMultiple R-squared:  0.7528,    Adjusted R-squared:  0.7446 \nF-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10\n\n\nThere is not a particularly elegant means of calculating regressions using the tidy package, however, it is often useful, particularly when conducting many regressions, to use the broom package to return the regression results in a data frame.\n\nlibrary(broom)\n\ntidy(fit)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    37.3      1.88      19.9  8.24e-19\n2 wt             -5.34     0.559     -9.56 1.29e-10\n\n\nFor more details on tidy(), you can go here:\ntidy documentation\n\n\nGraphing the residuals\nTo graph the residuals, we can use the augment() function from the broom package to add in the residuals into the results.\n\naug.fit &lt;- augment(fit)\n\naug.fit\n\n# A tibble: 32 × 9\n   .rownames           mpg    wt .fitted .resid   .hat .sigma .cooksd .std.resid\n   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;\n 1 Mazda RX4          21    2.62    23.3 -2.28  0.0433   3.07 1.33e-2    -0.766 \n 2 Mazda RX4 Wag      21    2.88    21.9 -0.920 0.0352   3.09 1.72e-3    -0.307 \n 3 Datsun 710         22.8  2.32    24.9 -2.09  0.0584   3.07 1.54e-2    -0.706 \n 4 Hornet 4 Drive     21.4  3.22    20.1  1.30  0.0313   3.09 3.02e-3     0.433 \n 5 Hornet Sportabout  18.7  3.44    18.9 -0.200 0.0329   3.10 7.60e-5    -0.0668\n 6 Valiant            18.1  3.46    18.8 -0.693 0.0332   3.10 9.21e-4    -0.231 \n 7 Duster 360         14.3  3.57    18.2 -3.91  0.0354   3.01 3.13e-2    -1.31  \n 8 Merc 240D          24.4  3.19    20.2  4.16  0.0313   3.00 3.11e-2     1.39  \n 9 Merc 230           22.8  3.15    20.5  2.35  0.0314   3.07 9.96e-3     0.784 \n10 Merc 280           19.2  3.44    18.9  0.300 0.0329   3.10 1.71e-4     0.100 \n# ℹ 22 more rows\n\n\nAnd then we can graph the residuals as follows:\n\nggplot(aug.fit, aes(x=.fitted, y=.resid)) +\n  geom_point()\n\n\n\nggplot(aug.fit, aes(x=.resid)) +\n  geom_histogram()"
+    "text": "Simple regression\n\nCalculating the regression coefficients\nThe standard way to calculate a regression is as follows, with the response variable on the left and the predictor variable on the right:\n\nfit &lt;- lm(data=mtcars, mpg ~ wt)\n\nsummary(fit)\n\n\nCall:\nlm(formula = mpg ~ wt, data = mtcars)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-4.5432 -2.3647 -0.1252  1.4096  6.8727 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept)  37.2851     1.8776  19.858  &lt; 2e-16 ***\nwt           -5.3445     0.5591  -9.559 1.29e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 3.046 on 30 degrees of freedom\nMultiple R-squared:  0.7528,    Adjusted R-squared:  0.7446 \nF-statistic: 91.38 on 1 and 30 DF,  p-value: 1.294e-10\n\n\nThere is not a particularly elegant means of calculating regressions using the tidy package, however, it is often useful, particularly when conducting many regressions, to use the broom package to return the regression results in a data frame.\n\nlibrary(broom)\n\ntidy(fit)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)    37.3      1.88      19.9  8.24e-19\n2 wt             -5.34     0.559     -9.56 1.29e-10\n\n\nFor more details on tidy(), you can go here:\ntidy documentation\n\n\nGraphing the residuals\nTo graph the residuals, we can use the augment() function from the broom package to add in the residuals into the results.\n\naug.fit &lt;- augment(fit)\n\naug.fit\n\n# A tibble: 32 × 9\n   .rownames           mpg    wt .fitted .resid   .hat .sigma .cooksd .std.resid\n   &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;\n 1 Mazda RX4          21    2.62    23.3 -2.28  0.0433   3.07 1.33e-2    -0.766 \n 2 Mazda RX4 Wag      21    2.88    21.9 -0.920 0.0352   3.09 1.72e-3    -0.307 \n 3 Datsun 710         22.8  2.32    24.9 -2.09  0.0584   3.07 1.54e-2    -0.706 \n 4 Hornet 4 Drive     21.4  3.22    20.1  1.30  0.0313   3.09 3.02e-3     0.433 \n 5 Hornet Sportabout  18.7  3.44    18.9 -0.200 0.0329   3.10 7.60e-5    -0.0668\n 6 Valiant            18.1  3.46    18.8 -0.693 0.0332   3.10 9.21e-4    -0.231 \n 7 Duster 360         14.3  3.57    18.2 -3.91  0.0354   3.01 3.13e-2    -1.31  \n 8 Merc 240D          24.4  3.19    20.2  4.16  0.0313   3.00 3.11e-2     1.39  \n 9 Merc 230           22.8  3.15    20.5  2.35  0.0314   3.07 9.96e-3     0.784 \n10 Merc 280           19.2  3.44    18.9  0.300 0.0329   3.10 1.71e-4     0.100 \n# ℹ 22 more rows\n\n\nAnd then we can graph the residuals as follows:\n\nggplot(aug.fit, aes(x=.fitted, y=.resid)) +\n  geom_point()\n\n\n\n\n\n\n\nggplot(aug.fit, aes(x=.resid)) +\n  geom_histogram()"
   },
   {
     "objectID": "rmanual.html#multiple-regression",
     "href": "rmanual.html#multiple-regression",
     "title": "R Manual",
     "section": "Multiple regression",
-    "text": "Multiple regression\nMultiple regression works similarly to two variable regressions. You can easily construct advanced models (including categorical predictors and interaction terms) using the lm() command:\n\n# Three variable regression\nmod1 &lt;- lm(data=mtcars, mpg~disp+wt)\ntidy(mod1)\n\n# A tibble: 3 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)  35.0      2.16        16.2  4.91e-16\n2 disp         -0.0177   0.00919     -1.93 6.36e- 2\n3 wt           -3.35     1.16        -2.88 7.43e- 3\n\n# Model with a categorical predictor\nmod2 &lt;- lm(data=mtcars, mpg~wt+factor(cyl))\ntidy(mod2)\n\n# A tibble: 4 × 5\n  term         estimate std.error statistic  p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)     34.0      1.89      18.0  6.26e-17\n2 wt              -3.21     0.754     -4.25 2.13e- 4\n3 factor(cyl)6    -4.26     1.39      -3.07 4.72e- 3\n4 factor(cyl)8    -6.07     1.65      -3.67 9.99e- 4\n\n# Model with an interaction term\nmod3 &lt;- lm(data=mtcars, mpg~wt+factor(cyl)+factor(cyl)*wt)\ntidy(mod3)\n\n# A tibble: 6 × 5\n  term            estimate std.error statistic  p.value\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)        39.6       3.19    12.4   2.06e-12\n2 wt                 -5.65      1.36    -4.15  3.13e- 4\n3 factor(cyl)6      -11.2       9.36    -1.19  2.44e- 1\n4 factor(cyl)8      -15.7       4.84    -3.24  3.22e- 3\n5 wt:factor(cyl)6     2.87      3.12     0.920 3.66e- 1\n6 wt:factor(cyl)8     3.45      1.63     2.12  4.34e- 2\n\n\n\nGraphing partial residual plots\nPartial residual plots help graphically display the relationship between a single predictor variable and the response variable after controlling for, or partialling out, the effect of all other predictor variables. If your regression specification meets all of the conditions for linear regression, this plot will illustrate the independent impact of the predictor variable on the response variable.\nThere are a few packages that can generate these plots, car being perhaps the best supported.\n\nlibrary(car)\n\ncrPlots(mod1, terms = ~ ., layout = NULL)\n\n\n\n\nYou can interpret these graphs as displaying the change in MPG from the mean (listed on the y axis) as displ or wt changes over its range. These are a type of marginal plots - it show the marginal impact of the predictor variable on the response variable after controlling for the impact of all other variables.\n\nNote that in the crPlot() call, the terms function is a one-sided formula that specifies a subset of the predictor variables for which you would like to generate plots. One component-plus-residual plot is drawn for each regressor. The default ~ . is to plot all numeric regressors. You can modify this term to subtract terms with the specification terms = ~ . - X3, which would plot against all regressors except for X3, while terms = ~ log(X4) would give the plot for the predictor X4 that is represented in the model by log(X4). If this argument is a quoted name of one of the predictors, the component-plus-residual plot is drawn for that predictor only.\n\n\nFor the layout option, if set to a value like c(1, 1) or c(4, 3), the layout of the graph will have this many rows and columns. If not set, the program will select an appropriate layout. If the number of graphs exceed nine, you must select the layout yourself, or you will get a maximum of nine per page.\n\nFor more details on crPlots(), you can go here:\ncrPlots documentation"
+    "text": "Multiple regression\nMultiple regression works similarly to two variable regressions. You can easily construct advanced models (including categorical predictors and interaction terms) using the lm() command:\n\n# Three variable regression\nmod1 &lt;- lm(data=mtcars, mpg~disp+wt)\ntidy(mod1)\n\n# A tibble: 3 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)  35.0      2.16        16.2  4.91e-16\n2 disp         -0.0177   0.00919     -1.93 6.36e- 2\n3 wt           -3.35     1.16        -2.88 7.43e- 3\n\n# Model with a categorical predictor\nmod2 &lt;- lm(data=mtcars, mpg~wt+factor(cyl))\ntidy(mod2)\n\n# A tibble: 4 × 5\n  term         estimate std.error statistic  p.value\n  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)     34.0      1.89      18.0  6.26e-17\n2 wt              -3.21     0.754     -4.25 2.13e- 4\n3 factor(cyl)6    -4.26     1.39      -3.07 4.72e- 3\n4 factor(cyl)8    -6.07     1.65      -3.67 9.99e- 4\n\n# Model with an interaction term\nmod3 &lt;- lm(data=mtcars, mpg~wt+factor(cyl)+factor(cyl)*wt)\ntidy(mod3)\n\n# A tibble: 6 × 5\n  term            estimate std.error statistic  p.value\n  &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)        39.6       3.19    12.4   2.06e-12\n2 wt                 -5.65      1.36    -4.15  3.13e- 4\n3 factor(cyl)6      -11.2       9.36    -1.19  2.44e- 1\n4 factor(cyl)8      -15.7       4.84    -3.24  3.22e- 3\n5 wt:factor(cyl)6     2.87      3.12     0.920 3.66e- 1\n6 wt:factor(cyl)8     3.45      1.63     2.12  4.34e- 2\n\n\n\nGraphing partial residual plots\nPartial residual plots help graphically display the relationship between a single predictor variable and the response variable after controlling for, or partialling out, the effect of all other predictor variables. If your regression specification meets all of the conditions for linear regression, this plot will illustrate the independent impact of the predictor variable on the response variable.\nThere are a few packages that can generate these plots, car being perhaps the best supported.\n\nlibrary(car)\n\ncrPlots(mod1, terms = ~ ., layout = NULL)\n\n\n\n\n\n\n\n\nYou can interpret these graphs as displaying the change in MPG from the mean (listed on the y axis) as displ or wt changes over its range. These are a type of marginal plots - it show the marginal impact of the predictor variable on the response variable after controlling for the impact of all other variables.\n\nNote that in the crPlot() call, the terms function is a one-sided formula that specifies a subset of the predictor variables for which you would like to generate plots. One component-plus-residual plot is drawn for each regressor. The default ~ . is to plot all numeric regressors. You can modify this term to subtract terms with the specification terms = ~ . - X3, which would plot against all regressors except for X3, while terms = ~ log(X4) would give the plot for the predictor X4 that is represented in the model by log(X4). If this argument is a quoted name of one of the predictors, the component-plus-residual plot is drawn for that predictor only.\n\n\nFor the layout option, if set to a value like c(1, 1) or c(4, 3), the layout of the graph will have this many rows and columns. If not set, the program will select an appropriate layout. If the number of graphs exceed nine, you must select the layout yourself, or you will get a maximum of nine per page.\n\nFor more details on crPlots(), you can go here:\ncrPlots documentation"
   },
   {
     "objectID": "rmanual.html#confidence-interval-for-proportion",

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -45,7 +45,13 @@ ul.task-list li input[type="checkbox"] {
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -54,6 +60,7 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -63,6 +70,33 @@ ul.task-list li input[type="checkbox"] {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -70,9 +104,9 @@ ul.task-list li input[type="checkbox"] {
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">DKU Stats 101 - Spring 2024</span>
     </a>
@@ -84,32 +118,32 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html" rel="" target="">
- <span class="menu-text">Course Introduction</span></a>
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Course Introduction</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./schedulematerials.html" rel="" target="" aria-current="page">
- <span class="menu-text">Schedule and Course Materials</span></a>
+    <a class="nav-link active" href="./schedulematerials.html" aria-current="page"> 
+<span class="menu-text">Schedule and Course Materials</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./homework.html" rel="" target="">
- <span class="menu-text">Homework</span></a>
+    <a class="nav-link" href="./homework.html"> 
+<span class="menu-text">Homework</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./rmanual.html" rel="" target="">
- <span class="menu-text">R Help Manual</span></a>
+    <a class="nav-link" href="./rmanual.html"> 
+<span class="menu-text">R Help Manual</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/andrewmacd/dkustats101spring2024" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/andrewmacd/dkustats101spring2024"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -124,47 +158,46 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#unit-1-distributions" id="toc-unit-1-distributions" class="nav-link active" data-scroll-target="#unit-1-distributions">Unit 1: Distributions</a>
   <ul class="collapse">
-  <li><a href="#lecture-1.1-class-welcome-wednesday-march-20" id="toc-lecture-1.1-class-welcome-wednesday-march-20" class="nav-link" data-scroll-target="#lecture-1.1-class-welcome-wednesday-march-20">Lecture 1.1: Class welcome (Wednesday, March 20)</a></li>
-  <li><a href="#lab-1.1-r-and-quarto-familiarization-thursday-march-21" id="toc-lab-1.1-r-and-quarto-familiarization-thursday-march-21" class="nav-link" data-scroll-target="#lab-1.1-r-and-quarto-familiarization-thursday-march-21">Lab 1.1: R and Quarto familiarization (Thursday, March 21)</a></li>
-  <li><a href="#lecture-1.2-characteristics-of-distributions-friday-march-22" id="toc-lecture-1.2-characteristics-of-distributions-friday-march-22" class="nav-link" data-scroll-target="#lecture-1.2-characteristics-of-distributions-friday-march-22">Lecture 1.2: Characteristics of distributions (Friday, March 22)</a></li>
-  <li><a href="#online-lab-1.1-due-sunday-march-24-at-115900-pm" id="toc-online-lab-1.1-due-sunday-march-24-at-115900-pm" class="nav-link" data-scroll-target="#online-lab-1.1-due-sunday-march-24-at-115900-pm">Online lab 1.1 (due Sunday, March 24 at 11:59:00 pm)</a></li>
-  <li><a href="#lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25" id="toc-lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25" class="nav-link" data-scroll-target="#lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25">Lecture 1.3: Comparing distributions and the Normal distribution (Monday, March 25)</a></li>
-  <li><a href="#lab-1.2-advanced-quarto-editing-tuesday-march-26" id="toc-lab-1.2-advanced-quarto-editing-tuesday-march-26" class="nav-link" data-scroll-target="#lab-1.2-advanced-quarto-editing-tuesday-march-26">Lab 1.2: Advanced Quarto editing (Tuesday, March 26)</a></li>
-  <li><a href="#unit-1-homework-due-march-31-at-235900-pm" id="toc-unit-1-homework-due-march-31-at-235900-pm" class="nav-link" data-scroll-target="#unit-1-homework-due-march-31-at-235900-pm">Unit 1 homework (due March 31 at 23:59:00 pm)</a></li>
+  <li><a href="#lecture-1.1-class-welcome-tuesday-august-20" id="toc-lecture-1.1-class-welcome-tuesday-august-20" class="nav-link" data-scroll-target="#lecture-1.1-class-welcome-tuesday-august-20">Lecture 1.1: Class welcome (Tuesday, August 20)</a></li>
+  <li><a href="#lab-1.1-r-and-quarto-familiarization-wednesday-august-21" id="toc-lab-1.1-r-and-quarto-familiarization-wednesday-august-21" class="nav-link" data-scroll-target="#lab-1.1-r-and-quarto-familiarization-wednesday-august-21">Lab 1.1: R and Quarto familiarization (Wednesday, August 21)</a></li>
+  <li><a href="#lecture-1.2-characteristics-of-distributions-thursday-august-22" id="toc-lecture-1.2-characteristics-of-distributions-thursday-august-22" class="nav-link" data-scroll-target="#lecture-1.2-characteristics-of-distributions-thursday-august-22">Lecture 1.2: Characteristics of distributions (Thursday, August 22)</a></li>
+  <li><a href="#online-lab-1.1-due-sunday-march-25-at-115900-pm" id="toc-online-lab-1.1-due-sunday-march-25-at-115900-pm" class="nav-link" data-scroll-target="#online-lab-1.1-due-sunday-march-25-at-115900-pm">Online lab 1.1 (due Sunday, March 25 at 11:59:00 pm)</a></li>
+  <li><a href="#lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27" id="toc-lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27" class="nav-link" data-scroll-target="#lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27">Lecture 1.3: Comparing distributions and the Normal distribution (Tuesday, August 27)</a></li>
+  <li><a href="#lab-1.2-advanced-quarto-editing-wednesday-august-28" id="toc-lab-1.2-advanced-quarto-editing-wednesday-august-28" class="nav-link" data-scroll-target="#lab-1.2-advanced-quarto-editing-wednesday-august-28">Lab 1.2: Advanced Quarto editing (Wednesday, August 28)</a></li>
+  <li><a href="#unit-1-homework-due-september-1-at-235900-pm" id="toc-unit-1-homework-due-september-1-at-235900-pm" class="nav-link" data-scroll-target="#unit-1-homework-due-september-1-at-235900-pm">Unit 1 homework (due September 1 at 23:59:00 pm)</a></li>
   </ul></li>
   <li><a href="#unit-2-relationships-between-variables" id="toc-unit-2-relationships-between-variables" class="nav-link" data-scroll-target="#unit-2-relationships-between-variables">Unit 2: Relationships between variables</a>
   <ul class="collapse">
-  <li><a href="#lecture-2.1-association-and-correlation-wednesday-march-27" id="toc-lecture-2.1-association-and-correlation-wednesday-march-27" class="nav-link" data-scroll-target="#lecture-2.1-association-and-correlation-wednesday-march-27">Lecture 2.1: Association and correlation (Wednesday, March 27)</a></li>
-  <li><a href="#online-lab-2.1-due-on-friday-march-29-at-235900" id="toc-online-lab-2.1-due-on-friday-march-29-at-235900" class="nav-link" data-scroll-target="#online-lab-2.1-due-on-friday-march-29-at-235900">Online lab 2.1 (due on Friday, March 29 at 23:59:00)</a></li>
-  <li><a href="#lecture-2.2-simple-linear-regression-monday-april-1" id="toc-lecture-2.2-simple-linear-regression-monday-april-1" class="nav-link" data-scroll-target="#lecture-2.2-simple-linear-regression-monday-april-1">Lecture 2.2: Simple Linear Regression (Monday, April 1)</a></li>
-  <li><a href="#lab-2.1-working-with-regressions-tuesday-april-2" id="toc-lab-2.1-working-with-regressions-tuesday-april-2" class="nav-link" data-scroll-target="#lab-2.1-working-with-regressions-tuesday-april-2">Lab 2.1: Working with regressions (Tuesday, April 2)</a></li>
-  <li><a href="#lecture-2.3-regression-wisdom-wednesday-april-3" id="toc-lecture-2.3-regression-wisdom-wednesday-april-3" class="nav-link" data-scroll-target="#lecture-2.3-regression-wisdom-wednesday-april-3">Lecture 2.3: Regression Wisdom (Wednesday, April 3)</a></li>
-  <li><a href="#online-lab-2.2-due-on-friday-april-5-at-235900" id="toc-online-lab-2.2-due-on-friday-april-5-at-235900" class="nav-link" data-scroll-target="#online-lab-2.2-due-on-friday-april-5-at-235900">Online lab 2.2 (due on Friday, April 5 at 23:59:00)</a></li>
-  <li><a href="#unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900" id="toc-unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900" class="nav-link" data-scroll-target="#unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900">Unit 2 homework - midterm project - progress check (due Sunday, April 7 at 23:59:00)</a></li>
-  <li><a href="#lecture-2.4-multiple-regression-monday-april-8" id="toc-lecture-2.4-multiple-regression-monday-april-8" class="nav-link" data-scroll-target="#lecture-2.4-multiple-regression-monday-april-8">Lecture 2.4: Multiple Regression (Monday, April 8)</a></li>
-  <li><a href="#lab-2.2-interpreting-coefficients-tuesday-april-9" id="toc-lab-2.2-interpreting-coefficients-tuesday-april-9" class="nav-link" data-scroll-target="#lab-2.2-interpreting-coefficients-tuesday-april-9">Lab 2.2: Interpreting coefficients (Tuesday, April 9)</a></li>
-  <li><a href="#online-lab-2.3-due-on-friday-april-12-at-115900" id="toc-online-lab-2.3-due-on-friday-april-12-at-115900" class="nav-link" data-scroll-target="#online-lab-2.3-due-on-friday-april-12-at-115900">Online lab 2.3 (due on Friday, April 12 at 11:59:00)</a></li>
-  <li><a href="#unit-2-homework---midterm-project-due-sunday-april-14-at-115900" id="toc-unit-2-homework---midterm-project-due-sunday-april-14-at-115900" class="nav-link" data-scroll-target="#unit-2-homework---midterm-project-due-sunday-april-14-at-115900">Unit 2 homework - midterm project (due Sunday, April 14 at 11:59:00)</a></li>
+  <li><a href="#lecture-2.1-association-and-correlation-thursday-august-29" id="toc-lecture-2.1-association-and-correlation-thursday-august-29" class="nav-link" data-scroll-target="#lecture-2.1-association-and-correlation-thursday-august-29">Lecture 2.1: Association and correlation (Thursday, August 29)</a></li>
+  <li><a href="#online-lab-2.1-due-on-friday-august-30-at-235900" id="toc-online-lab-2.1-due-on-friday-august-30-at-235900" class="nav-link" data-scroll-target="#online-lab-2.1-due-on-friday-august-30-at-235900">Online lab 2.1 (due on Friday, August 30 at 23:59:00)</a></li>
+  <li><a href="#lecture-2.2-simple-linear-regression-tuesday-september-3" id="toc-lecture-2.2-simple-linear-regression-tuesday-september-3" class="nav-link" data-scroll-target="#lecture-2.2-simple-linear-regression-tuesday-september-3">Lecture 2.2: Simple Linear Regression (Tuesday, September 3)</a></li>
+  <li><a href="#lab-2.1-working-with-regressions-tuesday-september-3-700-pm" id="toc-lab-2.1-working-with-regressions-tuesday-september-3-700-pm" class="nav-link" data-scroll-target="#lab-2.1-working-with-regressions-tuesday-september-3-700-pm">Lab 2.1: Working with regressions (Tuesday, September 3 @ 7:00 pm)</a></li>
+  <li><a href="#online-lab-2.2-due-on-friday-september-6-at-235900" id="toc-online-lab-2.2-due-on-friday-september-6-at-235900" class="nav-link" data-scroll-target="#online-lab-2.2-due-on-friday-september-6-at-235900">Online lab 2.2 (due on Friday, September 6 at 23:59:00)</a></li>
+  <li><a href="#unit-2-homework---progress-check-due-sunday-september-8-at-235900" id="toc-unit-2-homework---progress-check-due-sunday-september-8-at-235900" class="nav-link" data-scroll-target="#unit-2-homework---progress-check-due-sunday-september-8-at-235900">Unit 2 homework - progress check (due Sunday, September 8 at 23:59:00)</a></li>
+  <li><a href="#lecture-2.3-regression-wisdom-thursday-september-12" id="toc-lecture-2.3-regression-wisdom-thursday-september-12" class="nav-link" data-scroll-target="#lecture-2.3-regression-wisdom-thursday-september-12">Lecture 2.3: Regression Wisdom (Thursday, September 12)</a></li>
+  <li><a href="#lecture-2.4-multiple-regression-friday-september-13-1000-am" id="toc-lecture-2.4-multiple-regression-friday-september-13-1000-am" class="nav-link" data-scroll-target="#lecture-2.4-multiple-regression-friday-september-13-1000-am">Lecture 2.4: Multiple Regression (Friday, September 13 @ 10:00 am)</a></li>
+  <li><a href="#online-lab-2.3-due-on-friday-september-13-at-115900" id="toc-online-lab-2.3-due-on-friday-september-13-at-115900" class="nav-link" data-scroll-target="#online-lab-2.3-due-on-friday-september-13-at-115900">Online lab 2.3 (due on Friday, September 13 at 11:59:00)</a></li>
+  <li><a href="#unit-2-homework-due-tuesday-september-17-at-115900" id="toc-unit-2-homework-due-tuesday-september-17-at-115900" class="nav-link" data-scroll-target="#unit-2-homework-due-tuesday-september-17-at-115900">Unit 2 homework (due Tuesday, September 17 at 11:59:00)</a></li>
   </ul></li>
   <li><a href="#unit-3-measuring-uncertainty" id="toc-unit-3-measuring-uncertainty" class="nav-link" data-scroll-target="#unit-3-measuring-uncertainty">Unit 3: Measuring uncertainty</a>
   <ul class="collapse">
-  <li><a href="#lecture-3.1-confidence-intervals---proportions-wednesday-april-10" id="toc-lecture-3.1-confidence-intervals---proportions-wednesday-april-10" class="nav-link" data-scroll-target="#lecture-3.1-confidence-intervals---proportions-wednesday-april-10">Lecture 3.1: Confidence intervals - proportions (Wednesday, April 10)</a></li>
-  <li><a href="#lecture-3.2-confidence-intervals---means-monday-april-15" id="toc-lecture-3.2-confidence-intervals---means-monday-april-15" class="nav-link" data-scroll-target="#lecture-3.2-confidence-intervals---means-monday-april-15">Lecture 3.2: Confidence intervals - means (Monday, April 15)</a></li>
-  <li><a href="#lab-3.1-sampling-tuesday-april-16" id="toc-lab-3.1-sampling-tuesday-april-16" class="nav-link" data-scroll-target="#lab-3.1-sampling-tuesday-april-16">Lab 3.1: Sampling (Tuesday, April 16)</a></li>
-  <li><a href="#lecture-3.3-hypothesis-testing-wednesday-april-17" id="toc-lecture-3.3-hypothesis-testing-wednesday-april-17" class="nav-link" data-scroll-target="#lecture-3.3-hypothesis-testing-wednesday-april-17">Lecture 3.3: Hypothesis testing (Wednesday, April 17)</a></li>
-  <li><a href="#unit-3-homework---progress-check-due-sunday-april-21-at-235900" id="toc-unit-3-homework---progress-check-due-sunday-april-21-at-235900" class="nav-link" data-scroll-target="#unit-3-homework---progress-check-due-sunday-april-21-at-235900">Unit 3 homework - progress check (due Sunday, April 21 at 23:59:00)</a></li>
-  <li><a href="#lecture-3.4-hypothesis-testing-wisdom-monday-april-22" id="toc-lecture-3.4-hypothesis-testing-wisdom-monday-april-22" class="nav-link" data-scroll-target="#lecture-3.4-hypothesis-testing-wisdom-monday-april-22">Lecture 3.4: Hypothesis testing wisdom (Monday, April 22)</a></li>
-  <li><a href="#lab-3.2-bootstrapping-tueday-april-23" id="toc-lab-3.2-bootstrapping-tueday-april-23" class="nav-link" data-scroll-target="#lab-3.2-bootstrapping-tueday-april-23">Lab 3.2: Bootstrapping (Tueday, April 23)</a></li>
-  <li><a href="#unit-3-homework-due-sunday-april-28-at-235900" id="toc-unit-3-homework-due-sunday-april-28-at-235900" class="nav-link" data-scroll-target="#unit-3-homework-due-sunday-april-28-at-235900">Unit 3 homework (due Sunday, April 28 at 23:59:00)</a></li>
+  <li><a href="#lecture-3.1-confidence-intervals---proportions-thursday-september-19" id="toc-lecture-3.1-confidence-intervals---proportions-thursday-september-19" class="nav-link" data-scroll-target="#lecture-3.1-confidence-intervals---proportions-thursday-september-19">Lecture 3.1: Confidence intervals - proportions (Thursday, September 19)</a></li>
+  <li><a href="#lecture-3.2-confidence-intervals---means-friday-september-20" id="toc-lecture-3.2-confidence-intervals---means-friday-september-20" class="nav-link" data-scroll-target="#lecture-3.2-confidence-intervals---means-friday-september-20">Lecture 3.2: Confidence intervals - means (Friday, September 20)</a></li>
+  <li><a href="#lecture-3.3-hypothesis-testing-saturday-september-21" id="toc-lecture-3.3-hypothesis-testing-saturday-september-21" class="nav-link" data-scroll-target="#lecture-3.3-hypothesis-testing-saturday-september-21">Lecture 3.3: Hypothesis testing (Saturday, September 21)</a></li>
+  <li><a href="#unit-3-homework---progress-check-due-sunday-september-22-at-235900" id="toc-unit-3-homework---progress-check-due-sunday-september-22-at-235900" class="nav-link" data-scroll-target="#unit-3-homework---progress-check-due-sunday-september-22-at-235900">Unit 3 homework - progress check (due Sunday, September 22 at 23:59:00)</a></li>
+  <li><a href="#lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24" id="toc-lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24" class="nav-link" data-scroll-target="#lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24">Lecture 3.4: Hypothesis testing wisdom (Tuesday, September 24)</a></li>
+  <li><a href="#lab-3.1-bootstrapping-wednesday-september-25" id="toc-lab-3.1-bootstrapping-wednesday-september-25" class="nav-link" data-scroll-target="#lab-3.1-bootstrapping-wednesday-september-25">Lab 3.1: Bootstrapping (Wednesday, September 25)</a></li>
+  <li><a href="#unit-3-homework-due-sunday-october-6-at-235900" id="toc-unit-3-homework-due-sunday-october-6-at-235900" class="nav-link" data-scroll-target="#unit-3-homework-due-sunday-october-6-at-235900">Unit 3 homework (due Sunday, October 6 at 23:59:00)</a></li>
   </ul></li>
   <li><a href="#unit-4-statistical-inference" id="toc-unit-4-statistical-inference" class="nav-link" data-scroll-target="#unit-4-statistical-inference">Unit 4: Statistical inference</a>
   <ul class="collapse">
-  <li><a href="#lecture-4.1-comparing-groups-wednesday-april-24" id="toc-lecture-4.1-comparing-groups-wednesday-april-24" class="nav-link" data-scroll-target="#lecture-4.1-comparing-groups-wednesday-april-24">Lecture 4.1: Comparing groups (Wednesday, April 24)</a></li>
-  <li><a href="#lecture-4.2-returning-to-regression-monday-april-29" id="toc-lecture-4.2-returning-to-regression-monday-april-29" class="nav-link" data-scroll-target="#lecture-4.2-returning-to-regression-monday-april-29">Lecture 4.2: Returning to regression (Monday, April 29)</a></li>
-  <li><a href="#lab-4.1-model-building-tueday-april-30" id="toc-lab-4.1-model-building-tueday-april-30" class="nav-link" data-scroll-target="#lab-4.1-model-building-tueday-april-30">Lab 4.1: Model building (Tueday, April 30)</a></li>
-  <li><a href="#final-class-4.3-interpretation-activity-thursday-may-2" id="toc-final-class-4.3-interpretation-activity-thursday-may-2" class="nav-link" data-scroll-target="#final-class-4.3-interpretation-activity-thursday-may-2">Final class 4.3: Interpretation activity (Thursday, May 2)</a></li>
-  <li><a href="#unit-4-homework---paper-analysis-due-sunday-may-5-at-235900" id="toc-unit-4-homework---paper-analysis-due-sunday-may-5-at-235900" class="nav-link" data-scroll-target="#unit-4-homework---paper-analysis-due-sunday-may-5-at-235900">Unit 4 homework - paper analysis (due Sunday, May 5 at 23:59:00)</a></li>
-  <li><a href="#final-project-due-wednesday-may-8-at-235900" id="toc-final-project-due-wednesday-may-8-at-235900" class="nav-link" data-scroll-target="#final-project-due-wednesday-may-8-at-235900">Final project (due Wednesday, May 8 at 23:59:00)</a></li>
+  <li><a href="#lecture-4.1-comparing-groups-thursday-september-26" id="toc-lecture-4.1-comparing-groups-thursday-september-26" class="nav-link" data-scroll-target="#lecture-4.1-comparing-groups-thursday-september-26">Lecture 4.1: Comparing groups (Thursday, September 26)</a></li>
+  <li><a href="#lecture-4.2-returning-to-regression-tuesday-october-8" id="toc-lecture-4.2-returning-to-regression-tuesday-october-8" class="nav-link" data-scroll-target="#lecture-4.2-returning-to-regression-tuesday-october-8">Lecture 4.2: Returning to regression (Tuesday, October 8)</a></li>
+  <li><a href="#lab-4.1-model-building-wednesday-october-9" id="toc-lab-4.1-model-building-wednesday-october-9" class="nav-link" data-scroll-target="#lab-4.1-model-building-wednesday-october-9">Lab 4.1: Model building (Wednesday, October 9)</a></li>
+  <li><a href="#final-class-4.3-interpretation-activity-thursday-october-10" id="toc-final-class-4.3-interpretation-activity-thursday-october-10" class="nav-link" data-scroll-target="#final-class-4.3-interpretation-activity-thursday-october-10">Final class 4.3: Interpretation activity (Thursday, October 10)</a></li>
+  <li><a href="#online-lab-4.1-due-on-friday-october-11-at-115900" id="toc-online-lab-4.1-due-on-friday-october-11-at-115900" class="nav-link" data-scroll-target="#online-lab-4.1-due-on-friday-october-11-at-115900">Online lab 4.1 (due on Friday, October 11 at 11:59:00)</a></li>
+  <li><a href="#final-project---progress-check-due-sunday-october-13-at-235900" id="toc-final-project---progress-check-due-sunday-october-13-at-235900" class="nav-link" data-scroll-target="#final-project---progress-check-due-sunday-october-13-at-235900">Final project - progress check (due Sunday, October 13 at 23:59:00)</a></li>
+  <li><a href="#final-project-due-wednesday-october-16-at-235900" id="toc-final-project-due-wednesday-october-16-at-235900" class="nav-link" data-scroll-target="#final-project-due-wednesday-october-16-at-235900">Final project (due Wednesday, October 16 at 23:59:00)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -187,13 +220,15 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
+
 </header>
+
 
 <p>Important: class schedule is subject to change, contingent on mitigating circumstances and the progress we make as a class. If there are any changes, I will announce them on the Teams site.</p>
 <section id="unit-1-distributions" class="level1">
 <h1>Unit 1: Distributions</h1>
-<section id="lecture-1.1-class-welcome-wednesday-march-20" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-1.1-class-welcome-wednesday-march-20">Lecture 1.1: Class welcome (Wednesday, March 20)</h2>
+<section id="lecture-1.1-class-welcome-tuesday-august-20" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-1.1-class-welcome-tuesday-august-20">Lecture 1.1: Class welcome (Tuesday, August 20)</h2>
 <p>Reading to do before class: Chapter 1, 2.1 and 2.2, and 3</p>
 <p>Topics covered:</p>
 <ul>
@@ -202,86 +237,85 @@ ul.task-list li input[type="checkbox"] {
 <li>Contingency tables</li>
 </ul>
 </section>
-<section id="lab-1.1-r-and-quarto-familiarization-thursday-march-21" class="level2">
-<h2 class="anchored" data-anchor-id="lab-1.1-r-and-quarto-familiarization-thursday-march-21">Lab 1.1: R and Quarto familiarization (Thursday, March 21)</h2>
+<section id="lab-1.1-r-and-quarto-familiarization-wednesday-august-21" class="level2">
+<h2 class="anchored" data-anchor-id="lab-1.1-r-and-quarto-familiarization-wednesday-august-21">Lab 1.1: R and Quarto familiarization (Wednesday, August 21)</h2>
 <ul>
-<li>Lab files: <a href="labs/Lab 1.1/Lab 1.1 - Getting used to Quarto.html">Lab 1.1</a>
+<li>Lab files: [Lab 1.1]
 <ul>
 <li>Make sure to extract (unzip) the lab files before attempting to modify them!</li>
 </ul></li>
 </ul>
 </section>
-<section id="lecture-1.2-characteristics-of-distributions-friday-march-22" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-1.2-characteristics-of-distributions-friday-march-22">Lecture 1.2: Characteristics of distributions (Friday, March 22)</h2>
+<section id="lecture-1.2-characteristics-of-distributions-thursday-august-22" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-1.2-characteristics-of-distributions-thursday-august-22">Lecture 1.2: Characteristics of distributions (Thursday, August 22)</h2>
 <p>Reading to do before class: Chapter 2.3-5 and 4</p>
 <p>Topics covered:</p>
 <ul>
 <li><p>How to describe the shape, center, and spread of a distribution</p></li>
 <li><p>How to compare distributions</p></li>
 <li><p>Dealing with problem distributions (outliers, reexpression)</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024distributions">Lecture 1.2</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 1.2/lecture.1.2.activity.zip">Lecture 1.2 activity</a></p></li>
-<li><p>Quality YouTube content: <a href="https://www.youtube.com/watch?v=p8Py9C8iq2s&amp;ab_channel=TheRaf">Tidyverse music video</a></p></li>
+<li><p>Lecture webpage: [Lecture 1.2]</p></li>
+<li><p>Lecture activity: [Lecture 1.2 activity]</p></li>
 </ul>
 </section>
-<section id="online-lab-1.1-due-sunday-march-24-at-115900-pm" class="level2">
-<h2 class="anchored" data-anchor-id="online-lab-1.1-due-sunday-march-24-at-115900-pm">Online lab 1.1 (due Sunday, March 24 at 11:59:00 pm)</h2>
+<section id="online-lab-1.1-due-sunday-march-25-at-115900-pm" class="level2">
+<h2 class="anchored" data-anchor-id="online-lab-1.1-due-sunday-march-25-at-115900-pm">Online lab 1.1 (due Sunday, March 25 at 11:59:00 pm)</h2>
 <ul>
 <li><a href="https://learn.datacamp.com/courses/free-introduction-to-r">Introduction to R</a></li>
 <li><a href="https://learn.datacamp.com/courses/introduction-to-the-tidyverse">Introduction to the Tidyverse</a></li>
 </ul>
 </section>
-<section id="lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-1.3-comparing-distributions-and-the-normal-distribution-monday-march-25">Lecture 1.3: Comparing distributions and the Normal distribution (Monday, March 25)</h2>
+<section id="lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27">Lecture 1.3: Comparing distributions and the Normal distribution (Tuesday, August 27)</h2>
 <p>Reading to do before class: Chapter 5</p>
 <p>Topics covered:</p>
 <ul>
 <li><p>Standard deviation and standardizing values</p></li>
 <li><p>Normal models</p></li>
 <li><p>Normal percentiles</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024advanceddistributions">Lecture 1.3</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 1.3/lecture.1.3.activity.zip">Lecture 1.3 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 1.3]</p></li>
+<li><p>Lecture activity: [Lecture 1.3 activity]</p></li>
 </ul>
 </section>
-<section id="lab-1.2-advanced-quarto-editing-tuesday-march-26" class="level2">
-<h2 class="anchored" data-anchor-id="lab-1.2-advanced-quarto-editing-tuesday-march-26">Lab 1.2: Advanced Quarto editing (Tuesday, March 26)</h2>
+<section id="lab-1.2-advanced-quarto-editing-wednesday-august-28" class="level2">
+<h2 class="anchored" data-anchor-id="lab-1.2-advanced-quarto-editing-wednesday-august-28">Lab 1.2: Advanced Quarto editing (Wednesday, August 28)</h2>
 <ul>
-<li>Lab files: <a href="labs/Lab 1.2/lab.1.2.zip">Lab 1.2</a>
+<li>Lab files: [Lab 1.2]
 <ul>
 <li>Make sure to extract (unzip) the lab files before attempting to modify them!</li>
 </ul></li>
 </ul>
 </section>
-<section id="unit-1-homework-due-march-31-at-235900-pm" class="level2">
-<h2 class="anchored" data-anchor-id="unit-1-homework-due-march-31-at-235900-pm">Unit 1 homework (due March 31 at 23:59:00 pm)</h2>
+<section id="unit-1-homework-due-september-1-at-235900-pm" class="level2">
+<h2 class="anchored" data-anchor-id="unit-1-homework-due-september-1-at-235900-pm">Unit 1 homework (due September 1 at 23:59:00 pm)</h2>
 <ul>
-<li>Homework files: <a href="homeworks/Unit 1 homework/homework.1.zip">Unit 1 homework</a></li>
-<li>Homework sample solutions: <a href="homeworks/Unit 1 homework/homework.1.sample.solutions.zip">Unit 1 homework sample solutions</a></li>
+<li>Homework files: [Unit 1 homework]</li>
+<li>Homework sample solutions: [Unit 1 homework sample solutions]</li>
 </ul>
 </section>
 </section>
 <section id="unit-2-relationships-between-variables" class="level1">
 <h1>Unit 2: Relationships between variables</h1>
-<section id="lecture-2.1-association-and-correlation-wednesday-march-27" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-2.1-association-and-correlation-wednesday-march-27">Lecture 2.1: Association and correlation (Wednesday, March 27)</h2>
+<section id="lecture-2.1-association-and-correlation-thursday-august-29" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2.1-association-and-correlation-thursday-august-29">Lecture 2.1: Association and correlation (Thursday, August 29)</h2>
 <p>Reading to do before class: Chapter 6</p>
 <p>Topics covered:</p>
 <ul>
 <li><p>Scatterplots</p></li>
 <li><p>Correlations</p></li>
 <li><p>Does correlation imply causation?</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024association">Lecture 2.1</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 2.1/lecture.2.1.activity.zip">Lecture 2.1 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 2.1]</p></li>
+<li><p>Lecture activity: [Lecture 2.1 activity]</p></li>
 </ul>
 </section>
-<section id="online-lab-2.1-due-on-friday-march-29-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="online-lab-2.1-due-on-friday-march-29-at-235900">Online lab 2.1 (due on Friday, March 29 at 23:59:00)</h2>
+<section id="online-lab-2.1-due-on-friday-august-30-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="online-lab-2.1-due-on-friday-august-30-at-235900">Online lab 2.1 (due on Friday, August 30 at 23:59:00)</h2>
 <ul>
 <li><a href="https://learn.datacamp.com/courses/introduction-to-data-visualization-with-ggplot2">Introduction to Data Visualization with ggplot2</a></li>
 </ul>
 </section>
-<section id="lecture-2.2-simple-linear-regression-monday-april-1" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-2.2-simple-linear-regression-monday-april-1">Lecture 2.2: Simple Linear Regression (Monday, April 1)</h2>
+<section id="lecture-2.2-simple-linear-regression-tuesday-september-3" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2.2-simple-linear-regression-tuesday-september-3">Lecture 2.2: Simple Linear Regression (Tuesday, September 3)</h2>
 <p>Reading to do before class: Chapter 7</p>
 <p>Topics covered:</p>
 <ul>
@@ -289,21 +323,37 @@ ul.task-list li input[type="checkbox"] {
 <li><p>The linear model</p></li>
 <li><p>What are residuals</p></li>
 <li><p>Regression assumptions</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024simpleregression/">Lecture 2.2</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 2.2/lecture.2.2.activity.zip">Lecture 2.2 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 2.2]</p></li>
+<li><p>Lecture activity: [Lecture 2.2 activity]</p></li>
 </ul>
 </section>
-<section id="lab-2.1-working-with-regressions-tuesday-april-2" class="level2">
-<h2 class="anchored" data-anchor-id="lab-2.1-working-with-regressions-tuesday-april-2">Lab 2.1: Working with regressions (Tuesday, April 2)</h2>
+<section id="lab-2.1-working-with-regressions-tuesday-september-3-700-pm" class="level2">
+<h2 class="anchored" data-anchor-id="lab-2.1-working-with-regressions-tuesday-september-3-700-pm">Lab 2.1: Working with regressions (Tuesday, September 3 @ 7:00 pm)</h2>
 <ul>
+<li><em>Note the special class time!</em></li>
 <li>Lab files: <a href="labs/Lab 2.1/lab.2.1.zip">Lab 2.1</a>
 <ul>
 <li>Make sure to extract (unzip) the lab files before attempting to modify them!</li>
 </ul></li>
 </ul>
 </section>
-<section id="lecture-2.3-regression-wisdom-wednesday-april-3" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-2.3-regression-wisdom-wednesday-april-3">Lecture 2.3: Regression Wisdom (Wednesday, April 3)</h2>
+<section id="online-lab-2.2-due-on-friday-september-6-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="online-lab-2.2-due-on-friday-september-6-at-235900">Online lab 2.2 (due on Friday, September 6 at 23:59:00)</h2>
+<ul>
+<li><a href="https://app.datacamp.com/learn/courses/intermediate-data-visualization-with-ggplot2">Intermediate Data Visualization with ggplot2</a></li>
+</ul>
+</section>
+<section id="unit-2-homework---progress-check-due-sunday-september-8-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="unit-2-homework---progress-check-due-sunday-september-8-at-235900">Unit 2 homework - progress check (due Sunday, September 8 at 23:59:00)</h2>
+<ul>
+<li>Homework files: [Unit 2 homework instructions]</li>
+</ul>
+</section>
+<section id="lecture-2.3-regression-wisdom-thursday-september-12" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2.3-regression-wisdom-thursday-september-12">Lecture 2.3: Regression Wisdom (Thursday, September 12)</h2>
+<ul>
+<li><em>Note the special class time!</em></li>
+</ul>
 <p>Reading to do before class: Chapter 8</p>
 <p>Topics covered:</p>
 <ul>
@@ -311,24 +361,15 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Outliers and leverage</p></li>
 <li><p>Lurking variables</p></li>
 <li><p>Straightening scatterplots</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024regressionwisdom/">Lecture 2.3</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 2.3/lecture.2.3.activity.zip">Lecture 2.3 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 2.3]</p></li>
+<li><p>Lecture activity: [Lecture 2.3 activity]</p></li>
 </ul>
 </section>
-<section id="online-lab-2.2-due-on-friday-april-5-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="online-lab-2.2-due-on-friday-april-5-at-235900">Online lab 2.2 (due on Friday, April 5 at 23:59:00)</h2>
+<section id="lecture-2.4-multiple-regression-friday-september-13-1000-am" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-2.4-multiple-regression-friday-september-13-1000-am">Lecture 2.4: Multiple Regression (Friday, September 13 @ 10:00 am)</h2>
 <ul>
-<li><a href="https://www.datacamp.com/courses/working-with-dates-and-times-in-r">Working with Dates and Times in R</a></li>
+<li><em>Note the special class time!</em></li>
 </ul>
-</section>
-<section id="unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="unit-2-homework---midterm-project---progress-check-due-sunday-april-7-at-235900">Unit 2 homework - midterm project - progress check (due Sunday, April 7 at 23:59:00)</h2>
-<ul>
-<li>Homework files: <a href="homeworks/Unit 2 homework - midterm/homework.2.midterm.zip">Unit 2 homework instructions</a></li>
-</ul>
-</section>
-<section id="lecture-2.4-multiple-regression-monday-april-8" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-2.4-multiple-regression-monday-april-8">Lecture 2.4: Multiple Regression (Monday, April 8)</h2>
 <p>Reading to do before class: Chapter 9</p>
 <p>Topics covered:</p>
 <ul>
@@ -336,36 +377,27 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Interpreting multiple regression coefficients</p></li>
 <li><p>Partial regression plots</p></li>
 <li><p>Indicator variables</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024multipleregression/">Lecture 2.4</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 2.4/lecture.2.4.activity.zip">Lecture 2.4 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 2.4]</p></li>
+<li><p>Lecture activity: [Lecture 2.4 activity]</p></li>
 </ul>
 </section>
-<section id="lab-2.2-interpreting-coefficients-tuesday-april-9" class="level2">
-<h2 class="anchored" data-anchor-id="lab-2.2-interpreting-coefficients-tuesday-april-9">Lab 2.2: Interpreting coefficients (Tuesday, April 9)</h2>
+<section id="online-lab-2.3-due-on-friday-september-13-at-115900" class="level2">
+<h2 class="anchored" data-anchor-id="online-lab-2.3-due-on-friday-september-13-at-115900">Online lab 2.3 (due on Friday, September 13 at 11:59:00)</h2>
 <ul>
-<li>Lab files: <a href="labs/Lab 2.2/lab.2.2.zip">Lab 2.2</a>
-<ul>
-<li>Make sure to extract (unzip) the lab files before attempting to modify them!</li>
-</ul></li>
+<li><a href="https://app.datacamp.com/learn/courses/modeling-with-data-in-the-tidyverse">Modeling with Basic Regression</a></li>
 </ul>
 </section>
-<section id="online-lab-2.3-due-on-friday-april-12-at-115900" class="level2">
-<h2 class="anchored" data-anchor-id="online-lab-2.3-due-on-friday-april-12-at-115900">Online lab 2.3 (due on Friday, April 12 at 11:59:00)</h2>
+<section id="unit-2-homework-due-tuesday-september-17-at-115900" class="level2">
+<h2 class="anchored" data-anchor-id="unit-2-homework-due-tuesday-september-17-at-115900">Unit 2 homework (due Tuesday, September 17 at 11:59:00)</h2>
 <ul>
-<li><a href="https://app.datacamp.com/learn/courses/intermediate-data-visualization-with-ggplot2">Intermediate Data Visualization with ggplot2</a></li>
-</ul>
-</section>
-<section id="unit-2-homework---midterm-project-due-sunday-april-14-at-115900" class="level2">
-<h2 class="anchored" data-anchor-id="unit-2-homework---midterm-project-due-sunday-april-14-at-115900">Unit 2 homework - midterm project (due Sunday, April 14 at 11:59:00)</h2>
-<ul>
-<li>Homework files: <a href="homeworks/Unit 2 homework - midterm/homework.2.midterm.zip">Unit 2 homework instructions</a></li>
+<li>Homework files: [Unit 2 homework instructions]</li>
 </ul>
 </section>
 </section>
 <section id="unit-3-measuring-uncertainty" class="level1">
 <h1>Unit 3: Measuring uncertainty</h1>
-<section id="lecture-3.1-confidence-intervals---proportions-wednesday-april-10" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-3.1-confidence-intervals---proportions-wednesday-april-10">Lecture 3.1: Confidence intervals - proportions (Wednesday, April 10)</h2>
+<section id="lecture-3.1-confidence-intervals---proportions-thursday-september-19" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-3.1-confidence-intervals---proportions-thursday-september-19">Lecture 3.1: Confidence intervals - proportions (Thursday, September 19)</h2>
 <p>Reading to do before class: Chapter 13</p>
 <p>Topics covered:</p>
 <ul>
@@ -373,12 +405,15 @@ ul.task-list li input[type="checkbox"] {
 <li><p>When does the normal model apply?</p></li>
 <li><p>Constructing a confidence interval</p></li>
 <li><p>Interpreting a confidence interval</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024confintprop">Lecture 3.1</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 3.1/lecture.3.1.activity.zip">Lecture 3.1 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 3.1]</p></li>
+<li><p>Lecture activity: [Lecture 3.1 activity]</p></li>
 </ul>
 </section>
-<section id="lecture-3.2-confidence-intervals---means-monday-april-15" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-3.2-confidence-intervals---means-monday-april-15">Lecture 3.2: Confidence intervals - means (Monday, April 15)</h2>
+<section id="lecture-3.2-confidence-intervals---means-friday-september-20" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-3.2-confidence-intervals---means-friday-september-20">Lecture 3.2: Confidence intervals - means (Friday, September 20)</h2>
+<ul>
+<li><em>Note the special class time!</em></li>
+</ul>
 <p>Reading to do before class: Chapter 14</p>
 <p>Topics covered:</p>
 <ul>
@@ -386,39 +421,30 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Confidence interval for means</p></li>
 <li><p>Interpreting a confidence interval</p></li>
 <li><p>Final thoughts on confidence intervals</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024confintmean/">Lecture 3.2</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 3.2/lecture.3.2.activity.zip">Lecture 3.2 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 3.2]</p></li>
+<li><p>Lecture activity: [Lecture 3.2 activity]</p></li>
 </ul>
 </section>
-<section id="lab-3.1-sampling-tuesday-april-16" class="level2">
-<h2 class="anchored" data-anchor-id="lab-3.1-sampling-tuesday-april-16">Lab 3.1: Sampling (Tuesday, April 16)</h2>
-<ul>
-<li>Lab files: <a href="labs/Lab 3.1/lab.3.1.zip">Lab 3.1</a>
-<ul>
-<li>Make sure to extract (unzip) the lab files before attempting to modify them!</li>
-</ul></li>
-</ul>
-</section>
-<section id="lecture-3.3-hypothesis-testing-wednesday-april-17" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-3.3-hypothesis-testing-wednesday-april-17">Lecture 3.3: Hypothesis testing (Wednesday, April 17)</h2>
+<section id="lecture-3.3-hypothesis-testing-saturday-september-21" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-3.3-hypothesis-testing-saturday-september-21">Lecture 3.3: Hypothesis testing (Saturday, September 21)</h2>
 <p>Reading to do before class: Chapter 15</p>
 <p>Topics covered:</p>
 <ul>
 <li><p>What are hypotheses?</p></li>
 <li><p><span class="math inline">\(p\)</span> values</p></li>
 <li><p><span class="math inline">\(p\)</span> values and decisions – how to make a decision</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024hyptesting/">Lecture 3.3</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 3.3/lecture.3.3.activity.zip">Lecture 3.3 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 3.3]</p></li>
+<li><p>Lecture activity: [Lecture 3.3 activity]</p></li>
 </ul>
 </section>
-<section id="unit-3-homework---progress-check-due-sunday-april-21-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3-homework---progress-check-due-sunday-april-21-at-235900">Unit 3 homework - progress check (due Sunday, April 21 at 23:59:00)</h2>
+<section id="unit-3-homework---progress-check-due-sunday-september-22-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="unit-3-homework---progress-check-due-sunday-september-22-at-235900">Unit 3 homework - progress check (due Sunday, September 22 at 23:59:00)</h2>
 <ul>
-<li>Homework files: <a href="homeworks/Unit 3 homework/homework.3.zip">Unit 3 homework instructions</a></li>
+<li>Homework files: [Unit 3 homework instructions]</li>
 </ul>
 </section>
-<section id="lecture-3.4-hypothesis-testing-wisdom-monday-april-22" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-3.4-hypothesis-testing-wisdom-monday-april-22">Lecture 3.4: Hypothesis testing wisdom (Monday, April 22)</h2>
+<section id="lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-3.4-hypothesis-testing-wisdom-tuesday-september-24">Lecture 3.4: Hypothesis testing wisdom (Tuesday, September 24)</h2>
 <p>Reading to do before class: Chapter 16</p>
 <p>Topics covered:</p>
 <ul>
@@ -427,27 +453,27 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Practical vs.&nbsp;statistical significance</p></li>
 <li><p>Type I and II errors</p></li>
 <li><p>Power of a test</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024hyptestwisdom">Lecture 3.4</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 3.4/lecture.3.4.activity.zip">Lecture 3.4 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 3.4]</p></li>
+<li><p>Lecture activity: [Lecture 3.4 activity]</p></li>
 </ul>
 </section>
-<section id="lab-3.2-bootstrapping-tueday-april-23" class="level2">
-<h2 class="anchored" data-anchor-id="lab-3.2-bootstrapping-tueday-april-23">Lab 3.2: Bootstrapping (Tueday, April 23)</h2>
+<section id="lab-3.1-bootstrapping-wednesday-september-25" class="level2">
+<h2 class="anchored" data-anchor-id="lab-3.1-bootstrapping-wednesday-september-25">Lab 3.1: Bootstrapping (Wednesday, September 25)</h2>
 <ul>
-<li>Lab files: <a href="labs/Lab 3.2/lab.3.2.zip">Lab 3.2</a></li>
+<li>Lab files: [Lab 3.2]</li>
 </ul>
 </section>
-<section id="unit-3-homework-due-sunday-april-28-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="unit-3-homework-due-sunday-april-28-at-235900">Unit 3 homework (due Sunday, April 28 at 23:59:00)</h2>
+<section id="unit-3-homework-due-sunday-october-6-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="unit-3-homework-due-sunday-october-6-at-235900">Unit 3 homework (due Sunday, October 6 at 23:59:00)</h2>
 <ul>
-<li>Homework files: <a href="homeworks/Unit 3 homework/homework.3.zip">Unit 3 homework instructions</a></li>
+<li>Homework files: [Unit 3 homework instructions]</li>
 </ul>
 </section>
 </section>
 <section id="unit-4-statistical-inference" class="level1">
 <h1>Unit 4: Statistical inference</h1>
-<section id="lecture-4.1-comparing-groups-wednesday-april-24" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-4.1-comparing-groups-wednesday-april-24">Lecture 4.1: Comparing groups (Wednesday, April 24)</h2>
+<section id="lecture-4.1-comparing-groups-thursday-september-26" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-4.1-comparing-groups-thursday-september-26">Lecture 4.1: Comparing groups (Thursday, September 26)</h2>
 <p>Reading to do before class: Chapter 17</p>
 <p>Topics covered:</p>
 <ul>
@@ -455,48 +481,57 @@ ul.task-list li input[type="checkbox"] {
 <li><p>Assumptions and conditions for two-sample hypothesis tests</p></li>
 <li><p>Two-sample <span class="math inline">\(z\)</span> test</p></li>
 <li><p>Two-sample <span class="math inline">\(t\)</span> test</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024comparinggroups/">Lecture 4.1</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 4.1/lecture.4.1.activity.zip">Lecture 4.1 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 4.1]</p></li>
+<li><p>Lecture activity: [Lecture 4.1 activity]</p></li>
 </ul>
 </section>
-<section id="lecture-4.2-returning-to-regression-monday-april-29" class="level2">
-<h2 class="anchored" data-anchor-id="lecture-4.2-returning-to-regression-monday-april-29">Lecture 4.2: Returning to regression (Monday, April 29)</h2>
+<section id="lecture-4.2-returning-to-regression-tuesday-october-8" class="level2">
+<h2 class="anchored" data-anchor-id="lecture-4.2-returning-to-regression-tuesday-october-8">Lecture 4.2: Returning to regression (Tuesday, October 8)</h2>
 <p>Reading to do before class: Chapter 20</p>
 <p>Topics covered:</p>
 <ul>
 <li><p>Regression inference and intuition</p></li>
 <li><p>The regression table</p></li>
 <li><p>Confidence and prediction intervals</p></li>
-<li><p>Lecture webpage: <a href="https://andrewm.shinyapps.io/spr2024return2regression">Lecture 4.2</a></p></li>
-<li><p>Lecture activity: <a href="activities/Lecture 4.2/lecture.4.2.activity.zip">Lecture 4.2 activity</a></p></li>
+<li><p>Lecture webpage: [Lecture 4.2]</p></li>
+<li><p>Lecture activity: [Lecture 4.2 activity]</p></li>
 </ul>
 </section>
-<section id="lab-4.1-model-building-tueday-april-30" class="level2">
-<h2 class="anchored" data-anchor-id="lab-4.1-model-building-tueday-april-30">Lab 4.1: Model building (Tueday, April 30)</h2>
+<section id="lab-4.1-model-building-wednesday-october-9" class="level2">
+<h2 class="anchored" data-anchor-id="lab-4.1-model-building-wednesday-october-9">Lab 4.1: Model building (Wednesday, October 9)</h2>
 <ul>
-<li>Lab cancelled</li>
+<li>Lab tbd</li>
 </ul>
 </section>
-<section id="final-class-4.3-interpretation-activity-thursday-may-2" class="level2">
-<h2 class="anchored" data-anchor-id="final-class-4.3-interpretation-activity-thursday-may-2">Final class 4.3: Interpretation activity (Thursday, May 2)</h2>
+<section id="final-class-4.3-interpretation-activity-thursday-october-10" class="level2">
+<h2 class="anchored" data-anchor-id="final-class-4.3-interpretation-activity-thursday-october-10">Final class 4.3: Interpretation activity (Thursday, October 10)</h2>
 <ul>
 <li><p>How to read academic statistical results</p></li>
 <li><p>Locating the model</p></li>
 <li><p>Interpreting the test</p></li>
 <li><p>Determining possible weaknesses of the model</p></li>
-<li><p>Final class activity: <a href="activities/Final class 4.3/final.class.4.3.activity.zip">Final class 4.3 activity</a></p></li>
+<li><p>Final class activity: [Final class 4.3 activity]</p></li>
 </ul>
 </section>
-<section id="unit-4-homework---paper-analysis-due-sunday-may-5-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="unit-4-homework---paper-analysis-due-sunday-may-5-at-235900">Unit 4 homework - paper analysis (due Sunday, May 5 at 23:59:00)</h2>
+<section id="online-lab-4.1-due-on-friday-october-11-at-115900" class="level2">
+<h2 class="anchored" data-anchor-id="online-lab-4.1-due-on-friday-october-11-at-115900">Online lab 4.1 (due on Friday, October 11 at 11:59:00)</h2>
 <ul>
-<li>Homework files: <a href="homeworks/Unit 4 homework - paper analysis/homework.4.paper.analysis.zip">Unit 4 homework - paper analysis instructions</a></li>
+<li>Your choice of any DataCamp course (as long as it relates to statistics)
+<ul>
+<li>Send the completion certificate from the end of the course</li>
+</ul></li>
 </ul>
 </section>
-<section id="final-project-due-wednesday-may-8-at-235900" class="level2">
-<h2 class="anchored" data-anchor-id="final-project-due-wednesday-may-8-at-235900">Final project (due Wednesday, May 8 at 23:59:00)</h2>
+<section id="final-project---progress-check-due-sunday-october-13-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="final-project---progress-check-due-sunday-october-13-at-235900">Final project - progress check (due Sunday, October 13 at 23:59:00)</h2>
 <ul>
-<li>Homework files: <a href="homeworks/Final project/final.project.zip">Final project instructions</a></li>
+<li>Homework files: [Final project instructions]</li>
+</ul>
+</section>
+<section id="final-project-due-wednesday-october-16-at-235900" class="level2">
+<h2 class="anchored" data-anchor-id="final-project-due-wednesday-october-16-at-235900">Final project (due Wednesday, October 16 at 23:59:00)</h2>
+<ul>
+<li>Homework files: [Final project instructions]</li>
 </ul>
 
 
@@ -583,10 +618,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -596,8 +648,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -609,7 +670,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -653,6 +837,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -678,6 +863,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -738,6 +949,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
