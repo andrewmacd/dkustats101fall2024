@@ -28,11 +28,11 @@
     "text": "Lecture 1.2: Characteristics of distributions (Thursday, August 22)\nReading to do before class: Chapter 2.3-5 and 4\nTopics covered:\n\nHow to describe the shape, center, and spread of a distribution\nHow to compare distributions\nDealing with problem distributions (outliers, reexpression)\nLecture webpage: [Lecture 1.2]\nLecture activity: [Lecture 1.2 activity]"
   },
   {
-    "objectID": "schedulematerials.html#online-lab-1.1-due-sunday-march-25-at-115900-pm",
-    "href": "schedulematerials.html#online-lab-1.1-due-sunday-march-25-at-115900-pm",
+    "objectID": "schedulematerials.html#online-lab-1.1-due-sunday-august-25-at-115900-pm",
+    "href": "schedulematerials.html#online-lab-1.1-due-sunday-august-25-at-115900-pm",
     "title": "Course Schedule and Class Materials",
-    "section": "Online lab 1.1 (due Sunday, March 25 at 11:59:00 pm)",
-    "text": "Online lab 1.1 (due Sunday, March 25 at 11:59:00 pm)\n\nIntroduction to R\nIntroduction to the Tidyverse"
+    "section": "Online lab 1.1 (due Sunday, August 25 at 11:59:00 pm)",
+    "text": "Online lab 1.1 (due Sunday, August 25 at 11:59:00 pm)\n\nIntroduction to R\nIntroduction to the Tidyverse"
   },
   {
     "objectID": "schedulematerials.html#lecture-1.3-comparing-distributions-and-the-normal-distribution-tuesday-august-27",
@@ -77,13 +77,6 @@
     "text": "Lecture 2.2: Simple Linear Regression (Tuesday, September 3)\nReading to do before class: Chapter 7\nTopics covered:\n\nLine of best fit: least squares\nThe linear model\nWhat are residuals\nRegression assumptions\nLecture webpage: [Lecture 2.2]\nLecture activity: [Lecture 2.2 activity]"
   },
   {
-    "objectID": "schedulematerials.html#lab-2.1-working-with-regressions-tuesday-september-3-700-pm",
-    "href": "schedulematerials.html#lab-2.1-working-with-regressions-tuesday-september-3-700-pm",
-    "title": "Course Schedule and Class Materials",
-    "section": "Lab 2.1: Working with regressions (Tuesday, September 3 @ 7:00 pm)",
-    "text": "Lab 2.1: Working with regressions (Tuesday, September 3 @ 7:00 pm)\n\nNote the special class time!\nLab files: Lab 2.1\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
-  },
-  {
     "objectID": "schedulematerials.html#online-lab-2.2-due-on-friday-september-6-at-235900",
     "href": "schedulematerials.html#online-lab-2.2-due-on-friday-september-6-at-235900",
     "title": "Course Schedule and Class Materials",
@@ -98,11 +91,18 @@
     "text": "Unit 2 homework - progress check (due Sunday, September 8 at 23:59:00)\n\nHomework files: [Unit 2 homework instructions]"
   },
   {
+    "objectID": "schedulematerials.html#lab-2.1-working-with-tables-in-quarto-wednesday-september-11",
+    "href": "schedulematerials.html#lab-2.1-working-with-tables-in-quarto-wednesday-september-11",
+    "title": "Course Schedule and Class Materials",
+    "section": "Lab 2.1: Working with tables in Quarto (Wednesday, September 11)",
+    "text": "Lab 2.1: Working with tables in Quarto (Wednesday, September 11)\n\nLab files: Lab 2.1\n\nMake sure to extract (unzip) the lab files before attempting to modify them!"
+  },
+  {
     "objectID": "schedulematerials.html#lecture-2.3-regression-wisdom-thursday-september-12",
     "href": "schedulematerials.html#lecture-2.3-regression-wisdom-thursday-september-12",
     "title": "Course Schedule and Class Materials",
     "section": "Lecture 2.3: Regression Wisdom (Thursday, September 12)",
-    "text": "Lecture 2.3: Regression Wisdom (Thursday, September 12)\n\nNote the special class time!\n\nReading to do before class: Chapter 8\nTopics covered:\n\nBeware extrapolation\nOutliers and leverage\nLurking variables\nStraightening scatterplots\nLecture webpage: [Lecture 2.3]\nLecture activity: [Lecture 2.3 activity]"
+    "text": "Lecture 2.3: Regression Wisdom (Thursday, September 12)\nReading to do before class: Chapter 8\nTopics covered:\n\nBeware extrapolation\nOutliers and leverage\nLurking variables\nStraightening scatterplots\nLecture webpage: [Lecture 2.3]\nLecture activity: [Lecture 2.3 activity]"
   },
   {
     "objectID": "schedulematerials.html#lecture-2.4-multiple-regression-friday-september-13-1000-am",
@@ -116,7 +116,7 @@
     "href": "schedulematerials.html#online-lab-2.3-due-on-friday-september-13-at-115900",
     "title": "Course Schedule and Class Materials",
     "section": "Online lab 2.3 (due on Friday, September 13 at 11:59:00)",
-    "text": "Online lab 2.3 (due on Friday, September 13 at 11:59:00)\n\nModeling with Basic Regression"
+    "text": "Online lab 2.3 (due on Friday, September 13 at 11:59:00)\n\nModeling with Data in the Tidyverse"
   },
   {
     "objectID": "schedulematerials.html#unit-2-homework-due-tuesday-september-17-at-115900",
@@ -396,7 +396,7 @@
     "href": "rmanual.html#helpful-summary-functions",
     "title": "R Manual",
     "section": "Helpful summary functions",
-    "text": "Helpful summary functions\n\nSummarizing data\nThe simpliest way to summarize data is the summary() command.\n\nsummary(mtcars$mpg)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  10.40   15.43   19.20   20.09   22.80   33.90 \n\n\nTo develop more complex summary statistics, you can use longer piped structures from dplyr as follows:\n\nmtcars %&gt;%\n  group_by(cyl) %&gt;%\n  summarise(mean = mean(wt), n = n())\n\n# A tibble: 3 × 3\n    cyl  mean     n\n  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;\n1     4  2.29    11\n2     6  3.12     7\n3     8  4.00    14\n\n\nTo view more samples of the summarize() function, see here:\nSummarize documetation\n\n\nFinding normal distribution & quantile information\nIf you want to find out details of the normal distribution, there are a suite of function in R that can report the quantile of a specific number of standard deviations from the center of a normal distribution or the reverse.\n\n# What is the amount of area under the normal curve cumulative up to +2 sd from the mean \npnorm(2, mean=0, sd=1)\n\n[1] 0.9772499\n\n# At how many standard deviations away from the mean is 97.5% of the area under the normal curve\nqnorm(0.975, mean=0, sd=1)\n\n[1] 1.959964\n\n\nIf you have an arbitrary distribution (that may not necessarily be normally distributed), you can find a quantile for a given percentage of area under the curve with the quantile() function.\n\n# generate a uniform distribution\ndist&lt;-runif(1000, min=0, max=1)\n\n# theoretically, the quantile should match the probability for a uniform distribution\nquantile(dist, probs=0.5)\n\n      50% \n0.4889081"
+    "text": "Helpful summary functions\n\nSummarizing data\nThe simpliest way to summarize data is the summary() command.\n\nsummary(mtcars$mpg)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  10.40   15.43   19.20   20.09   22.80   33.90 \n\n\nTo develop more complex summary statistics, you can use longer piped structures from dplyr as follows:\n\nmtcars %&gt;%\n  group_by(cyl) %&gt;%\n  summarise(mean = mean(wt), n = n())\n\n# A tibble: 3 × 3\n    cyl  mean     n\n  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt;\n1     4  2.29    11\n2     6  3.12     7\n3     8  4.00    14\n\n\nTo view more samples of the summarize() function, see here:\nSummarize documetation\n\n\nFinding normal distribution & quantile information\nIf you want to find out details of the normal distribution, there are a suite of function in R that can report the quantile of a specific number of standard deviations from the center of a normal distribution or the reverse.\n\n# What is the amount of area under the normal curve cumulative up to +2 sd from the mean \npnorm(2, mean=0, sd=1)\n\n[1] 0.9772499\n\n# At how many standard deviations away from the mean is 97.5% of the area under the normal curve\nqnorm(0.975, mean=0, sd=1)\n\n[1] 1.959964\n\n\nIf you have an arbitrary distribution (that may not necessarily be normally distributed), you can find a quantile for a given percentage of area under the curve with the quantile() function.\n\n# generate a uniform distribution\ndist&lt;-runif(1000, min=0, max=1)\n\n# theoretically, the quantile should match the probability for a uniform distribution\nquantile(dist, probs=0.5)\n\n      50% \n0.5044955"
   },
   {
     "objectID": "rmanual.html#frequency-table-and-contingency-table",
