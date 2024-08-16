@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 -   Wednesday lab 1:15 pm to 2:30 pm in IB3106
 -   Office hours -
     -   Tuesday 1:00 pm to 3:00 pm in WDR 3114
-    -   Wednesday, 10:30 am to 11:45 am in WDR 3114
+    -   Wednesday, 9:45 am to 11:45 am in WDR 3114
 -   Homeworks are all due on Sunday at 11:59 pm
 -   All other announcements and information are posted on the class Teams site
 
@@ -72,7 +72,7 @@ We will be using three different online tools for this class, you will need to s
 1.  [Teams](https://www.microsoft.com/en/microsoft-teams/download-app): Teams works a bit like WeChat and a bit like Sakai and is perfect for collaboration. I encourage you to post often on Teams, including interesting statistical things you find in the world, questions about statistics you see in the news, and any other thoughts you have. Make sure to fill out your profile and upload a profile picture so we can keep track of who you are!
 2.  [R and RStudio](https://www.datacamp.com/community/tutorials/installing-R-windows-mac-ubuntu): These software packages that implement the R statistical programming language are free and very popular tools for conducting statistical investigations, including all of the homeworks for this class.
     -   [Quarto](https://quarto.org/docs/computations/r.html): Quarto is a flexible document formatting standard that allows you to create nice looking documents that easily mix text and R code output (I made this website with Quarto - you can view the code [here](https://github.com/andrewmacd/dkustats101fall2024)). All your homeworks, midterm, and final projects will be written inside of Quarto documents. Instructions on how to use the Quarto syntax will be provided with the first homework assignment.
-3.  [DataCamp](https://www.datacamp.com/groups/stats-101-5f35cd3d-9ec2-4341-bfdf-855dcc9a397f/shared_links/6360308e1f54e3c2c4c97b85756568a7f6557d8560ab89da0742bfba3839bdaf): DataCamp has a lot of very useful tutorials that will help you learn how to code in R.
+3.  [DataCamp](https://www.datacamp.com/groups/shared_links/8ccb017108cd54850cbedea2f2d51d3e3e34988e8ff9ba9d84fb934f4b645403): DataCamp has a lot of very useful tutorials that will help you learn how to code in R.
 
 # Required texts
 
@@ -87,9 +87,12 @@ I will detail the policy for this course below. Basically, try to learn stuff, d
 -   Beginning of class warmup quiz **10%**: At the start of each class session there will be a series of short online questions to start discussion of the class material. I will drop your two lowest quiz grades. I will also curve the grade such that the student with the highest overall quiz grade will receive 100% and all other students will receive a corresponding boost to their grade.
 
 -   Homework **55%**: At the end of a group of content, a homework will be assigned that will ask you to analyze a dataset and answer questions related to that concept group. These homeworks are always due the Sunday after assigned at 11:59 pm China time. Each homework/midterm will also have a best graph contest, where the person whose classmates vote as having the best graph wins some extra credit points. Note that Homework 1 is worth less than the other homeworks, so you have a chance to make up a poor grade with later assignments.
-  + Homework 1: 15%
-  + Homework 2: 20%
-  + Homework 3: 20%
+
+    -   Homework 1: 15%
+
+    -   Homework 2: 20%
+
+    -   Homework 3: 20%
 
 -   Homework checks **4%**: To make sure you are making good progress on your homework, the Sunday before the homework is due (except for the first homework) you will be required to submit your progress on the homework so far. You are required to have tried to have answered all the questions covered by the lectures and textbook up to that Sunday. I will not check your answers but rather check to see if you have made a good effort to answer all the questions derived from the material already covered. If you have a reasonable answer for each question checked you will get full points. If you have not made an effort to answer all the questions reviewed you will get a zero.
 
@@ -127,7 +130,7 @@ Class will be highly interactive and therefore it is to your advantage to attend
 
 ## ChatGPT (and similar) Policy
 
-Unless otherwise specified on an assignment, you may use ChatGPT as much as you wish. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes. 
+Unless otherwise specified on an assignment, you may use ChatGPT as much as you wish. However, most of the assignments in this class are not very amenable to ChatGPT help. Your main grade will be understanding, annotating, and interpreting your output. Producing the output is the very simple minimal requirement. Also, ChatGPT often makes many coding mistakes. If you rely too much on ChatGPT to code, you will not understand when it makes mistakes and why it makes mistakes.
 
 ## Academic Dishonesty Policy
 
