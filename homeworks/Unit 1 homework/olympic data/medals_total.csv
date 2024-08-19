@@ -1,0 +1,93 @@
+"","country_code","country","country_long","Gold.Medal","Silver.Medal","Bronze.Medal","Total","Athletes"
+"1","USA","United States","United States of America",40,44,42,126,619
+"2","CHN","China","People's Republic of China",40,27,24,91,398
+"3","JPN","Japan","Japan",20,12,13,45,431
+"4","AUS","Australia","Australia",18,19,16,53,475
+"5","FRA","France","France",16,26,22,64,600
+"6","NED","Netherlands","Netherlands",15,7,12,34,289
+"7","GBR","Great Britain","Great Britain",14,22,29,65,342
+"8","KOR","Korea","Republic of Korea",13,9,10,32,147
+"9","ITA","Italy","Italy",12,13,15,40,397
+"10","GER","Germany","Germany",12,13,8,33,457
+"11","NZL","New Zealand","New Zealand",10,7,3,20,208
+"12","CAN","Canada","Canada",9,7,11,27,332
+"13","UZB","Uzbekistan","Uzbekistan",8,2,3,13,88
+"14","HUN","Hungary","Hungary",6,7,6,19,177
+"15","ESP","Spain","Spain",5,4,9,18,401
+"16","SWE","Sweden","Sweden",4,4,3,11,125
+"17","KEN","Kenya","Kenya",4,2,5,11,74
+"18","NOR","Norway","Norway",4,1,3,8,109
+"19","IRL","Ireland","Ireland",4,0,3,7,143
+"20","BRA","Brazil","Brazil",3,7,10,20,290
+"21","IRI","IR Iran","Islamic Republic of Iran",3,6,3,12,41
+"22","UKR","Ukraine","Ukraine",3,5,4,12,141
+"23","ROU","Romania","Romania",3,4,2,9,96
+"24","GEO","Georgia","Georgia",3,3,1,7,28
+"25","BEL","Belgium","Belgium",3,1,6,10,177
+"26","BUL","Bulgaria","Bulgaria",3,1,3,7,46
+"27","SRB","Serbia","Serbia",3,1,1,5,114
+"28","CZE","Czechia","Czechia",3,0,2,5,111
+"29","DEN","Denmark","Denmark",2,2,5,9,131
+"30","AZE","Azerbaijan","Azerbaijan",2,2,3,7,48
+"31","CRO","Croatia","Croatia",2,2,3,7,73
+"32","CUB","Cuba","Cuba",2,1,6,9,61
+"33","BRN","Bahrain","Bahrain",2,1,1,4,14
+"34","SLO","Slovenia","Slovenia",2,1,0,3,95
+"35","TPE","Chinese Taipei","Chinese Taipei",2,0,5,7,60
+"36","AUT","Austria","Austria",2,0,3,5,84
+"37","HKG","Hong Kong, China","Hong Kong, China",2,0,2,4,34
+"38","PHI","Philippines","Philippines",2,0,2,4,22
+"39","ALG","Algeria","Algeria",2,0,1,3,46
+"40","INA","Indonesia","Indonesia",2,0,0,2,29
+"41","ISR","Israel","Israel",1,5,1,7,89
+"42","POL","Poland","Poland",1,4,5,10,226
+"43","KAZ","Kazakhstan","Kazakhstan",1,3,3,7,79
+"44","JAM","Jamaica","Jamaica",1,3,2,6,65
+"45","RSA","South Africa","South Africa",1,3,2,6,141
+"46","THA","Thailand","Thailand",1,3,2,6,52
+"47","AIN","AIN","AIN",1,3,1,5,32
+"48","ETH","Ethiopia","Ethiopia",1,3,0,4,33
+"49","SUI","Switzerland","Switzerland",1,2,5,8,137
+"50","ECU","Ecuador","Ecuador",1,2,2,5,40
+"51","POR","Portugal","Portugal",1,2,1,4,75
+"52","GRE","Greece","Greece",1,1,6,8,100
+"53","ARG","Argentina","Argentina",1,1,1,3,143
+"54","EGY","Egypt","Egypt",1,1,1,3,157
+"55","TUN","Tunisia","Tunisia",1,1,1,3,26
+"56","BOT","Botswana","Botswana",1,1,0,2,14
+"57","CHI","Chile","Chile",1,1,0,2,48
+"58","LCA","Saint Lucia","Saint Lucia",1,1,0,2,4
+"59","UGA","Uganda","Uganda",1,1,0,2,25
+"60","DOM","Dominican Republic","Dominican Republic",1,0,2,3,59
+"61","GUA","Guatemala","Guatemala",1,0,1,2,16
+"62","MAR","Morocco","Morocco",1,0,1,2,61
+"63","DMA","Dominica","Dominica",1,0,0,1,4
+"64","PAK","Pakistan","Pakistan",1,0,0,1,7
+"65","TUR","Türkiye","Türkiye",0,3,5,8,101
+"66","MEX","Mexico","Mexico",0,3,2,5,108
+"67","ARM","Armenia","Armenia",0,3,1,4,15
+"68","COL","Colombia","Colombia",0,3,1,4,88
+"69","PRK","DPR Korea","Democratic People's Republic of Korea",0,2,4,6,14
+"70","KGZ","Kyrgyzstan","Kyrgyzstan",0,2,4,6,16
+"71","LTU","Lithuania","Lithuania",0,2,2,4,51
+"72","IND","India","India",0,1,5,6,112
+"73","MDA","Republic of Moldova","Republic of Moldova",0,1,3,4,26
+"74","KOS","Kosovo","Kosovo",0,1,1,2,9
+"75","CYP","Cyprus","Cyprus",0,1,0,1,15
+"76","FIJ","Fiji","Fiji",0,1,0,1,36
+"77","JOR","Jordan","Jordan",0,1,0,1,12
+"78","MGL","Mongolia","Mongolia",0,1,0,1,32
+"79","PAN","Panama","Panama",0,1,0,1,8
+"80","TJK","Tajikistan","Tajikistan",0,0,3,3,14
+"81","ALB","Albania","Albania",0,0,2,2,8
+"82","GRN","Grenada","Grenada",0,0,2,2,6
+"83","MAS","Malaysia","Malaysia",0,0,2,2,26
+"84","PUR","Puerto Rico","Puerto Rico",0,0,2,2,51
+"85","CPV","Cabo Verde","Cabo Verde",0,0,1,1,7
+"86","CIV","Côte d'Ivoire","Côte d'Ivoire",0,0,1,1,13
+"87","EOR","EOR","Refugee Olympic Team",0,0,1,1,37
+"88","PER","Peru","Peru",0,0,1,1,26
+"89","QAT","Qatar","Qatar",0,0,1,1,13
+"90","SGP","Singapore","Singapore",0,0,1,1,23
+"91","SVK","Slovakia","Slovakia",0,0,1,1,28
+"92","ZAM","Zambia","Zambia",0,0,1,1,31

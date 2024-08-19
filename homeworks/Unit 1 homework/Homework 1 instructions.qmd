@@ -1,11 +1,11 @@
 ---
 title: "Homework 1 Instructions"
 author: "Anonymous"
-date: "3/25/2024"
+date: "8/18/2024"
 output:
   html_document:
     toc: true
-subtitle: DKU Stats 101 Spring 2024 Session 4
+subtitle: DKU Stats 101 Fall 2024 Session 1
 format: 
   html:
     embed-resources: true
@@ -18,21 +18,26 @@ format:
 # Put any setup code here
 ```
 
-![](boats.png)
+![](olympics.jpg)
+
+Photo courtesy of Xavier Praillet[^1]
+
+[^1]: <https://unsplash.com/photos/a-man-riding-a-bike-down-a-street-next-to-a-crowd-of-people-ILlwLEXKuB8>
 
 # Assignment Background
 
-Imagine that you are an analyst at a consulting firm hired by a boat dealer who is interested in trying to make money buying undervalued boats and reselling them to the global market. Your boss asks you to write a report that identifies the key features of boats that best determine their price. She also sends you this dataset of recent boat sales on the website [boattrader.com](https://www.boattrader.com/). Use this dataset to answer the questions below. [^1]
+Imagine that you are working for your country's Olympic organizing committee as a junior data analyst. Your boss asks you to investigate some important features of the results of the 2024 Paris Olympics for a broader afermath analysis report to your country's organizing committee. She also sends you all datasets of the complete features and results of the 2024 Olympics. Use these datasets to answer the questions below.[^2]
 
-[^1]: Credit to user MEXWELL for making this data publicly available at https://www.kaggle.com/datasets/mexwell/boat-price-prediction
+[^2]: Credit to user Petro for making this data publicly available at <https://www.kaggle.com/datasets/piterfm/paris-2024-olympic-summer-games>
 
 # Assignment Instructions
 
--   Please leave the name as Anonymous; the homeworks are blind graded so please do not include your name.
 -   Save this document as a new document (Save As...) and rename it `Homework 1 Answers.qmd`.
--   You can import the dataset by inserting the code `boats <- read.csv("boats.csv")` into your setup block. Make sure the data file is in the same folder as your homework file.\
+-   You can import a dataset by inserting the code `athletes <- read.csv("athletes.csv")` into your setup block. Make sure the data files are in the same folder as your homework file.
 -   If I say "Interpret..." or "Explain..." that means I want at least 1-2 good quality sentences that show that you really understand the output of what R has produced. Short, incomplete sentences that fail to demonstrate you understand your output will have points deducted.
--   While the homework isn't a formal document, it should be written as if you are a business analyst presenting this information to a boss - i.e. everything should look neat and tidy, have good labels (graphs have appropriate titles and axes labels, etc.), and be well organized
+-   While the homework isn't a formal document, it should be written as if you are a professional analyst presenting this information in an important workplace context - i.e. everything should look neat and tidy, have good labels (graphs have appropriate titles and axes labels, etc.), and be well organized.
+-   Your code, any warnings/messages produced by your code, and any other R output not needed for answering the question prompt should be hidden using the code block control options.
+-   Note that there are often many ways to accomplish the same goal using R code. For graphical displays, you will need to use `ggplot` but for other results (tables, etc.) you can use any method you like that neatly produces answers to the question prompt.
 -   If you want a chance to earn extra credit, select your best graph or table (only one per student) and post it to the `Graph Contest` Teams channel. I will select a few finalists and the class will vote on the best data display. Winner receives significant extra credit.
 -   Delete the Assignment Background and Assignment Instructions sections of this document before submitting.
 
@@ -40,80 +45,98 @@ Imagine that you are an analyst at a consulting firm hired by a boat dealer who 
 
 ### Q1: What kind of dataset do we have? (5 points)
 
--   According to the definitions in the textbook, describe the Five W's for this dataset.
+-   According to the definitions in the textbook, describe the Five W's for the following variables in the `medallists.csv` dataset.
 
--   Using the definitions in the textbook, describe the variable type for the following variables:
-
-    -   `id`
-    -   `type`
-    -   `boatClass`
-    -   `year`
-    -   `condition`
-    -   `length_ft`
-    -   `beam_ft`
-    -   `dryWeight_lb`
-    -   `price`
-    -   `sellerId`
+    -   `medal_date`
+    -   `medal_type`
+    -   `medal_code`
+    -   `name`
+    -   `gender`
+    -   `country_code`
+    -   `discipline`
+    -   `event`
+    -   `birth_date`
+    -   `code_athlete`
 
 ### Q2: Literature review (5 points)
 
-Find a news article online that discusses what are the major features that determine what people are looking for boats and include the link in this section.
+Find a news article online (can be in either English or Chinese) that discusses what are some key results of the 2024 Paris Olympics in terms of athlete results and medals, particularly compared to previous Olympics.
 
 Based on the article and your own personal expectations, what are some ways we might expect the data to be distributed or variables related? Make a list of at least **three** things we should expect or look for in the data and write a reason why we should expect it (no need to cite academic papers, just write down your reasons). Reasons should be thoughtful and at least two sentences explaining your logic for the expectation.
 
 ### Q3: Describing the data (10 points)
 
-The first step in analyzing any dataset is doing some exploratory analysis of the variables.
+One of the events the committee is particularly interested in is the results of the men's 100 meter race. 
 
--   Make a histogram of `price`.
+*Note 1*: for this question, you will need to refer to the `Athletics.csv` file. 
+
+*Note 2*: R imports datasets by default keeping text as text (`strings` in R world). Remember the DataCamp method to convert the `strings` into `factors` for displaying results as a numeric variable.
+
+-   Make a histogram of `result` for the 100 meter race competitors.
     -   Describe it using the three features of quantitative data.
-    -   Does the histogram of `price` surprise you? Why or why not?
+    -   Does the histogram of `result` surprise you? Why or why not?
     -   Which is a better measure of center of the histogram, mean or median?
     -   Make a nice table displaying the 5 number summary. You can make a nice table using either [kable](https://bookdown.org/yihui/rmarkdown-cookbook/kable.html) or with the [visual editing mode](https://quarto.org/docs/visual-editor/content.html#editing-tables) of Quarto. Calculate the five number summary by using the `min()` , `quantile()`, `median()`, and `max()` functions to do this. Show your code in the document (`echo: true`).
     -   Calculate the standard deviation using the `sd()` function. Interpret it - is it large or small? How does it compare to the IQR? What does this tell you about the shape of the distribution?
     -   Would this histogram benefit from a transformation, in your opinion? Why or why not? If it would, please transform it appropriately, make a new histogram, and describe the transformation.
--   Make a boxplot chart comparing the median of `price` according to the variable `condition`. If you previously transformed your data, keep it transformed for this step. Interpret this graph.
-    -   Hint: R imports datasets by default keeping text as text (`strings` in R world). Remember the DataCamp method to convert the `strings` into `factors`.
+- Make a boxplot chart comparing the median of `result` according to the a new variable `stage_simple`. If you previously transformed your data, keep it transformed for this step. 
+    -   For this question, you will need to do a little bit of data manipulation. You will need to convert the variable `stage` into a new variable `stage_simple` using the `mutate()` verb you learned in DataCamp. Your goal is to simplify the variable `stage` into only 4 categories: `Prelim`, `Round 1`, `Semis` and `Finals`. One possible way to accomplish this is with the `case_when()` auxillary function as demonstrated in this [link](https://www.r-bloggers.com/2022/06/create-new-variables-from-existing-variables-in-r/).
+    -   Interpret this graph, particularly with respect to your previous histogram of the overall distribution - what new information does this boxplot display uncover?
+    
 
-### Q4: Comparing categorical variables (5 points)
+### Q4: Comparing categorical variables (10 points)
 
--   One interesting piece of information the dealer would like to know is if there is any change in the types of boats being sold according to what type of fuel it uses. In particular, they wonder if some fuel types are becoming less popular and therefore more difficult to sell in new boats. The best way to examine this relationship is with a contingency table.
-    -   Hint: documentation on how to produce contingency tables (also called crosstab tables) can be found [here](http://analyticswithr.com/contingencytables.html) or you can also use the `taybl()` function from the package `janitor` - instructions [here](https://cran.r-project.org/web/packages/janitor/vignettes/tabyls.html).
+*Note 1*: for this question, you will need to refer to the `medals.csv` file and the `medal_totals.csv` file. 
+
+*Note 2*: for this question, you will need to transform your data. You will first need to filter your data in `medals.csv`. Then, you will need to create a new variable that defines if the medal is won by a team or not. You can do this with the `mutate()` verb and the `grepl()` and `ifelse()` auxillary functions as described in the example at the bottom of the page [here](https://sebastiz.github.io/gastrodatascience/WranglingDataFromDataMutate.html).  
+
+-   One interesting piece of information the organizing committee would like to know is how the top five medal winning countries (defined by total medals of gold + silver + bronze) fared in the individual vs. team events. Make a contingency table of those five countries by team vs. individual medals.
+    -   Hint: documentation on how to produce contingency tables (also called crosstab tables) can be found [here](http://analyticswithr.com/contingencytables.html).
 -   Add margins to your table. Does it change your interpretation?
 -   Now convert your table into a proportions table. Does this better help explain what the data show?
--   What should you recommend to the dealer? What are some additional questions or areas of research do the results suggest you should look into?
+-   Interpret your table. What does this table indicate to you? Are you surprised by it? Why do you think you see the results you see here? What other information would be useful to understand why you see these results?
 
 ### Q5: Understanding and comparing distributions (5 points)
 
--   Using the five number summaries, calculate if `length_ft` has any outliers according to the rule described in the textbook for outliers in boxplots. Show your calculations. Do you believe the outliers identified are real outliers? Why or why not? Consider the purpose of your report when preparing your answer.
--   Create a graph of boxplot of `length_ft` by `fuelType`. What can you conclude from this display? Would any of these subgroups benefit from having `length_ft` re-expressed? Why or why not?
+Another sport of interest to the organizing committee is diving. 
 
-### Q6: The Normal distribution (5 points)
+*Note*: for this question, you will need to refer to the `Diving.csv` file. 
 
-For boats under 20 feet, a rough rule of thumb is that the maximum weight capacity in kilograms of a boat is approximately the length in feet times the width (or beam) of the boat times 5. In a 2006 study of Americans, the average weight was approximately 70 kilos with a standard deviation of 11 kilos.
+-   Using the five number summaries, calculate if `result` has any outliers according to the rule described in the textbook for outliers in boxplots. Show your calculations. Do you believe the outliers identified are real outliers? Why or why not? Consider the purpose of your report when preparing your answer.
+-   Create two graphs of boxplots, one of `result` by `stage` and one of `result` by `event_name`. What can you conclude from these display? Does it change your answer about outliers in the first part of the question?
 
--   In formal notation, write the Normal model of human weight.
--   Select at least five boats that are under 20 feet from the database. Make a table of the boats.
--   The title of the columns of the table should be *z* scores ranging from -2 to +2
--   Calculate what is the maximum number of passengers the boat can hold if all of the passengers each weigh the following *z* scores: (-2, -1, 0, 1, 2), show your calculations below your table.
--   If you are a boat maker, what cutoff would you set for boat passenger capacity and why?
--   Look up three of the boats in your table on the internet and write down what the manufacturer set as the recommended number of people on the boat. What *z* score cutoff does it seem the boatmaker made in each of the cases?
+### Q6: The Normal distribution (10 points)
+
+The organizing committee is also interested in whether heights of athletes play a role in Olympic selection and success.
+
+*Note*: for this question, you will need to refer to the `athletes.csv` file. 
+
+According to [Our World in Data](https://ourworldindata.org/human-height), the average human male height is 178.4 cm with a standard deviation of 7.59 cm, and the average female height is 164.7 cm with a standard deviation of 7.07 cm.
+
+-   In the formal notation introduced in the textbook, write the Normal model of human height for males and females.
+-   Filter the dataset for athletes in the athletics events. Find the mean height for men and women as well as the standard deviations. Is this close to the global averages? Why do you think the results either match or do not match the global averages?
+-   Select five athletes at random from the athletics category and calculate their $z$ score relative to the mean and standard deviation you found in the previous part (show both your code and calculations here).
+-   Make a density plot (an example of this type of display is [here](http://www.sthda.com/english/wiki/ggplot2-density-plot-quick-start-guide-r-software-and-data-visualization)) of the heights of male and female athletes in the athletics events. Do you think it is justified to model these athletes heights as being normally distributed? Why or why not?
 
 ## Part 2: Two variable analyis
 
 ### Q7: Relationship between variables (15 points)
 
--   Make a scatterplot of `price` as a function of `length_ft`. Add a linear smoother to the plot and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `id`. If necessary, transform any variables
-    1.  Do you think there is a clear pattern? Describe the association between `price` and `length_ft`.
+Finally, the organizing committee is interested in whether there is any relationship between the number of athletes a committee submits to the Olympics and the medal count of the country.
+
+*Note*: for this question, you will need to refer to the `medals_total.csv` file.
+
+-   Make a scatterplot of `Total` as a function of `Athletes`. Add a linear smoother to the plot and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `country_code`. If necessary, transform any variables.
+    1.  Do you think there is a clear pattern? Describe the association between `Athletes` and `Total`.
     2.  Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?
--   Make a second graph excluding any outliers you have identified
+-   Make a second graph excluding any outliers you have identified and believe should be excluded (keep the variables transformed if you had them previously transformed)
     3.  What do you estimate the correlation to be, without using technology?
     4.  Check the conditions for correlation
     5.  Find and interpret the correlation coefficient for this relationship
-    6.  Interpret this graph. What is some useful information we could communicate to the client? What questions for additional investigation does this graph prompt for you?
--   Now, make a third graph of the same two variables but color it by `condition`. Add a linear smoother for each condition.
+    6.  Interpret this graph.
+-   Now, make a third graph but display the points separately for gold, silver, and bronze medals.. Add a linear smoother for each set of points. (You can set up your graph for the relationship with bronze medals, save it, and then add each other medal as a new layer to your saved graph).
     7.  How does this graphical display change your interpretation you developed in your answer to part 6? Why do you think you the relationship is structured like this? Explain.
 
 ### Q8: Putting it all together (15 points)
 
-Through the analysis conducted in the previous section **and through at least one additional investigation of your own (which can be an additional graph or table, that analyzes a different relationship or distribution than one asked about in the questions above but you think is meaningful and important to communicate the client)**, write three paragraphs outlining what you think are the main findings of questions 1-7 plus your additional investigation. What would you recommend to your boss as to what types of boats sell for the most money? What information are we missing in this dataset that we would need to better understand boat price?
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (which can be an additional graph or table, that analyzes a different relationship or distribution than one asked about in the questions above but you think is meaningful and important to communicate to the organizing committee)**, write three paragraphs outlining what you think are the main findings of questions 1-7 plus your additional investigation. What would you recommend to your boss as to what types of boats sell for the most money? What information are we missing in this dataset that we would need to better understand boat price?
