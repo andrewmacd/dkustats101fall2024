@@ -1,0 +1,101 @@
+---
+title: "Introduction to Quarto"
+author: "Professor MacDonald"
+date: "8/21/2024"
+output:
+  html_document:
+    toc: true
+format: 
+  html:
+    embed-resources: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+```
+
+# Practicing with Quarto
+
+Quarto is a document container that allows you to mix text and code to produce reproducible (see [here](https://www.displayr.com/what-is-reproducible-research/) for why reproducibility is important) results and auto-generate high quality document.
+
+## Editing your document
+
+RStudio has two views for editing your document, `Source` and `Visual`.
+
+![](editmode.png)
+
+Most people find it easier to edit using the Visual mode. Switch back and forth between the two views to check the differences.
+
+Note that at the top of your document is a special section that defines important attributes of how your document will render. These options are contained within a set of --- charcters. This section must be at the top of your document. 
+
+- Using the list of options [here](https://quarto.org/docs/reference/formats/html.html), add a subtitle and abstract to rendering options block.
+
+## Insert code chunk
+
+The main advantage of Quarto is that you can combine text and your results all in one document and then render it into a variety of formats (in this class, we will primarily be rendering to HTML).
+
+To add code into your document, you will need to use the insert code chunk button.
+
+![](Insert%20code%20block.png)
+
+The code chunk, like the one shown below, has some options for the code chunk. Each option should be on a separate line at the top of the code chunk, starting with the `#|` characters. In this case, I added the line `#| echo: true` which means that both the code and the results of the code will be printed on the document.
+
+Some other options that will be helpful is setting `#| warning: false` and `#| message: false` to stop RStudio from printing irrelevant or not helpful text. You can see in the example below that the `library(tidyverse)` line of code prints some nuisance text that would not be printed if I had added the `message: false` option.
+
+> Note that the library() function adds additional libraries that contain more features than the base version of R. Generally, you want to load your libraries at the very start of the document. I usually create a code chunk at the beginning of the document labeled `setup` and load my dataset and libraries in this code chunk. After you have loaded the library, it is available for the rest of the code chunks. In this case, `tidyverse` contains a host of very useful additional functions.
+
+```{r}
+#| label: test-code
+#| echo: true
+
+library(tidyverse)
+```
+
+-   Add `#| message: false` to your code block and re-render the document to see how it changes. Then add an `#| echo: false` option and re-render it to see how it changes again.
+
+Note that this sample code block also has a `#| label:` option. It is good practice to label all of your code blocks.
+
+Each code block must have a unique name - you will receive an error message if you have two code blocks with the same name. Labels must also be made of simple characters - you cannot have any special characters in your label name.
+
+-   Insert a new code block and give it the same label (`test-code`) as the sample code block above. Then try to render. Note the error message you receive.
+-   Rename the `test-code` to `test-code1` and change the name of your second code block you just inserted to `test-code2`.
+-   Then re-render your document.
+
+## Making graphs
+
+In this section we are going to practice adding a simple graph to the document. We can do this with the built-in dataset `mtcars` that has data on features of certain cars. You can create a histogram with the simple command `hist(mtcars$mpg)` (as an example)
+
+-   Insert a new code chunk.
+-   Add the code in the code chunk to make a histogram of the variable from `mtcars` called `wt` (weight).
+-   Render your document to see how it is displayed.
+
+Quarto has a special way to label figures and tables, you can see the method to label figures [here](https://quarto.org/docs/authoring/figures.html) and tables [here](https://quarto.org/docs/authoring/tables.html). In particular for code chunks that have figures, the label should start with `#| label: fig-`, so for our example above it should be something like `#| label: fig-mtcarswt`.
+
+You can then add a new code chunk option below the label called `fig-cap` that will caption your figure. Such as `#| fig-cap: "Histogram of weight"`
+
+-   Add a figure label and figure caption to your code chunk
+
+You can even have multiple captions if you have multiple figures in your code chunk.
+
+-   Following the pattern [here](https://quarto.org/docs/authoring/figures.html#subcaptions), add a second histogram of `mtcars$mpg` to your code chunk and create subcaptions for each of your plots.
+
+> Note that tables work much the same way as figures in terms of labeling. Make sure to pay attention to this labeling on your homework!
+
+## Navigating your document
+
+You can navigate your document one of two ways. The first way to navigate the document is via the Outline window on the right hand side of the document.
+
+![](navigation%202.png)
+
+To make your document navigable, it is important to specify headings for each of your document sections via the Style menu.
+
+![](headings.png)
+
+You can also navigate your document by using the menu at the bottom left, which will also let you jump to specific code blocks. This one of the reasons why it is important to label your code blocks.
+
+![](navigation.png)
+
+## Finishing up
+
+Once you've done that, please show me your result and then you can keep working your way through the [Computations](https://quarto.org/docs/get-started/computations/rstudio.html) tutorial on the Quarto website until the end of class.

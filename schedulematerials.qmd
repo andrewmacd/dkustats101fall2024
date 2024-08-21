@@ -22,7 +22,7 @@ Topics covered:
 
 ## Lab 1.1: R and Quarto familiarization (Wednesday, August 21)
 
--   Lab files: [Lab 1.1]
+-   Lab files: [Lab 1.1](labs/Lab 1.1/lab.1.1.zip)
     -   Make sure to extract (unzip) the lab files before attempting to modify them!
 
 ## Lecture 1.2: Characteristics of distributions (Thursday, August 22)
