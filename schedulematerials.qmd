@@ -37,7 +37,7 @@ Topics covered:
 
 -   Dealing with problem distributions (outliers, reexpression)
 
--   Lecture webpage: [Lecture 1.2]
+-   Lecture webpage: [Lecture 1.2](https://andrewm.shinyapps.io/fall2024distributions/)
 
 -   Lecture activity: [Lecture 1.2 activity](activities/Lecture 1.2/lecture.1.2.activity.zip)
 
