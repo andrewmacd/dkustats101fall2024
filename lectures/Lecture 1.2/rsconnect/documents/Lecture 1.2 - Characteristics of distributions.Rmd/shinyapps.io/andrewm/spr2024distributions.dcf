@@ -1,0 +1,12 @@
+name: spr2024distributions
+title: spr2024distributions
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11561605
+bundleId: 8404007
+url: https://andrewm.shinyapps.io/spr2024distributions/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

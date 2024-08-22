@@ -1,0 +1,12 @@
+name: fall2024distributions
+title: fall2024distributions
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12495352
+bundleId: 9012504
+url: https://andrewm.shinyapps.io/fall2024distributions/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

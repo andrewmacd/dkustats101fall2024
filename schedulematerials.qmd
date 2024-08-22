@@ -39,7 +39,7 @@ Topics covered:
 
 -   Lecture webpage: [Lecture 1.2]
 
--   Lecture activity: [Lecture 1.2 activity]
+-   Lecture activity: [Lecture 1.2 activity](activities/Lecture 1.2/lecture.1.2.activity.zip)
 
 ## Online lab 1.1 (due Sunday, August 25 at 11:59:00 pm)
 
