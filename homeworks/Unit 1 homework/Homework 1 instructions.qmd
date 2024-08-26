@@ -45,7 +45,7 @@ Imagine that you are working for your country's Olympic organizing committee as 
 
 ### Q1: What kind of dataset do we have? (5 points)
 
--   Using the Five W definitions from the textbook to categorize each of the following variables in the `medallists.csv` dataset.
+-   Use the Five W definitions from the textbook to categorize each of the following variables in the `medallists.csv` dataset.
 
     -   `medal_date`
     -   `medal_type`
@@ -72,7 +72,7 @@ One of the events the committee is particularly interested in is the results of 
 
 *Note 2*: R imports datasets by default keeping text as text (`strings` in R world). Remember the DataCamp method to convert the `strings` into `factors` for displaying results as a numeric variable.
 
-*Note 3*: There may be some NA cases (that is, cases with missing value - empty cells in th) in the data. You can see how deal with these cases [here](https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/)
+*Note 3*: There may be some NA cases (that is, cases with missing value - empty cells in in the data). You can see how deal with these cases [here](https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/)
 
 -   Make a histogram of `result` for the 100 meter race competitors.
     -   Describe it using the three features of quantitative data.
