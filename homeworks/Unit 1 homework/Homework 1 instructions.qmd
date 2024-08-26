@@ -45,7 +45,9 @@ Imagine that you are working for your country's Olympic organizing committee as 
 
 ### Q1: What kind of dataset do we have? (5 points)
 
--   Use the Five W definitions from the textbook to categorize each of the following variables in the `medallists.csv` dataset.
+-   Use the Five W definitions in section 1.2 of the textbook, please describe this dataset.
+
+-   Additionally, using the definitions in textbook section 1.3, please categorize each of the following variables in the `medallists.csv` dataset.
 
     -   `medal_date`
     -   `medal_type`
