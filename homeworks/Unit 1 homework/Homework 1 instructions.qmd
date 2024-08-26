@@ -45,7 +45,7 @@ Imagine that you are working for your country's Olympic organizing committee as 
 
 ### Q1: What kind of dataset do we have? (5 points)
 
--   According to the definitions in the textbook, describe the Five W's for the following variables in the `medallists.csv` dataset.
+-   Using the Five W definitions from the textbook to categorize each of the following variables in the `medallists.csv` dataset.
 
     -   `medal_date`
     -   `medal_type`
@@ -72,6 +72,8 @@ One of the events the committee is particularly interested in is the results of 
 
 *Note 2*: R imports datasets by default keeping text as text (`strings` in R world). Remember the DataCamp method to convert the `strings` into `factors` for displaying results as a numeric variable.
 
+*Note 3*: There may be some NA cases (that is, cases with missing value - empty cells in th) in the data. You can see how deal with these cases [here](https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/)
+
 -   Make a histogram of `result` for the 100 meter race competitors.
     -   Describe it using the three features of quantitative data.
     -   Does the histogram of `result` surprise you? Why or why not?
@@ -86,7 +88,7 @@ One of the events the committee is particularly interested in is the results of 
 
 ### Q4: Comparing categorical variables (10 points)
 
-*Note 1*: for this question, you will need to refer to the `medals.csv` file and the `medal_totals.csv` file. 
+*Note 1*: for this question, you will need to refer to the `medals.csv` file and the `medals_total.csv` file. 
 
 *Note 2*: for this question, you will need to transform your data. You will first need to filter your data in `medals.csv`. Then, you will need to create a new variable that defines if the medal is won by a team or not. You can do this with the `mutate()` verb and the `grepl()` and `ifelse()` auxillary functions as described in the example at the bottom of the page [here](https://sebastiz.github.io/gastrodatascience/WranglingDataFromDataMutate.html).  
 

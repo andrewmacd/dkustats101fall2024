@@ -3134,7 +3134,7 @@ window.Quarto = {
 <section id="q1-what-kind-of-dataset-do-we-have-5-points" class="level3">
 <h3 class="anchored" data-anchor-id="q1-what-kind-of-dataset-do-we-have-5-points">Q1: What kind of dataset do we have? (5 points)</h3>
 <ul>
-<li><p>According to the definitions in the textbook, describe the Five W’s for the following variables in the <code>medallists.csv</code> dataset.</p>
+<li><p>Using the Five W definitions from the textbook to categorize each of the following variables in the <code>medallists.csv</code> dataset.</p>
 <ul>
 <li><code>medal_date</code></li>
 <li><code>medal_type</code></li>
@@ -3159,6 +3159,7 @@ window.Quarto = {
 <p>One of the events the committee is particularly interested in is the results of the men’s 100 meter race.</p>
 <p><em>Note 1</em>: for this question, you will need to refer to the <code>Athletics.csv</code> file.</p>
 <p><em>Note 2</em>: R imports datasets by default keeping text as text (<code>strings</code> in R world). Remember the DataCamp method to convert the <code>strings</code> into <code>factors</code> for displaying results as a numeric variable.</p>
+<p><em>Note 3</em>: There may be some NA cases (that is, cases with missing value - empty cells in th) in the data. You can see how deal with these cases <a href="https://sparkbyexamples.com/r-programming/remove-rows-with-na-in-r/">here</a></p>
 <ul>
 <li>Make a histogram of <code>result</code> for the 100 meter race competitors.
 <ul>
@@ -3178,7 +3179,7 @@ window.Quarto = {
 </section>
 <section id="q4-comparing-categorical-variables-10-points" class="level3">
 <h3 class="anchored" data-anchor-id="q4-comparing-categorical-variables-10-points">Q4: Comparing categorical variables (10 points)</h3>
-<p><em>Note 1</em>: for this question, you will need to refer to the <code>medals.csv</code> file and the <code>medal_totals.csv</code> file.</p>
+<p><em>Note 1</em>: for this question, you will need to refer to the <code>medals.csv</code> file and the <code>medals_total.csv</code> file.</p>
 <p><em>Note 2</em>: for this question, you will need to transform your data. You will first need to filter your data in <code>medals.csv</code>. Then, you will need to create a new variable that defines if the medal is won by a team or not. You can do this with the <code>mutate()</code> verb and the <code>grepl()</code> and <code>ifelse()</code> auxillary functions as described in the example at the bottom of the page <a href="https://sebastiz.github.io/gastrodatascience/WranglingDataFromDataMutate.html">here</a>.</p>
 <ul>
 <li>One interesting piece of information the organizing committee would like to know is how the top five medal winning countries (defined by total medals of gold + silver + bronze) fared in the individual vs. team events. Make a contingency table of those five countries by team vs. individual medals.
