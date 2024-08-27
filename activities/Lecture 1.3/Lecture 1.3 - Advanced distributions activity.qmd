@@ -42,7 +42,7 @@ mcdonalds %>%
   group_by(Category) %>% 
   summarize( Min = min(Calories),
              Q1 = quantile(Calories, .25),
-             `Mean Calories` = round(mean(Calories)), 
+             `Median Calories` = round(median(Calories)), 
              Q3 = quantile(Calories, .75),
              Max = max(Calories)) %>% 
   kbl() %>% 
