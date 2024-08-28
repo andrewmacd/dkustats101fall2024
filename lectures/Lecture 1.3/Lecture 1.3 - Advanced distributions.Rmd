@@ -142,9 +142,9 @@ nbaboxscores %>%
 sample(classroster$name, 1)
 ```
 
-## Checking outliers - away points
+## Checking outliers - points
 
-### Outliers - away points
+### Outliers - points
 
 ```{r pointsoutliers, exercise=TRUE}
 ggplot(nbaboxscores, aes(x=PTS)) +
@@ -152,7 +152,7 @@ ggplot(nbaboxscores, aes(x=PTS)) +
   labs(x="Points", y="Count")
 ```
 
-### Points by away team \> 150 - true outliers?
+### Points by eam \> 150 - true outliers?
 
 ```{r pointsoutlierscheck, exercise=TRUE}
 nbaboxscores %>% 

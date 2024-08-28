@@ -1,0 +1,12 @@
+name: fall2024association
+title: fall2024association
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12540656
+bundleId: 9033693
+url: https://andrewm.shinyapps.io/fall2024association/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

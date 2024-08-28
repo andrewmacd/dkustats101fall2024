@@ -1,0 +1,13 @@
+name: spr2023association
+title: spr2023association
+username:
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8716320
+bundleId: 7026667
+url: https://andrewm.shinyapps.io/spr2023association/
+when: 1680149227.65451
+lastSyncTime: 1680149227.65453
+asMultiple: FALSE
+asStatic: FALSE
