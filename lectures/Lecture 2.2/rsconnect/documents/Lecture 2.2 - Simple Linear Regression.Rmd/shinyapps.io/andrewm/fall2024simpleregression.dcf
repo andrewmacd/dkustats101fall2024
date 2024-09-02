@@ -1,0 +1,12 @@
+name: fall2024simpleregression
+title: Lecture 2.2 - Simple Linear Regression
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12579410
+bundleId: 9051475
+url: https://andrewm.shinyapps.io/fall2024simpleregression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

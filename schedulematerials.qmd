@@ -108,9 +108,9 @@ Topics covered:
 
 -   Regression assumptions
 
--   Lecture webpage: [Lecture 2.2]
+-   Lecture webpage: [Lecture 2.2](https://andrewm.shinyapps.io/fall2024simpleregression/)
 
--   Lecture activity: [Lecture 2.2 activity]
+-   Lecture activity: [Lecture 2.2 activity](activities/Lecture 2.2/lecture.2.2.activity.zip)
 
 ## Online lab 2.2 (due on Friday, September 6 at 23:59:00)
 
