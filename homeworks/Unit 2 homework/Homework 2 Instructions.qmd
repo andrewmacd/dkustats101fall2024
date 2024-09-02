@@ -1,0 +1,184 @@
+---
+title: "Homework 2 Instructions"
+author: "Anonymous"
+date: "9/2/2024"
+output:
+  html_document:
+    toc: true
+subtitle: DKU Stats 101 Fall 2024 Session 1
+format: 
+  html:
+    embed-resources: true
+---
+
+![](https://www.dialecticeng.com/hubfs/Building%20an%20EV%20Charging%20Station%20Blog/AdobeStock_682835467.jpeg)
+Photo courtesy of Dialectic Engineering[^1]
+
+[^1]: <https://www.dialecticeng.com/hubfs/Building%20an%20EV%20Charging%20Station%20Blog/AdobeStock_682835467.jpeg>
+
+# Assignment Background
+
+Chinese electric vehicle (EV) manufacturers have made significant strides in recent years and are beginning to compete in international markets. As these manufacturers set their sights on entering the American and European markets, understanding the competition is crucial.
+
+Imagine that you are a junior data analyst working for a leading Chinese EV manufacturer. Your company is considering entering these Western markets, and you have been tasked with conducting market research on the capabilities of the existing EVs in these regions. Your goal is to analyze a dataset of EVs[^2] to provide insights that could inform your company's strategy.
+
+[^2]: Credit to Kaggle user Geoff for making this data publicly available at <https://www.kaggle.com/datasets/geoffnel/evs-one-electric-vehicle-dataset/data>
+
+
+# Assignment Instructions
+
+-   Save this document as a new document (Save As...) and rename it `Homework 2 Answers.qmd`.
+-   You can import the dataset by inserting the code `evs <- read.csv("ElectricCarData_Clean.csv")` into your setup block. Make sure the data file is in the same folder as your homework file.
+-   If I say "Interpret..." or "Explain..." that means I want at least 1-2 good quality sentences that show that you really understand the output of what R has produced. Short, incomplete sentences that fail to demonstrate you understand your output will have points deducted.
+-   While the homework isn't a formal document, it should be written as if you are a professional analyst presenting this information in an important workplace context - i.e. everything should look neat and tidy, have good labels (graphs have appropriate titles and axes labels, etc.), and be well organized.
+-   Your code, any warnings/messages produced by your code, and any other R output not needed for answering the question prompt should be hidden using the code block control options.
+-   Note that there are often many ways to accomplish the same goal using R code. For graphical displays, you will need to use `ggplot` but for other results (tables, etc.) you can use any method you like that neatly produces answers to the question prompt.
+-   If you want a chance to earn extra credit, select your best graph or table (only one per student) and post it to the `Homework 2 - Best graph contest` `Graph Contest` Teams channel. I will select a few finalists and the class will vote on the best data display. Winner receives significant extra credit.
+-   Delete the Assignment Background and Assignment Instructions sections of this document before submitting.
+
+**Note that you will need to finish up to Question 3a for the homework check. For the homework check, the output and formatting does not yet have to be perfect, but all parts of the question should be answered in full. I will not grade answers for correctness, merely that you have completed them. You will either receive full, partial, or no credit for the homework check grade.**
+
+## 1. Summarize the data (10 Points)
+
+To enter a new market, it's essential to understand the landscape. By summarizing the existing data on Western EVs, you can provide your employer with an overview of the key performance metrics of the competition.
+
+##### Task 1a: Summarize the quantitative variables
+
+Summarize the quantitative variables in the dataset using appropriate summary statistics. Create a well-organized table to present these summary statistics.
+
+##### Task 1b: Visualize the distribution of body styles
+
+Use an appropriate plot to visualize the distribution of `BodyStyle` in the dataset. Describe what you observe about the most common body styles.
+
+##### Task 1c: Fast Charging capability
+
+What percentage of the vehicles in the dataset support `RapidCharge`? For those that do, what is the average `FastCharge_KmH`?
+
+##### Task 1d: Identify the car with the highest top speed
+
+Identify which car in the dataset has the highest top speed (`TopSpeed_KmH`). Report the car's name, brand, and top speed.
+
+##### Task 1e: Explore the distribution of top speed by power train
+
+Investigate how top speed varies depending on power train type (`PowerTrain`) by creating an appropriate plot. Discuss any patterns or trends you observe, and provide an explanation for these trends.
+
+
+## 2. Relationship between two variables (15 Points)
+
+Understanding the relationship between key performance metrics like speed and acceleration can reveal important insights about what makes certain vehicles stand out. Your employer will be interested in knowing how these factors interact and whether there are trade-offs to be aware of.
+
+##### Task 2a: Calculate the correlation between top speed and acceleration
+
+Calculate the correlation coefficient between top speed (`TopSpeed_KmH`) and acceleration (`AccelSec`). Explain what the correlation coefficient tells you about the relationship between these two variables.
+
+##### Task 2b: Create a scatterplot of top speed vs. acceleration
+
+Create a scatterplot to visualize the relationship between top speed and acceleration. Identify any potential outliers and discuss their impact on the relationship.
+
+##### Task 2c: Add a LOESS smoother to the scatterplot
+
+Improve the scatterplot by adding a LOESS smoother. Add a confidence interval to the LOESS smoother and explain why the confidence interval is larger at slower levels of acceleration.
+
+##### Task 2d: Build a bivariate regression model
+
+Create a bivariate regression model where top speed is predicted by acceleration. Interpret the model's coefficients and discuss what they tell you about the relationship between these two variables.
+
+
+## 3. Relationship between multiple variables (15 Points)
+
+Range anxiety is a common concern among potential EV buyers. Your employer will want to know how factors like efficiency and power train type affect the range of a vehicle, as well as how price plays into this equation.
+
+##### Task 3a: Model range as a function of efficiency
+
+Create a regression model that predicts the `Range_Km` of an EV based on its efficiency (`Efficiency_WhKm`). Report the model's coefficients and interpret them.
+
+***Finish up to here for the homework 2 check***
+
+##### Task 3b: Add PowerTrain to the model
+
+Extend the previous model by adding `PowerTrain` as an additional predictor. Describe how the inclusion of `PowerTrain` changes the model's coefficients and interpretation.
+
+##### Task 3c: Visualize range vs. efficiency by PowerTrain
+
+Create a scatterplot to visualize the relationship between range and efficiency, with the points colored according to `PowerTrain.` Discuss whether this plot changes your interpretation of the model.
+
+##### Task 3d: Add price to the model
+
+Extend the model by adding `PriceEuro` as another independent variable. Compare this model to the earlier models, and discuss any changes in the coefficients and interpretation.
+
+
+## 4. Model fit (10 Points)
+
+A good model fit is crucial for making reliable predictions and understanding the underlying relationships in the data. Your employer will want to know which models are most reliable for identifying key performance metrics.
+
+##### Task 4a: Compare model fit using R-squared
+
+Compare the fit of the models from Question 3 using R-squared values. Which model fits the data best, and why?
+
+##### Task 4b: Create a residuals histogram
+
+Create a histogram of residuals plot for the best-fitting model. Discuss any patterns you observe in the residuals and what they indicate about the model's fit.
+
+##### Task 4c: Make a partial regression plot
+
+Create partial regression plots for the model in Task 3d, looking at the relationships between `Range_Km` and its (quantitative) predictors, `Efficiency_WhKm` and `PriceEuro`. Interpret the plot.
+
+
+## 5. Model assumptions (10 Points)
+
+It's important to ensure that the models you use are based on sound statistical assumptions. Your employer will want to know whether the conclusions drawn from the models are reliable.
+
+##### Task 5a: Evaluate model assumptions
+
+Evaluate whether the best-fitting model from Question 4 satisfies the regression assumptions outlined in Chapter 9.3. You can rely on the plots you've already made and create new ones. Provide a thorough explanation for each assumption and whether it holds in this model.
+
+
+## 6. Outliers and lurking variables (10 Points)
+
+Outliers can skew results and lead to misleading conclusions, while lurking variables can create spurious relationships. Your employer will want to ensure that the analysis is robust to these issues.
+
+##### Task 6a: Identify and remove outliers
+
+Identify any outliers in the dataset that might be influencing your regression models. Remove these outliers and rerun the regression analysis. Discuss how the results change and identify which outliers were particularly influential.
+
+##### Task 6b: Consider lurking variables
+
+Consider any variables not included in the dataset that you think might be missing from the model. Explain your reasoning for why these variables could be important and how they might affect the model.
+
+
+## 7. Prediction (10 Points)
+
+Your employer may want to predict the performance of their vehicles under different scenarios. Being able to make accurate predictions is key to making informed strategic decisions.
+
+##### Task 7a: Predict the range of a specific car
+
+Using the model from Task 3d, predict the range of an electric car with the following characteristics:
+
+- `Efficiency_WhKm`: 200 Wh/km
+- `PowerTrain`: FWD
+- `PriceEuro`: 50,000 Euros
+
+##### Task 7b: Visualize predicted values
+
+Create a plot of the predicted range values for an electric car with an `Efficiency_WhKm` of 200 Wh/km and a `PowerTrain` of FWD, while varying the price across its `Range_Km`. Interpret the plot.
+
+
+## 8. Re-expression (5 Points)
+
+Sometimes, transforming variables can improve model fit and make relationships clearer. Your employer wants you to try a log transformation on the price variable to see if it improves the model.
+
+##### Task 8a: Log-transform the price variable
+
+Re-express the model from Task 3d by log-transforming the `PriceEuro` variable. Compare the new model to the original model in terms of both the coefficients and model fit. Explain the logic behind this particular transformation and discuss which model you prefer and why.
+
+
+## 9. Independent analysis (15 Points)
+
+##### Task 9a: Research and add Chinese EVs to the dataset
+
+The dataset is largely missing EVs from the top Chinese carmakers. Do some research and select five Chinese EVs of your choice. Manually add their `Range_Km`, `Efficiency_WhKm`, `PowerTrain`, and `PriceEuro` to the dataset. You can leave the other variables as NA.
+
+##### Task 9b: Analyze the Chinese EVs
+
+Compare the performance of the Chinese EVs you added to the existing cars in the dataset. Repeat some of the analyses from the previous questions (your choice) and discuss whether the results change after including the Chinese EVs.
+
