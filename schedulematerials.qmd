@@ -139,9 +139,9 @@ Topics covered:
 
 -   Straightening scatterplots
 
--   Lecture webpage: [Lecture 2.3]
+-   Lecture webpage: [Lecture 2.3](https://andrewm.shinyapps.io/fall2024regressionwisdom/)
 
--   Lecture activity: [Lecture 2.3 activity]
+-   Lecture activity: [Lecture 2.3 activity](activities/Lecture 2.3/lecture.2.3.activity.zip)
 
 ## Lecture 2.4: Multiple Regression (Friday, September 13 @ 10:00 am)
 

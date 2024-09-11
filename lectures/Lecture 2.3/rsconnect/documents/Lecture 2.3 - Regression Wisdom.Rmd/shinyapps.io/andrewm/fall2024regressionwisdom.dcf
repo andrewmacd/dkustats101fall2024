@@ -1,0 +1,12 @@
+name: fall2024regressionwisdom
+title: fall2024regressionwisdom
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12682180
+bundleId: 9090006
+url: https://andrewm.shinyapps.io/fall2024regressionwisdom/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

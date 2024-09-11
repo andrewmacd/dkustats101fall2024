@@ -1,0 +1,12 @@
+name: spr2024regressionwisdom
+title: spr2024regressionwisdom
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11651552
+bundleId: 8448207
+url: https://andrewm.shinyapps.io/spr2024regressionwisdom/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

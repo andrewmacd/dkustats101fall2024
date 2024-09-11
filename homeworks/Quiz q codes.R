@@ -2,6 +2,7 @@ library(tidyverse)
 library(gridExtra)
 library(ggthemes)
 library(lubridate)
+library(broom)
 
 theme_set(theme_clean())
 
@@ -39,3 +40,21 @@ model <- summary(lm(PTS ~ AST, data=nba.scores.2024))
 ggplot(nba.scores.2024, aes(x = model$residuals)) +
   geom_histogram(fill = 'steelblue', color = 'black') +
   labs(title = 'Histogram of Residuals', x = 'Residuals', y = 'Frequency')
+
+# Quiz 2.3
+
+weather <- Rainier_Weather %>% 
+  mutate(temp.c = (Temperature.AVG-32)*(5/9)) %>% 
+  mutate(wind.spd.kph = Wind.Speed.Daily.AVG * 1.609) %>% 
+  filter(wind.spd.kph != 0)
+
+temp.reg <- lm(data=weather, temp.c ~ wind.spd.kph)
+
+summary(temp.reg)
+
+temp.reg.aug <- augment(temp.reg, weather)
+
+ggplot(temp.reg.aug, aes(x=.fitted, y=.resid)) + 
+  geom_point() +
+  geom_hline(yintercept=0) +
+  labs(x="Fitted", y="Residual", title="Residual plot", subtitle="Temperature vs. wind speed")
