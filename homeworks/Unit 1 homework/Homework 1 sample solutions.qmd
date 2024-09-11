@@ -1,0 +1,492 @@
+---
+title: "Homework 1 Sample Solutions"
+author: "Anonymous"
+date: "today"
+output:
+  html_document:
+    toc: true
+subtitle: DKU Stats 101 Fall 2024 Session 1
+format: 
+  html:
+    embed-resources: true
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Load any necessary libraries
+library(tidyverse)
+library(knitr)
+library(gridExtra)
+
+# Sets the graphical theme
+theme_set(theme_classic())
+
+options(scipen=999)
+```
+
+![](olympics.jpg)
+
+## Part 1: One variable analysis
+
+### Q1: What kind of dataset do we have? (5 points)
+
+-   According to the definitions in the textbook, describe the Five W's for the following variables in the `medallists.csv` dataset.
+
+    -   `medal_date`
+    -   `medal_type`
+    -   `medal_code`
+    -   `name`
+    -   `gender`
+    -   `country_code`
+    -   `discipline`
+    -   `event`
+    -   `birth_date`
+    -   `code_athlete`
+
+```{r}
+medallists <- read.csv("olympic data/medallists.csv")
+```
+
+> - Categorical: name, gender, country_code, discipline, event
+> -  Ordinal: medal_type, medal_code
+> -  Identifier: name, code_athlete
+> -  Quantitative: medal_date, birth_date
+
+Whether medal_date and birth date are really quantitative is debatable, however, in statistical analysis, dates are often treated as quantitative by counting the number of days since a given starting date.
+
+### Q2: Literature review (5 points)
+
+Find a news article online (can be in either English or Chinese) that discusses what are some key results of the 2024 Paris Olympics in terms of athlete results and medals, particularly compared to previous Olympics. Make a list of at least **three** things we should expect or look for in the data.
+
+Based on the article and your own personal expectations, what are some ways we might expect the data to be distributed or variables related? Make a list of at least **three** things we should expect or look for in the data and write a reason why we should expect it (no need to cite academic papers, just write down your reasons). Reasons should be thoughtful and at least two sentences explaining your logic for the expectation.
+
+> **Points of emphasis:**
+>
+> -   The article must deal with the Olympics and expectations about athlete results. Logic about expectations must be coherent.
+
+
+### Q3: Describing the data (10 points)
+
+Make a histogram of `result` for the 100 meter race competitors.
+
+```{r}
+#| label: fig-q3a
+#| fig-cap: "Results histogram"
+athletics <- read.csv("olympic data/results/Athletics.csv")
+mens100m <- athletics %>% filter(event_name == "Men's 100m")
+mens100m$result <- as.numeric(mens100m$result)
+mens100m <- mens100m %>% drop_na(result)
+ggplot(mens100m, aes(result)) + geom_histogram(binwidth = .05) + labs(x = "Result (seconds)", y = " Count")
+```
+
+Describe it using the three features of quantitative data.
+
+> -   *Shape*:  The distribution has a peak at around 10.2, but it is not smooth enough to be considered unimodal. It is right-skewed. 
+>
+> -   *Center*: The mean is `r round(mean(mens100m$result), 2)`, the median is `r round(median(mens100m$result), 2)` - both are quite close together.
+>
+> -   *Spread*: IQR is `r IQR(mens100m$result)`, so 50% of the observations fall within `r IQR(mens100m$result)` seconds, the middle half of the data. The standard deviation is `r round(sd(mens100m$result))`, which is about `r round(sd(mens100m$result)/IQR(mens100m$result))*100`% of the IQR, because the standard deviation is affected by extreme outliers. This also indicates a distribution with a skew or outliers.
+
+Does the histogram of `result` surprise you?
+
+> One surprising feature is that the histogram cuts off fairly abruptly on the left side. There are quite a few times at around 9.8, but nothing below 9.79. Presumably this more or less the human limit of what is (currently) possible. Also, some of the runners are included multiple times, in multiple races, and they tend to run similar times, hence the aggregation.
+
+Which is a better measure of center of the histogram, mean or median?
+
+> The median is usually better in a distribution that has outliers (such as this one), but in this case, both values are fairly close.
+
+Make a nice table displaying the 5 number summary. Show your code in the document (`echo: true`).
+
+```{r}
+#| label: tbl-q3b
+#| tbl-cap: "Results 5 number summary"
+#| echo: true
+    
+kable(mens100m %>%
+        summarise(min(result),  quantile(result, probs=0.25), median(result), quantile(result, probs=0.75), max(result)), 
+      col.names = c("Min", "25%", "Median", "75%", "Max"))
+```
+
+> There are quite a few other ways to generate this result, the above is just one example.
+
+-   Calculate the standard deviation using the `sd()` function. Interpret it - is it large or small? How does it compare to the IQR? What does this tell you about the shape of the distribution?
+
+> Standard deviation(sd) is a kind of evaluation for how far each value is from the mean, representing the the spread of the data distribution, so standard deviation is often discussed at the same time as the mean. The result of `sd()` equals to the square root of the variance, with the same unit of the original data, but it can be greatly affected by outliers or skew. In this case, the standard deviation is `r round(sd(mens100m$result),2)` which is quite similar to the IQR (`r IQR(mens100m$result)`). This means that there are no powerful outliers, since they would have a greater effect on the standard deviation than on the IQR.
+
+Would this histogram benefit from a transformation, in your opinion? Why or why not? If it would, please transform it appropriately, make a new histogram, and describe the transformation.
+
+> Not really, but if we really wanted to make one, a log transformation (appropriate because of the tail) would look like this. The fact that it looks similar to the plot above shows that it wasn't really needed.
+
+```{r}
+#| label: fig-q3c
+#| fig-cap: "Rexpression of results"
+
+options(scipen = 999)
+
+ggplot(mens100m, aes(x=log(result))) +
+  geom_histogram(color="white") + 
+  labs(x="Results (log seconds)", y="Count")
+```
+
+
+-   Make a boxplot chart comparing the median of `result` according to the a new variable `stage_simple`. If you previously transformed your data, keep it transformed for this step.
+    -   For this question, you will need to do a little bit of data manipulation. You will need to convert the variable `stage` into a new variable `stage_simple` using the `mutate()` verb you learned in DataCamp. Your goal is to simplify the variable `stage` into only 4 categories: `Prelim`, `Round 1`, `Semis` and `Finals`. One possible way to accomplish this is with the `case_when()` auxillary function as demonstrated in this [link](https://www.r-bloggers.com/2022/06/create-new-variables-from-existing-variables-in-r/).
+    
+```{r}
+#| label: fig-q3d
+#| fig-cap: "Distribution of results based on stage"
+
+mens100m <- mens100m %>% mutate(stage_simple = case_when(grepl("Prelim", stage) ~ "Prelim",
+                                             grepl("Round 1", stage) ~ "Round 1",
+                                             grepl("Semi-Final", stage) ~ "Semis",
+                                             stage=="Final" ~ "Finals"))
+mens100m$stage_simple <- factor(mens100m$stage_simple, levels = c("Finals", "Semis", "Round 1", "Prelim"))
+ggplot(mens100m, aes(x=result, y = stage_simple)) +
+  geom_boxplot(color="black", outlier.color="red", fill="blue") + 
+  labs(x="Results (seconds)", y="Round")
+```    
+Interpret this graph, particularly with respect to your previous histogram of the overall distribution - what new information does this boxplot display uncover?
+
+> This graph shows that the distribution of performance changes as the tournament progresses towards the finals. In the preliminaries, there is a large amount of variance, and even the best performers don't match the level of performance shown in the last stages. This trend continues towards the finals, where the IQR becomes very small -- at this point, only the best athletes are left, and they're all quite competitive with one another.
+
+> **Points of emphasis:**
+>
+> -   Well labeled graphs, with appropriate (not variable name) names for the `x` and `y` axes.
+> -   Appropriate order of boxplots (e.g. preliminaries come before round 1, etc.)
+> -   Legend labeled
+> -   Graphs that contain the correct amount of information
+> -   Reasonable, thoughtful interpretations of the requested statistics, not just one or two word answers.
+> -   Correct results for the requested statistics
+
+
+### Q4: Comparing categorical variables (10 points)
+
+One interesting piece of information the organizing committee would like to know is how the top five medal winning countries (defined by total medals of gold + silver + bronze) fared in the individual vs. team events. Make a contingency table of those five countries by team vs. individual medals.
+
+```{r}
+#| label: tbl-q4a
+#| tbl-cap: "Contingency table of medals for team and individual events"
+
+medals_total <- read.csv("olympic data/medals_total.csv")
+medals <- read.csv("olympic data/medals.csv")
+
+medals_total <- medals_total %>% 
+  arrange(desc(Total))
+
+medals_top5 <- medals %>% filter(country %in% medals_total$country[1:5])
+medals_top5 <- medals_top5 %>% mutate(team = ifelse(grepl("TEAM", medals_top5$event_type), "Team", "Individual"))
+
+condition.medal.table <- table(factor(medals_top5$country), factor(medals_top5$team))
+
+kable(condition.medal.table) 
+```
+
+> We can see from this table that all top five countries won more medals from the individual events than from the team events. If the countries were sorted by how many medals they won, the order would be the same though, regardless of whether sorting would be done by individual or team. China is much closer in team medals to France and Australia than it is in individual medals, where it has far more.
+
+Add margins to your table. Does it change your interpretation?
+
+```{r}
+#| label: tbl-q4b
+#| tbl-cap: "Contingency table w/margins of medals for team and individual events"
+
+kable(addmargins(condition.medal.table))
+```
+
+> Adding margins to the table allows us to see the total count for each row and column. We can see that these countries won 290 medals from individual events, compared to 89 from team events. We also see the total medal count by country, but we already that, so it is not worth repeating here. The grand total (379) is also displayed.
+
+Now convert your table into a proportions table. Does this better help explain what the data show?
+
+```{r}
+#| label: tbl-q4c
+#| tbl-cap: "Proportions table of medals for team and individual events"
+
+kable(round(prop.table(condition.medal.table, 1), 2))
+```
+
+Interpret your table. What does this table indicate to you? Are you surprised by it? Why do you think you see the results you see here? What other information would be useful to understand why you see these results?
+
+> Around two thirds of all medals won by the top 5 countries tend to be from individual events. China and Japan have the highest proportion of their medals won from individual events, France the least. We can only speculate as to why, but it might for example be possible that team sports are more popular in France.
+
+> **Points of emphasis:**
+>
+> -   Reasonable, thoughtful interpretations of the requested statistics, not just one or two word answers.
+> -   Correct results for the requested statistics
+
+
+### Q5: Understanding and comparing distributions (5 points)
+
+Another sport of interest to the organizing committee is diving. Using the five number summaries, calculate if `result` has any outliers according to the rule described in the textbook for outliers in boxplots. Show your calculations. Do you believe the outliers identified are real outliers? Why or why not? Consider the purpose of your report when preparing your answer.
+
+```{r}
+#| label: tbl-q5a1
+#| echo: true
+#| tbl-cap: "Diving results (points) 5 number summary"
+
+diving <- read.csv("olympic data/results/Diving.csv")
+
+kable(diving %>%
+        summarise(min(result),  
+                  quantile(result, probs=0.25), 
+                  median(result), 
+                  quantile(result, probs=0.75), 
+                  max(result)), 
+      col.names = c("Min", "25%", "Median", "75%", "Max"))
+```
+
+> Boxplot calculations for `result`:
+
+```{r}
+#| label: q5a2
+#| echo: true
+
+result_med <- median(diving$result)
+result_lq <- quantile(diving$result, probs=0.25)
+result_uq <- quantile(diving$result, probs=0.75)
+result_iqr <- IQR(diving$result)
+result_uf <- result_uq + 1.5*result_iqr
+result_lf <- result_lq - 1.5*result_iqr
+```
+
+> -   $median=`r result_med`$
+> -   $IQR=`r result_uq`-`r result_lq`=`r result_iqr`$
+> -   $Upper\,fence=`r result_uq`+1.5\cdot`r result_iqr`=`r result_uf`$
+> -   $Lower\,fence=`r result_lq`-1.5\cdot`r result_iqr`=`r result_lf`$
+> -   There are no values beyond the fences - so `result` does not have any outliers.
+
+Create two graphs of boxplots, one of `result` by `stage` and one of `result` by `event_name`. What can you conclude from these displays? Does it change your answer about outliers in the first part of the question?
+
+```{r}
+#| label: fig-q5b
+#| fig-cap: "Distribution of diving results (points) by stage"
+
+diving$stage <- factor(diving$stage, levels = c("Final", "Semifinal", "Preliminary"))
+ggplot(diving, aes(x=stage,
+                  y=result,
+                  fill=stage)) +
+ geom_boxplot() +
+ labs(title="Boxplots of result (points) by stage",
+      x="Stage",y="Result (points)", 
+      caption="Red dot indicates mean") +
+ theme(plot.title=element_text(hjust=0.5),legend.position="none")+
+  stat_summary(fun="mean",geom="point",shape=20,size=2,color="red",alpha=0.7)
+```
+
+> We can see that divers generally did worse in the preliminary stage. Semifinals and finals on the other hand are fairly similar. This makes sense - at point, only the best divers are left in the tournament, and they are likely to be close together in performance.
+
+```{r}
+#| label: fig-q5c
+#| fig-cap: "Distribution of diving results (points) by event name"
+
+ggplot(diving, aes(x=factor(event_name),
+                  y=result,
+                  fill=event_name)) +
+  geom_boxplot() +
+  labs(title="Boxplots of result (points) by event name",
+      x="Event name",y="Result (points)", 
+      caption="Red dot indicates mean") +
+  theme(plot.title=element_text(hjust=0.5),legend.position="none") +
+  stat_summary(fun="mean",geom="point",shape=20,size=2,color="red",alpha=0.7) + 
+  coord_flip()
+```
+
+> This boxplot reveals that there are large differences in the number of points awarded in the men's events, compared to the women's. For men, the median points awarded are roughly around 400 for all four types. For women, the medians are around 300. Furthermore, for men, the synchronised 3m springboard has by far the lowest median, whereas for women, it is in line with the others. Moreover, 400 would be an outlier for women, but fairly usual for men. Similarly, the outliers at the lower end of the scale for men would be within the IQR for women.
+
+> **Points of emphasis:**
+>
+> -   Boxplots well labeled
+> -   Proper calculation of 5 number summaries
+> -   Shows work for calcuation of outliers
+> -   Makes a reasonable interpretation of the boxplot
+
+### Q6: The Normal distribution (10 points)
+
+According to [Our World in Data](https://ourworldindata.org/human-height), the average human male height is 178.4 cm with a standard deviation of 7.59 cm, and the average female height is 164.7 cm with a standard deviation of 7.07 cm.
+
+In the formal notation introduced in the textbook, write the Normal model of human height for males and females.
+
+> $N(178.4, 7.59)$
+
+> $N(164.7, 7.07)$
+
+Filter the dataset for athletes in the athletics events. Find the mean height for men and women as well as the standard deviations. Is this close to the global averages? Why do you think the results either match or do not match the global averages?
+
+```{r}
+#| label: tbl-q6a
+#| tbl-cap: "Athlete height - summary statistics"
+
+athletes <- read.csv("olympic data/athletes.csv")
+
+athletes_athletics <- athletes %>% 
+  filter(height != 0) %>%
+  filter(grepl("Athletics", disciplines))
+
+height_athletics <- athletes_athletics %>% 
+  group_by(gender) %>%
+  summarise(height_mean = mean(height), height_sd = sd(height))
+
+kable(height_athletics, col.names = c("Gender", "Mean", "Standard deviation"), digits = 2)
+```
+> The results are a little above global averages, which seems reasonable. Taller people are often at an advantage in many athletic disciplines, so it is plausible that Olympic athletes would be a little taller than the global population. The standard deviations are also a fair bit greater. Also, not all countries send the same number of athletes to the Olympics, and height is unevenly distributed between countries.
+
+
+Select five athletes at random from the athletics category and calculate their $z$ score relative to the mean and standard deviation you found in the previous part (show both your code and calculations here).
+
+```{r}
+#| label: q6b
+#| echo: true
+set.seed(123)
+random_5_athletes <- athletes_athletics %>%
+  slice_sample(n=5)
+
+# Note: this code assumes that at least 1 male and 1 female athlete was sampled
+z_scores_male <- (random_5_athletes$height[random_5_athletes$gender == "Male"] - height_athletics$height_mean[height_athletics$gender == "Male"])/height_athletics$height_sd[height_athletics$gender == "Male"]
+z_scores_female <- (random_5_athletes$height[random_5_athletes$gender == "Female"] - height_athletics$height_mean[height_athletics$gender == "Female"])/height_athletics$height_sd[height_athletics$gender == "Female"]
+
+print(z_scores_male)
+print(z_scores_female)
+```
+
+Make a density plot (an example of this type of display is [here](http://www.sthda.com/english/wiki/ggplot2-density-plot-quick-start-guide-r-software-and-data-visualization)) of the heights of male and female athletes in the athletics events. Do you think it is justified to model these athletes heights as being normally distributed? Why or why not?
+
+```{r}
+#| label: fig-q6c
+#| fig-cap: "Density plot of height by gender"
+ggplot(athletes_athletics, aes(x=height, fill=gender)) +
+  geom_density(alpha=0.4) +
+  geom_vline(data=height_athletics, aes(xintercept=height_mean, color=gender),
+             linetype="dashed", show.legend=FALSE) +
+  labs(x = "Height", y = "Density", fill = "Gender")
+```
+
+> The nearly normal condition appears to be met - both distributions are unimodal, (mostly) symmetric, and have no extreme outliers.
+
+## Part 2: Two variable analyis
+
+### Q7: Relationship between variables (15 points)
+
+Make a scatterplot of `Total` as a function of `Athletes`. Add a linear smoother to the plot and label any points you consider to be an outlier using `geom_text()` - the label for the outlier should print the observation's `country_code`. If necessary, transform any variables.
+
+```{r}
+#| label: fig-q7a
+#| fig-cap: "Athletes vs. medals"
+
+ggplot(medals_total, aes(x=Athletes, y=Total)) + 
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_text(data=medals_total[medals_total$Athletes > 200 | medals_total$Total > 25,], 
+            aes(label=country_code), size=3, vjust=2,color="red", check_overlap = TRUE) +
+  labs(title="Scatter plot of Athletes vs Total medals", 
+       x="Athletes", y="Medals")
+```
+> There aren't really any extreme outliers, but for the sake of this question, let's consider all countries with more than 200 athletes or 25 medals to be outliers, given that the relationship appears weaker for those below that.
+
+1.  Do you think there is a clear pattern? Describe the association between `Athletes` and `Total`.
+
+> There appears to be a positive linear relationship.
+>
+> -   Direction - Positive
+> -   Form - Mostly linear. Countries that send more athletes to the olympics win more medals.
+> -   Strength - Medium; the pattern holds for most countries, but there are some that under/overperform relative to the number of athletes sent. Also, the trend is weaker (but still exists) for the countries not labeled in the plot.
+> -   Outliers - USA, China, Great Britain and South Korea overperformed, many other countries such as Spain, Germany, and Poland underperformed.
+
+> Note that if we transform both variables, there are effectively no outliers:
+
+```{r}
+#| label: fig-q7b
+#| fig-cap: "Log athletes vs. log medals, no outliers"
+
+ggplot(medals_total, aes(x=log(Athletes), y=log(Total))) + 
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title="Scatter plot of log Athletes vs log Total medals", 
+       x="Log Athletes", y="Log Medals")
+```
+
+2.  Find out the details of any outliers you have identified. Do you think the outlier(s) should be excluded from the analysis? Why or why not?
+
+```{r}
+#| label: tbl-q7b
+#| tbl-cap: "Athletes vs. medals - outliers"
+
+medals_total.outliers <- medals_total[medals_total$Athletes > 200 | medals_total$Total > 25, 
+                               c("country", "Athletes", "Total")]
+kable(medals_total.outliers,
+      col.names = c("Country", "Athletes", "Total"),
+      row.names = FALSE)
+```
+
+Make a second graph excluding any outliers you have identified and believe should be excluded (keep the variables transformed if you had them previously transformed)
+
+```{r}
+#| label: fig-q7c
+#| fig-cap: "Athletes vs. medals - no outliers"
+
+medals_total.no.outlier <- medals_total %>% 
+  filter(Athletes < 200 & Total < 25)
+
+ggplot(medals_total.no.outlier, aes(x=Athletes, y=Total)) + 
+  geom_point()+
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title="Scatter plot of Medals vs Athletes (outliers excluded)", 
+       x="Athletes", y="Medals")
+```
+
+3.  What do you estimate the correlation to be, without using technology?
+
+> Any reasonable guess is ok here.
+
+4. Check the conditions for correlation
+
+> -   Quantitative variables condition: both are quantitative
+> -   Straight enough condition: the relationship is more or less straight
+> -   No outliers condition: there are a few outliers that cannot be excluded, though probably will not result in a big change in the estimate.
+
+5.  Find and interpret the correlation coefficient for this relationship
+
+> `r round(cor(medals_total.no.outlier$Total, medals_total.no.outlier$Athletes), 2)` is a fairly strong correlation - indicative of the fact that countries that send more athletes to the Olympics also tend to win more medals.
+
+6.  Interpret this graph.
+
+> For countries that send more than about 150 athletes, it appears a linear model works less well, Transforming both variables leads to a pretty good linear model however.
+
+7.  Now, make a third graph but display the points separately for gold, silver, and bronze medals.. Add a linear smoother for each set of points. (You can set up your graph for the relationship with bronze medals, save it, and then add each other medal as a new layer to your saved graph).
+
+```{r}
+#| label: fig-q7d
+#| fig-cap: "Athletes vs. medals by medal type"
+library(tidyr)
+
+medals_total.no.outlier2 <- medals_total.no.outlier %>% 
+  select(ends_with(".Medal"), country_code, Athletes) %>%
+  pivot_longer(cols = ends_with(".Medal"),
+               names_to = "Medal",
+               values_to = "Count") %>%
+  mutate(Medal = str_remove(Medal, ".Medal"))
+
+ggplot(medals_total.no.outlier2, aes(x=Athletes, y=Count, color=Medal)) + 
+  geom_point(alpha = 0.5, position = "jitter") +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_color_manual(values = c("Gold" = "#FFD700", "Silver" = "#C0C0C0", "Bronze" = "#CD7F32")) +
+  labs(title="Scatter plot of Medals vs Athletes by medal type", 
+       x="Athletes", y="Medals")
+```
+
+How does this graphical display change your interpretation you developed in your answer to part 6? Why do you think you the relationship is structured like this? Explain.
+
+> The relationship doesn't really depend on the medal type. The intercept is a little higher for Bronze, and the slope a little less steep for Silver, but that's about it.
+
+### Q8: Putting it all together (15 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (which can be an additional graph or table, that analyzes a different relationship or distribution than one asked about in the questions above but you think is meaningful and important to communicate to the organizing committee)**, write three paragraphs outlining what you think are the main findings of questions 1-7 plus your additional investigation. What would you recommend to your organizing committee as to how to improve your country's performance at the next Olympics? What are some important factors and relationships you discovered that you think they ought to pay attention to? What are some next steps and additional data that are needed to deepen this analysis?
+
+> -   Analysis here can vary but must be at least two paragraphs
+> -   Should accurately summarize the information discovered by answering the previous questions
+> -   B-level answer will conduct a shallow additional analysis, A-level answer will show interesting additional analysis that builds on previous answers
+> -   Shows a good understanding of the limits of this dataset
+> -   Should be as precise as possible, don't use general statements when you can be more specific
