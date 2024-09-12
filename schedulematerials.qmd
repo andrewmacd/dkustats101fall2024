@@ -159,9 +159,9 @@ Topics covered:
 
 -   Indicator variables
 
--   Lecture webpage: [Lecture 2.4]
+-   Lecture webpage: [Lecture 2.4](https://andrewm.shinyapps.io/fall2024multipleregression/)
 
--   Lecture activity: [Lecture 2.4 activity]
+-   Lecture activity: [Lecture 2.4 activity](activities/Lecture 2.4/lecture.2.4.activity.zip)
 
 ## Online lab 2.3 (due on Friday, September 13 at 11:59:00)
 

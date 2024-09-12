@@ -1,0 +1,12 @@
+name: spr2024multipleregression
+title: spr2024multipleregression
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11692692
+bundleId: 8465830
+url: https://andrewm.shinyapps.io/spr2024multipleregression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

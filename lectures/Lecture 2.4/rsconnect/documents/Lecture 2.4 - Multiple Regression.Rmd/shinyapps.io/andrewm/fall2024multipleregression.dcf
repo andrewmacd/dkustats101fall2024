@@ -1,0 +1,12 @@
+name: fall2024multipleregression
+title: fall2024multipleregression
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12689021
+bundleId: 9092068
+url: https://andrewm.shinyapps.io/fall2024multipleregression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
