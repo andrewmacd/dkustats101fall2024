@@ -1,0 +1,12 @@
+name: fall2024confintprop
+title: fall2024confintprop
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12746269
+bundleId: 9115234
+url: https://andrewm.shinyapps.io/fall2024confintprop/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
