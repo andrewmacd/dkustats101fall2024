@@ -1,0 +1,760 @@
+---
+title: "Homework 2 sample solutions"
+author: "Anonymous"
+date: "today"
+output:
+  html_document:
+    toc: true
+subtitle: DKU Stats 101 Fall 2024 Session 1
+format: 
+  html:
+    embed-resources: true
+execute: 
+  echo: false
+  message: false
+  warning: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Load any necessary libraries
+library(tidyverse)
+library(knitr)
+library(gridExtra)
+library(broom)
+library(modelsummary)
+library(kableExtra)
+library(corrr)
+library(stringr)
+library(modelsummary)
+library(visreg)
+library(gridExtra)
+
+# Sets the graphical theme
+theme_set(theme_classic())
+
+# Enables scientific notation
+options(scipen=999)
+
+evs <- read.csv("ElectricCarData_Clean.csv")
+
+# Cleans up some variables
+evs <- evs %>% 
+  mutate(Fast.Charge.Numeric = as.numeric(FastCharge_KmH)) %>% 
+  mutate(full.name = paste(str_trim(Brand), Model)) %>% 
+  mutate(log.price = log(PriceEuro))
+
+# Adds the residual standard error as a gof measure for modelsummary
+glance_custom.lm <- function(x, ...) {
+  rse <- sqrt(sum(residuals(x) ^ 2) / x$df.residual)
+  rse <- format(rse, digits = 2)
+  data.frame(RSE = rse)
+}
+
+# Creates a list of goodness of fit measures we want reported
+gof.hw2 <- list(
+  list("raw" = "nobs", "clean" = "N", "fmt" = 0),
+  list("raw" = "r.squared", "clean" = "R2", "fmt" = 2),
+  list("raw" = "RSE", "clean" = "Residual standard deviation", "fmt" = 2))
+
+```
+
+![](https://www.dialecticeng.com/hubfs/Building%20an%20EV%20Charging%20Station%20Blog/AdobeStock_682835467.jpeg)
+Photo courtesy of Dialectic Engineering[^1]
+
+[^1]: <https://www.dialecticeng.com/hubfs/Building%20an%20EV%20Charging%20Station%20Blog/AdobeStock_682835467.jpeg>
+
+## 1. Summarize the data (10 Points)
+
+To enter a new market, it's essential to understand the landscape. By summarizing the existing data on Western EVs, you can provide your employer with an overview of the key performance metrics of the competition.
+
+### Task 1a: Summarize the quantitative variables
+
+Summarize the quantitative variables in the dataset using appropriate summary statistics. Create a well-organized table to present these summary statistics.
+
+```{r}
+#| label: q1a
+#| tbl-cap: "Summary of quantitative data"
+
+quant.var.table <- evs %>% 
+  select(AccelSec, TopSpeed_KmH, Range_Km, 
+         Efficiency_WhKm, Seats, PriceEuro, Fast.Charge.Numeric) %>% 
+  mutate(`Acceleration (seconds to 100 kph)` = AccelSec,
+         `Top speed (kph)` = TopSpeed_KmH,
+         `Range (km)` = Range_Km,
+         `Efficiency (wh per km)` = Efficiency_WhKm,
+         `Fast charge (kph)` = Fast.Charge.Numeric, 
+         `Price (euros)` = PriceEuro) %>% 
+  select(`Acceleration (seconds to 100 kph)`, `Top speed (kph)`, 
+         `Efficiency (wh per km)`, `Range (km)`, `Fast charge (kph)`, 
+         Seats, `Price (euros)`)
+
+datasummary_balance(~ 1, data=quant.var.table)
+```
+
+> There are many ways to make this table, this is just one example. As long as there is some measure of center and spread of the quantitative variables, that is enough.
+
+### Task 1b: Visualize the distribution of body styles
+
+Use an appropriate plot to visualize the distribution of `BodyStyle` in the dataset. Describe what you observe about the most common body styles.
+
+```{r}
+#| label: q1b
+#| fig-cap: "Body style distribution"
+
+ggplot(evs, aes(x=factor(BodyStyle), fill=BodyStyle)) + 
+  geom_bar() +
+  labs(x="Body style type", y="Count") +
+  guides(fill="none")
+```
+
+> SUVs and then hatchbacks are by far the most common body style. To me, this is a bit surprising as hatchbacks are a somewhat unusual body type for gasoline-powered cars. Sedans, which, in most countries, are the most common car type, are a distant third place. This suggests, to me, that perhaps the nature of EV cars may be different than gasoline-powered cars.
+
+### Task 1c: Fast Charging capability
+
+What percentage of the vehicles in the dataset support `RapidCharge`? For those that do, what is the average `FastCharge_KmH`?
+
+```{r}
+#| label: q1c
+#| tbl-cap: "Fast charging statistics"
+
+rc.fc <- evs %>% 
+  mutate(has.rc = case_when(RapidCharge == "Yes" ~ 1,
+                            RapidCharge == "No" ~ 0,
+                            TRUE ~ NA)) %>% 
+  summarize(`% of cars with rapid charging` = 
+              round(mean(has.rc, na.rm=TRUE)*100, digits=2),
+            `If has rapid charging, mean fast charge rate (kph)` = 
+              round(mean(as.numeric(FastCharge_KmH[has.rc==1]), 
+                         na.rm=TRUE), 
+                    digits=2))
+
+kable(rc.fc) %>% 
+  kable_styling()
+```
+
+> There are many ways to make this table, this is just one example.
+
+### Task 1d: Identify the car with the highest top speed
+
+Identify which car in the dataset has the highest top speed (`TopSpeed_KmH`). Report the car's name, brand, and top speed.
+
+```{r}
+#| label: q1d
+#| tbl-cap: "Car with the higest top speed"
+
+fastest.car <- evs %>% 
+  filter(TopSpeed_KmH == max(TopSpeed_KmH)) %>% 
+  mutate(`Top speed (kph)` = TopSpeed_KmH) %>% 
+  select(Model, Brand, `Top speed (kph)`) 
+
+kable(fastest.car) %>% 
+  kable_styling()
+```
+
+> There are many ways to make this table, this is just one example.
+
+### Task 1e: Explore the distribution of top speed by power train
+
+Investigate how top speed varies depending on power train type (`PowerTrain`) by creating an appropriate plot. Discuss any patterns or trends you observe, and provide an explanation for these trends.
+
+```{r}
+#| label: q1e
+#| fig-cap: "Top speed variation by power train"
+
+ggplot(evs, aes(x=TopSpeed_KmH, y=PowerTrain, fill=PowerTrain)) +
+  geom_boxplot() +
+  labs(x="Top speed (kph)", y="Power train") +
+  guides(fill="none")
+```
+
+> It seems that all wheel drive (AWD) electric cars have the largest spread around top speed and have the highest average top speed. There exists one outlier (the Tesla Roadster previously identified). Front wheel drive (FWD) cars have the lowest amount of spread and also the lowest average top speed, while rear wheel drive (RWD) is in the middle of both. One possibility is that FWD cars are some kind of basic or budget car type, RWD cars are a little more powerful, and the most powerful/fastest car type are all wheel drive. This makes some sense as it is probably more expensive to power four wheels instead of only two.
+
+## 2. Relationship between two variables (15 Points)
+
+Understanding the relationship between key performance metrics like speed and acceleration can reveal important insights about what makes certain vehicles stand out. Your employer will be interested in knowing how these factors interact and whether there are trade-offs to be aware of.
+
+### Task 2a: Calculate the correlation between top speed and acceleration
+
+Calculate the correlation coefficient between top speed (`TopSpeed_KmH`) and acceleration (`AccelSec`). Explain what the correlation coefficient tells you about the relationship between these two variables.
+
+```{r}
+#| label: q2a
+#| tbl-cap: "Correlation between top speed and acceleration"
+
+cor.table.data <- evs %>% 
+  mutate(`Top speed (kph)` = TopSpeed_KmH,
+         `Acceleration (seconds to 100 kph)` = AccelSec) %>% 
+  select(`Top speed (kph)`, `Acceleration (seconds to 100 kph)`)
+
+cor.table.data %>% 
+  correlate() %>%
+  stretch() %>% 
+  filter(x=="Top speed (kph)" & y=="Acceleration (seconds to 100 kph)") %>% 
+  fashion() %>% 
+  kable() %>% 
+  kable_styling()
+```
+
+> There are many ways to make this table, this is just one example. The correlation coefficient (assuming the conditions for correlation are met) indicates that there is quite a strong relationship between top speed and acceleration. This result makes sense as usually cars with powerful engines are capable of both fast acceleration and have high top speeds.
+
+### Task 2b: Create a scatterplot of top speed vs. acceleration
+
+Create a scatterplot to visualize the relationship between top speed and acceleration. Identify any potential outliers and discuss their impact on the relationship.
+
+```{r}
+#| label: q2b
+#| fig-cap: "Scatterplot of top speed vs. acceleration"
+
+ev.outliers.variable <- evs %>% 
+  mutate(outlier.ts.acel = factor(case_when(TopSpeed_KmH > 300 | AccelSec > 20 ~ 1,
+                                            TRUE ~ 0),
+                                  levels=c(0 ,1),
+                                  labels=c("No", "Yes")))
+
+ev.acel.outliers.only <- ev.outliers.variable %>% 
+  filter(AccelSec > 20)
+
+ev.ts.outliers.only <- ev.outliers.variable %>% 
+  filter(TopSpeed_KmH > 300)
+
+ts.acel.plot <- ggplot(ev.outliers.variable, aes(x=AccelSec, y=TopSpeed_KmH, label=full.name)) +
+  labs(x="Acceleration (seconds to 100 kph)" , y="Top speed (kph)")
+
+ts.acel.plot + 
+  geom_point(aes(color=outlier.ts.acel)) + 
+  geom_text(data=ev.acel.outliers.only, nudge_y = 12, nudge_x = -2.5) +
+  geom_text(data=ev.ts.outliers.only, hjust = 0, nudge_x = 0.25) +
+  scale_color_manual(values=c("black", "red")) +
+  guides(color="none") 
+```
+
+> Need to identify the specific model of the cars that are outliers, either by directly labeling the plot or by some other means. In this case, the outliers may have high leverage (since they are far from the mean of `x`) but it is unclear how much influence they have. Overall, the relationship (excluding the outliers) is negative and relatively straight, as we might expect from the correlation calculation.
+
+### Task 2c: Add a LOESS smoother to the scatterplot
+
+Improve the scatterplot by adding a LOESS smoother. Add a confidence interval to the LOESS smoother and explain why the confidence interval is larger at slower levels of acceleration.
+
+```{r}
+#| label: q2c
+#| fig-cap: "Smoothed relationship between top speed and acceleration"
+#| fig-subcap: 
+#|     - "Without confidence interval"
+#|     - "With confidence interval"
+
+ts.acel.plot + 
+  geom_point() +
+  geom_smooth(se=FALSE)
+
+ts.acel.plot + 
+  geom_point() +
+  geom_smooth()
+```
+
+> Any reasonable guess as to the confidence interval can be offered here. 
+
+### Task 2d: Build a bivariate regression model
+
+Create a bivariate regression model where top speed is predicted by acceleration. Interpret the model's coefficients and discuss what they tell you about the relationship between these two variables.
+
+```{r}
+#| label: q2d
+#| tbl-cap: "Modeling top speed with acceleration"
+
+ts.acel.model <- lm(data=evs, TopSpeed_KmH ~ AccelSec)
+
+models = list(
+  "Top speed model" = ts.acel.model 
+)
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("AccelSec" = "Acceleration (seconds to 100 kph)"),
+             gof_map = gof.hw2)
+```
+
+> There are many ways to make this table, this is just one example. First, the intercept indicate that when the acceleration ability is zero, the top speed is 263 kp/h, which is nonsense. The coefficient on acceleration indicates that for each additional second it takes to reach 100 kph from 0, the predicted top speed of the car decreases by 11 kph. To me, this indicates a significant effect, as going from 10 seconds to 100 kph to 5 seconds decreases the expected top speed by over 55 kph. Generally speaking, then, the faster a car accelerates (the less time it takes to reach 100 kph) the higher the top speed, according to the model. This result makes sense - sports car type cars generally want to go quickly and fast.
+
+## 3. Relationship between multiple variables (15 Points)
+
+Range anxiety is a common concern among potential EV buyers. Your employer will want to know how factors like efficiency and power train type affect the range of a vehicle, as well as how price plays into this equation.
+
+### Task 3a: Model range as a function of efficiency
+
+Create a regression model that predicts the `Range_Km` of an EV based on its efficiency (`Efficiency_WhKm`). Report the model's coefficients and interpret them.
+
+```{r}
+#| label: q3a
+#| tbl-cap: "Modeling range"
+
+rg.eff.model <- lm(data=evs, Range_Km ~ Efficiency_WhKm)
+
+models = list(
+  "Range model" = rg.eff.model 
+)
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("Efficiency_WhKm" = "Efficiency (wh per km)"),
+             gof_map = gof.hw2)
+```
+
+> There are many ways to make this table, this is just one example. First, the intercept indicate that when efficiency is zero, the range is 86.3 km, which is nonsense. The coefficient on efficiency indicates that for each additional watt hour per kilometer of efficiency, the predicted range of the car increases by 1.3 kilometers. To me, this is a bit of a strange result, because normally lower numbers are better for efficiency. We would suspect that the more efficient a car, the longer the range so the two should be negatively related. The result here might be a consequence of the fact that larger cars can hold larger batteries, permitting greater range.
+
+### Task 3b: Add PowerTrain to the model
+
+Extend the previous model by adding `PowerTrain` as an additional predictor. Describe how the inclusion of `PowerTrain` changes the model's coefficients and interpretation.
+
+```{r}
+#| label: q3b
+#| tbl-cap: "Modeling range"
+
+rg.eff.power.model <- lm(data=evs, Range_Km ~ Efficiency_WhKm + PowerTrain)
+
+models = list(
+  "(1)" = rg.eff.model,
+  "(2)" = rg.eff.power.model
+)
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("Efficiency_WhKm" = "Efficiency (wh per km)",
+                             "PowerTrainFWD" = "Powertrain: FWD",
+                             "PowerTrainRWD" = "Powertrain: RWD"),
+             gof_map = gof.hw2,
+             notes=list("Reference category for Powertrain: AWD")) %>% 
+   add_header_above(c(" " = 1, "Range model" = 2))
+```
+
+> There are many ways to make this table, this is just one example. We can see by adding the `Powertrain` variable that the efficiency variable subsantially decreases in magnitude. In this case, the intercept is interpreted as the case when efficiency is zero and the car has a powertrain type of `AWD`. Having any other type of powertrain results in a very large reduction in range, from -120 to -150. In the previous section, we saw that `AWD` cars had much higher average top speed. So these cars may be more expensive/larger/powerful, accounting for their greater range.
+
+### Task 3c: Visualize range vs. efficiency by PowerTrain
+
+Create a scatterplot to visualize the relationship between range and efficiency, with the points colored according to `PowerTrain.` Discuss whether this plot changes your interpretation of the model.
+
+```{r}
+#| label: q3c
+#| fig-cap: "Efficiency as a function of range, colored by powertrain"
+
+ggplot(evs, aes(x=Efficiency_WhKm, y=Range_Km, color=PowerTrain)) +
+  geom_point() +
+  labs(x="Efficiency (wh per km)", y="Top speed (kph)") + 
+  guides(color=guide_legend(title="Powertrain"))
+```
+
+> Plot must have range on y axis, efficiency on x axis. Overall, the plot helps confirm some of the conjecture offered in the previous answer. RWD and FWD do not seem to have any major differences, mostly clustering the same area of the plot. AWD type cars seem to be of a different pattern, located largely in the upper right hand quadrant of the plot. There are several outliers of the type AWD. Overall, it seems AWD cars are somehow importantly different in overall design or construction compared FWD or RWD cars.
+
+### Task 3d: Add price to the model
+
+Extend the model by adding `PriceEuro` as another independent variable. Compare this model to the earlier models, and discuss any changes in the coefficients and interpretation.
+
+```{r}
+#| label: q3d
+#| tbl-cap: "Modeling range"
+
+rg.eff.power.price.model <- lm(data=evs, Range_Km ~ Efficiency_WhKm + PowerTrain + PriceEuro)
+
+models = list(
+  "(1)" = rg.eff.model,
+  "(2)" = rg.eff.power.model,
+  "(3)" = rg.eff.power.price.model
+)
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("Efficiency_WhKm" = "Efficiency (wh per km)",
+                             "PowerTrainFWD" = "Powertrain: FWD",
+                             "PowerTrainRWD" = "Powertrain: RWD",
+                             "PriceEuro" = "Price (euros)"),
+             gof_map = gof.hw2,
+             notes=list("Reference category for Powertrain: AWD")) %>% 
+   add_header_above(c(" " = 1, "Range model" = 3))
+```
+
+> By adding price to the model, we can see it significantly decreases the size of the coefficients of powertrain on efficiency. The very small coefficient on efficiency is now negative but either way, the variable only has a very small impact on range. For price, every 1000 Euro increase in price increases predicted range by 2 kilometers. Overall, this effect seems medium. A 20000 Euro difference in price changes predicted range by 40 kilometers, which is not insignificant but there appear to be other factors that must also matter.
+
+## 4. Model fit (10 Points)
+
+A good model fit is crucial for making reliable predictions and understanding the underlying relationships in the data. Your employer will want to know which models are most reliable for identifying key performance metrics.
+
+#### Task 4a: Compare model fit using R-squared
+
+Compare the fit of the models from Question 3 using R-squared values. Which model fits the data best, and why?
+
+```{r}
+#| label: q4a
+#| tbl-cap: "Modeling range"
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("Efficiency_WhKm" = "Efficiency (wh per km)",
+                             "PowerTrainFWD" = "Powertrain: FWD",
+                             "PowerTrainRWD" = "Powertrain: RWD",
+                             "PriceEuro" = "Price (euros)"),
+             gof_map = gof.hw2,
+             notes=list("Reference category for Powertrain: AWD")) %>% 
+   add_header_above(c(" " = 1, "Range model" = 3))
+```
+
+> If we examine the models from Task 3d again, we can see that the model with only efficiency explains a relatively small percentage of total variance in range - 10%. The model significantly improves with the addition of the variable powertrain and improves even more with the addition of price. However, given that we have not fully checked the conditions for regression, some caution should be used in relying solely on the r squared.
+
+#### Task 4b: Create a residuals histogram
+
+Create a histogram of residuals plot for the best-fitting model. Discuss any patterns you observe in the residuals and what they indicate about the model's fit.
+
+```{r}
+#| label: q4b
+#| fig-cap: "Histogram of residuals of model (3)"
+
+rg.eff.power.price.model.aug <- augment(rg.eff.power.price.model)
+
+resid.hist <- ggplot(rg.eff.power.price.model.aug, aes(x=.resid)) +
+  geom_histogram(fill="blue", color="black") +
+  geom_vline(xintercept=0, color="red", linewidth=0.75, linetype=2) +
+  labs(x="Residuals", y="Count")
+```
+
+> As a reminder, the main regression condition that can be assessed with a histogram of the residuals is whether they are unimodal and symmetric. In this case, they are somewhat unimodal and symmetric but with a few outliers. I would classify this as a not too bad histogram of residuals but some attention ought to be paid to the outliers. We  can also see that the average miss amount of our prediction (i.e. residual size) is around 100 km, which I would classify as a relatively large average miss.
+
+### Task 4c: Make a partial regression plot
+
+Create partial regression plots for the model in Task 3d, looking at the relationships between `Range_Km` and its (quantitative) predictors, `Efficiency_WhKm` and `PriceEuro`. Interpret the plot.
+
+```{r}
+#| label: q4c
+#| fig-cap: "Partial residual plots of model (3)"
+#| fig-subcap: 
+#|    - "Efficiency (wh per km)" 
+#|    - "Price (euros)"
+
+pr.eff.plot <- visreg(rg.eff.power.price.model, "Efficiency_WhKm", 
+       xlab="Efficiency (wh per km)", ylab="Range (km)", gg=TRUE) 
+
+pr.price.plot <- visreg(rg.eff.power.price.model, "PriceEuro", 
+       xlab="Price (euros)", ylab="Range (km)", gg=TRUE)
+
+pr.eff.plot
+pr.price.plot
+```
+
+> We can see in the first plot regarding efficiency, that, after controlling for the other variables in the model, there is little relationship between efficiency and range. In the second plot, after controlling for the other variables, we can see a strong relationship between price and range. However, it is worth noting that some of the outliers appear to have high leverage and possibly high influence. Most of the data is at lower values of price and the relationship overall appears to be logarithmic. We should consider using log(price) to improve the model.
+
+## 5. Model assumptions (10 Points)
+
+It's important to ensure that the models you use are based on sound statistical assumptions. Your employer will want to know whether the conclusions drawn from the models are reliable.
+
+### Task 5a: Evaluate model assumptions
+
+Evaluate whether the best-fitting model from Question 4 satisfies the regression assumptions outlined in Chapter 9.3. You can rely on the plots you've already made and create new ones. Provide a thorough explanation for each assumption and whether it holds in this model.
+
+**Linearity Assumption**
+
+> We first want to check the variables against the predictor variable individually.
+
+```{r}
+#| label: q5alinearitych1
+#| fig-cap: "Bivariate linearity check"
+#| fig-subcap: 
+#|     - "Efficiency vs Range"
+#|     - "Price vs Range"
+
+ggplot(evs, aes(x=Efficiency_WhKm, y=Range_Km)) +
+  geom_point() +
+  geom_smooth(method="lm", se=FALSE) +
+  labs(x="Efficiency (wh per km)", y="Range (km)")
+
+ggplot(evs, aes(x=PriceEuro, y=Range_Km)) +
+  geom_point() +
+  geom_smooth(method="lm", se=FALSE) +
+  labs(x="Price (euros)", y="Range (km)")
+```
+
+> We can see here that efficience is reasonably linear against range, while price appears to be logarithmicly related to range. Next we should examine the residual vs. predicted data.
+
+```{r}
+#| label: q5alinearitych2
+#| fig-cap: "Residual vs predicted for model (3)"
+
+resid.plot <- ggplot(rg.eff.power.price.model.aug, aes(x=.fitted, y=.resid)) +
+  geom_point() +
+  geom_hline(yintercept=0, color="red") +
+  labs(x="Predicted (fitted) values", y="Residuals")
+
+resid.plot
+```
+
+> In this case, we can again see some evidence of linearity problems as evidenced by some of the curved pattern in the middle range of predicted values. Finally, we can re-examine the partial residual plots.
+
+```{r}
+#| label: q5alinearitych3
+#| fig-cap: "Partial residual plots of model (3)"
+#| fig-subcap: 
+#|    - "Efficiency (wh per km)" 
+#|    - "Price (euros)"
+
+pr.eff.plot
+pr.price.plot
+```
+
+> Again, the plot of price vs. range suggests that we should probably be using the values of log(price) in the regression. Overall, I would suggest that this regression fails the linearity condition.
+
+**Equal Variance Assumption**
+
+```{r}
+#| label: q5aevch
+#| fig-cap: "Residual vs predicted for model (3)"
+
+resid.plot
+```
+
+> If we re-examine the residual plot, we can see that the variance in the residuals is relatively constant across the range of predicted values. There are a few outliers that do not follow this pattern but I think we can say this assumption has been satisfied.
+
+**Check the Residuals**
+
+```{r}
+#| label: q5aresidch
+#| fig-cap: "Histogram of residuals of model (3)"
+
+resid.hist
+```
+
+> As mentioned before, the histogram of the residuals appears to be somewhat unimodal and symmetric though with some real outliers. I would classify this condition as being mostly met.
+
+## 6. Outliers and lurking variables (10 Points)
+
+Outliers can skew results and lead to misleading conclusions, while lurking variables can create spurious relationships. Your employer will want to ensure that the analysis is robust to these issues.
+
+### Task 6a: Identify and remove outliers
+
+Identify any outliers in the dataset that might be influencing your regression models. Remove these outliers and rerun the regression analysis. Discuss how the results change and identify which outliers were particularly influential.
+
+```{r}
+#| label: q6aresidoutlier
+#| tbl-cap: "Large residual outliers"
+
+rg.eff.power.price.model.aug %>% 
+  arrange(desc(abs(.resid))) %>%
+  slice_head(n=10) %>% 
+  left_join(evs) %>% 
+  mutate(`Name` = full.name,
+         `Range (km)` = Range_Km,
+         `Efficiency (wh per km)` = Efficiency_WhKm,
+         `Powertrain` = PowerTrain,
+         `Price (euro)` = PriceEuro,
+         `Residual` = .resid) %>% 
+  select(`Name`, `Range (km)`, `Efficiency (wh per km)`,
+         `Powertrain`, `Price (euro)`, `Residual`) %>% 
+  kable() %>% 
+  kable_styling()
+
+```
+
+> There are several ways to identify outliers. The first is to check to see which observations have the largest residuals. From this table, we can see the largest residual belongs to the Tesla Cybertruck. After doing some research online, it seems that the Cybertruck can only achieve this range with an optional range extender that costs an extra ~$15000 and uses up cargo space in the vehicle. It seems reasonable to exclude the Cybertruck as a mistake in this case. The Tesla Roadster will have the range indicated and is not a mistake but the car is a niche sports car. If your company does not sell these types of cars it might be reasonable to exclude the Roadster. One could make a similar argument for the Porche models though these cars are starting to enter the realm of cars that a normal person can buy, so therefore it may be better to include them.
+
+```{r}
+#| label: q6apartialregoutlier
+#| fig-cap: "Partial residual plots with outliers noted"
+#| fig-subcap: 
+#|    - "Efficiency (wh per km)" 
+#|    - "Price (euros)"
+
+pr.eff.plot
+pr.price.plot
+```
+
+> Unfortunately there are no easy ways to visually label outliers in a partial residual plot, but we can again see that, based on the `x` value of the plotted points, the Cybertruck and Roadster are notable outliers in the efficiency and price partial residual plots as well.
+
+```{r}
+#| lable: q6aoutlierremove
+#| echo: true
+
+evs.nooutliers <- evs %>% 
+  filter(full.name!="Tesla Cybertruck Tri Motor" & full.name!="Tesla Roadster ")
+```
+
+```{r}
+#| label: q6aoutliermodel
+#| tbl-cap: "Modeling range with outliers removed"
+
+rg.eff.model.nooutlier <- lm(data=evs.nooutliers, Range_Km ~ Efficiency_WhKm)
+rg.eff.power.model.nooutlier <- lm(data=evs.nooutliers, Range_Km ~ Efficiency_WhKm + PowerTrain)
+rg.eff.power.price.model.nooutlier <- lm(data=evs.nooutliers, Range_Km ~ Efficiency_WhKm + PowerTrain + PriceEuro)
+
+models = list(
+  "(1)" = rg.eff.model,
+  "(2)" = rg.eff.power.model,
+  "(3)" = rg.eff.power.price.model,
+  "(4)" = rg.eff.model.nooutlier,
+  "(5)" = rg.eff.power.model.nooutlier,
+  "(6)" = rg.eff.power.price.model.nooutlier
+)
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("Efficiency_WhKm" = "Efficiency (wh per km)",
+                             "PowerTrainFWD" = "Powertrain: FWD",
+                             "PowerTrainRWD" = "Powertrain: RWD",
+                             "PriceEuro" = "Price (euros)"),
+             gof_map = gof.hw2,
+             notes=list("Reference category for Powertrain: AWD")) %>% 
+   add_header_above(c(" " = 1, "Full dataset" = 3, "Outliers removed" = 3))
+```
+
+> Overall, removing the outliers did produce some changes in the models. It increased the importance of powertrain in the model with all three terms and decreased the importance of price. It also increased the importance of efficiency and the sign of the coefficient is in the direction we initially expected - more efficient cars have a longer predicted range. Note that the R squared of the full model actually decreased with the removal of the outliers - it seems possible that the regression line was being "pulled" toward the outliers and this created the impression of greater model quality than actually existed.
+
+### Task 6b: Consider lurking variables
+
+Consider any variables not included in the dataset that you think might be missing from the model. Explain your reasoning for why these variables could be important and how they might affect the model.
+
+> Any reasonable set of variables is ok here as long as you provide a quality justification for why they might improve the prediction of range.
+
+## 7. Prediction (10 Points)
+
+Your employer may want to predict the performance of their vehicles under different scenarios. Being able to make accurate predictions is key to making informed strategic decisions.
+
+### Task 7a: Predict the range of a specific car
+
+Using the model from Task 3d, predict the range of an electric car with the following characteristics:
+
+- `Efficiency_WhKm`: 200 Wh/km
+- `PowerTrain`: FWD
+- `PriceEuro`: 50,000 Euros
+
+```{r}
+#| label: q7a
+#| echo: TRUE
+
+# Intercept
+intercept <- rg.eff.power.price.model$coefficients[1]
+# Efficiency coefficient
+eff.coef <- rg.eff.power.price.model$coefficients[2]
+# Powertrain FWD coefficient
+fwd.coef <- rg.eff.power.price.model$coefficients[3]
+# Price coefficient
+price.coef <- rg.eff.power.price.model$coefficients[5]
+
+pred.y <- intercept + eff.coef*200 + fwd.coef*1 + price.coef*50000 
+
+unname(round(pred.y, digits=2))
+```
+
+> Other ways of calculating this are ok too as long as work is shown.
+
+### Task 7b: Visualize predicted values
+
+Create a plot of the predicted range values for an electric car with an `Efficiency_WhKm` of 200 Wh/km and a `PowerTrain` of FWD, while varying the price across its `Range_Km`. Interpret the plot.
+
+```{r}
+#| label: q7b
+#| fig-cap: "Visualized predicted values of range"
+
+fixed.int <- intercept + eff.coef*200 + fwd.coef*1
+
+ggplot(evs, aes(x=PriceEuro, y=Range_Km)) +
+  geom_point(alpha=0) +
+  geom_abline(slope=price.coef, 
+              intercept = fixed.int,
+              color="red",
+              linewidth=1,
+              linetype=1) +
+  ylim(200, 800) +
+  labs(x="Price (euros)", y="Range (km)")
+```
+
+> There are a number of R packages that can help you create this plot but you can easily create it yourself by adding to the intercept the value of the efficiency coefficient * 200 and the coefficient of FWD*1. We then set that result as the new intercept. Overall, we can see that moving through the range of price produces a relatively large change in predicted range, meaning that the variable is substantively signficant in the model.
+
+## 8. Re-expression (5 Points)
+
+Sometimes, transforming variables can improve model fit and make relationships clearer. Your employer wants you to try a log transformation on the price variable to see if it improves the model.
+
+### Task 8a: Log-transform the price variable
+
+Re-express the model from Task 3d by log-transforming the `PriceEuro` variable. Compare the new model to the original model in terms of both the coefficients and model fit. Explain the logic behind this particular transformation and discuss which model you prefer and why.
+
+```{r}
+#| label: q8amodel
+#| tbl-cap: "Modeling range with log price"
+
+rg.eff.power.logprice.model <- lm(data=evs, Range_Km ~ Efficiency_WhKm + PowerTrain + log.price)
+
+models = list(
+  "(1)" = rg.eff.power.price.model,
+  "(2)" = rg.eff.power.logprice.model
+)
+
+modelsummary(models,
+             gof_omit = "AIC|BIC|RMSE|R2 Adj.|Log.Lik.",
+             coef_rename = c("Efficiency_WhKm" = "Efficiency (wh per km)",
+                             "PowerTrainFWD" = "Powertrain: FWD",
+                             "PowerTrainRWD" = "Powertrain: RWD",
+                             "PriceEuro" = "Price (euros)",
+                             "log.price" = "Log price (euros)"),
+             gof_map = gof.hw2,
+             notes=list("Reference category for Powertrain: AWD")) %>% 
+   add_header_above(c(" " = 1, "Range model" = 2))
+
+rg.eff.power.logprice.model.aug <- augment(rg.eff.power.logprice.model)
+```
+
+> The log price coefficient appears to also be a meaningful coefficient for predicting range. Every 1% increase in price increases range by about 2 km. From this table, we can also note that the standard deviation of the residuals (a type of measure of the average "miss" or residual size) decreased slightly and the R squared increased slightly. Log transforming price decreased the importance of the powertrain coefficients but increased the size of the efficiency coefficients.
+
+```{r}
+#| label: q8residch
+#| fig-cap: "Residual plots of model with price compared to model with log(price)"
+
+resid.plot <- ggplot(rg.eff.power.price.model.aug, aes(x=.fitted, y=.resid)) +
+  geom_point() +
+  geom_hline(yintercept=0, color="red") +
+  labs(x="Predicted (fitted) values", y="Residuals")
+
+resid.plot.lp <- ggplot(rg.eff.power.logprice.model.aug, aes(x=.fitted, y=.resid)) +
+  geom_point() +
+  geom_hline(yintercept=0, color="red") +
+  labs(x="Predicted (fitted) values", y="Residuals")
+
+grid.arrange(resid.plot, resid.plot.lp, nrow=2)
+```
+
+> We can now see that the residual non-linearity identified in Question 4 has largely been resolved by taking the log of price. 
+
+```{r}
+#| label: q8residhistch
+#| fig-cap: "Histogram of residuals of model with price compared to model with log(price)"
+
+resid.hist.lp <- ggplot(rg.eff.power.logprice.model.aug, aes(x=.resid)) +
+  geom_histogram(fill="blue", color="black") +
+  geom_vline(xintercept=0, color="red", linewidth=0.75, linetype=2) +
+  labs(x="Residuals", y="Count")
+
+grid.arrange(resid.hist, resid.hist.lp, nrow=2)
+```
+
+> On the other hand, taking the log of price only marginally improves the symmetry of the residuals histogram.
+
+```{r}
+#| label: q8partialregch
+#| fig-cap: "Partial residual plots of model with price compared to model with log(price)"
+
+pr.log.price.plot <- visreg(rg.eff.power.logprice.model, "log.price", 
+       xlab="Price (euros)", ylab="Range (km)", gg=TRUE)
+
+grid.arrange(pr.price.plot, pr.log.price.plot, nrow=2)
+```
+
+> The partial residual plot most clearly indicates how the model fit has improved; the relationship with price is much more obviously linearized as a a result of taking the log of price. 
+
+> Overall, it's clear that the model with log price is superior on most dimensions, though it is  harder to interpret the coefficient without experience in thinking in log terms.
+
+## 9. Independent analysis (15 Points)
+
+##### Task 9a: Research and add Chinese EVs to the dataset
+
+The dataset is largely missing EVs from the top Chinese carmakers. Do some research and select five Chinese EVs of your choice. Manually add their `Range_Km`, `Efficiency_WhKm`, `PowerTrain`, and `PriceEuro` to the dataset. You can leave the other variables as NA.
+
+##### Task 9b: Analyze the Chinese EVs
+
+Compare the performance of the Chinese EVs you added to the existing cars in the dataset. Repeat some of the analyses from the previous questions (your choice) and discuss whether the results change after including the Chinese EVs.
+
+> Answers will vary but should be in line with the level of analysis of the previous questions.
