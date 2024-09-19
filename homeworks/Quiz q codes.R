@@ -58,3 +58,39 @@ ggplot(temp.reg.aug, aes(x=.fitted, y=.resid)) +
   geom_point() +
   geom_hline(yintercept=0) +
   labs(x="Fitted", y="Residual", title="Residual plot", subtitle="Temperature vs. wind speed")
+
+# Quiz 2.4
+
+library(tidyverse)
+library(modelsummary)
+
+boats <- Boats_Cleaned_dataset %>% 
+  mutate(condition)
+
+#boats.sample <- boats %>% 
+#  slice_sample(n=100)
+
+boats.sample <- boats.sample %>% 
+  mutate(condition = as.factor(condition))
+
+model <- lm(data=boats.sample, price ~ length_ft + totalHP)
+
+models <- list(
+  "Boat price model" = model
+)
+
+summary(model)
+
+model <- lm(data=boats.sample, price ~ length_ft + totalHP + condition)
+
+library(broom)
+
+mod.aug <- augment(model) 
+
+options(scipen=999)
+
+
+ggplot(mod.aug, aes(.resid)) +
+  geom_histogram() +
+  geom_vline(xintercept=0) +
+  labs(x="Residual", title="Histogram of residuals")
