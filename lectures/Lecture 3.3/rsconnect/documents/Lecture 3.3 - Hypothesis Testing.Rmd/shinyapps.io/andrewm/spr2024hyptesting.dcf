@@ -1,0 +1,12 @@
+name: spr2024hyptesting
+title: spr2024hyptesting
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11780914
+bundleId: 8503558
+url: https://andrewm.shinyapps.io/spr2024hyptesting/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

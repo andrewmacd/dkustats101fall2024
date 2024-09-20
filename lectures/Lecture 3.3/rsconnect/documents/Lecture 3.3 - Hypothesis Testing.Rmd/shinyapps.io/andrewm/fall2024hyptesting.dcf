@@ -1,0 +1,12 @@
+name: fall2024hyptesting
+title: fall2024hyptesting
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12774025
+bundleId: 9125387
+url: https://andrewm.shinyapps.io/fall2024hyptesting/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

@@ -5,7 +5,7 @@ account: andrewm
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 12772501
-bundleId: 9124082
+bundleId: 9125419
 url: https://andrewm.shinyapps.io/fall2024confintmean/
 version: 1
 asMultiple: FALSE

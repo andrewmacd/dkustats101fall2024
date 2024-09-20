@@ -302,9 +302,9 @@ qt(0.975,df=19)
 
 -   $\bar{y}\pm t^*_{19} \times SE(\bar{y})$
 
--   $`r round(mean(sample20), digits=0)`\pm `r round(qt(0.975,df=19), digits=2)` \times SE(\frac{`r round(sd(sample20), digits=0)`}{\sqrt{(20-1)}})$
+-   $`r round(mean(sample20), digits=0)`\pm `r round(qt(0.975,df=19), digits=2)` \times SE(\frac{`r round(sd(sample20), digits=0)`}{\sqrt{(20)}})$
 
--   $`r round(mean(sample20), digits=0)`\pm `r round(qt(0.975,df=19), digits=2)` \times `r round((sd(sample20) / sqrt(19)), digits=2)`$
+-   $`r round(mean(sample20), digits=0)`\pm `r round(qt(0.975,df=19), digits=2)` \times `r round((sd(sample20) / sqrt(20)), digits=2)`$
 
 -   $[`r lower.bound` - `r upper.bound`]$
 
