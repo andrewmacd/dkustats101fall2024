@@ -1,8 +1,8 @@
 ---
 title: "Lecture 3.2 - Confidence Intervals - Means"
-subtitle: "DKU Stats 101 Spring 2024"
+subtitle: "DKU Stats 101 Fall 2024"
 author: "Professor MacDonald"
-date: "4/15/2024"
+date: "9/20/2024"
 output: 
   learnr::tutorial:
     toc_depth: 2

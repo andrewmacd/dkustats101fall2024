@@ -1,0 +1,12 @@
+name: fall2024confintmean
+title: fall2024confintmean
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12772501
+bundleId: 9124082
+url: https://andrewm.shinyapps.io/fall2024confintmean/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

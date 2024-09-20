@@ -207,9 +207,9 @@ Topics covered:
 
 -   Final thoughts on confidence intervals
 
--   Lecture webpage: [Lecture 3.2]
+-   Lecture webpage: [Lecture 3.2](https://andrewm.shinyapps.io/fall2024confintmean)
 
--   Lecture activity: [Lecture 3.2 activity]
+-   No lecture activity
 
 ## Lecture 3.3: Hypothesis testing (Saturday, September 21)
 
