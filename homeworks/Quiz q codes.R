@@ -59,6 +59,7 @@ ggplot(temp.reg.aug, aes(x=.fitted, y=.resid)) +
   geom_hline(yintercept=0) +
   labs(x="Fitted", y="Residual", title="Residual plot", subtitle="Temperature vs. wind speed")
 
+<<<<<<< Updated upstream
 # Quiz 2.4
 
 library(tidyverse)
@@ -94,3 +95,7 @@ ggplot(mod.aug, aes(.resid)) +
   geom_histogram() +
   geom_vline(xintercept=0) +
   labs(x="Residual", title="Histogram of residuals")
+=======
+# Quiz 3.1
+
+>>>>>>> Stashed changes
