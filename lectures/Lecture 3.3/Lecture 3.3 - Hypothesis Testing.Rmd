@@ -64,8 +64,8 @@ survey.view.frac <- quantile(view.dist,probs=c(0.85))
 survey.view.z <- (survey.view.frac - mean(kc.house$view))/sqrt(view.frac*(1-view.frac)/100)
 survey.view.p <- pnorm(survey.view.z)
   
-p <- 13
-q <- 11
+p <- 11
+q <- 15
 p.frac <- p/(p+q)
 q.frac <- q/(p+q)
 p.null <- 0.656

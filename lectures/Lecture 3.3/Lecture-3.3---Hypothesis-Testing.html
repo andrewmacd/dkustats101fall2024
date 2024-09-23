@@ -407,7 +407,7 @@ data-pipe="|&gt;">
 <ul>
 <li><p>Our data claims that 65.6% of students don’t eat
 breakfast.</p></li>
-<li><p>In a survey of 24 students at DKU, 13 ate breakfast.</p></li>
+<li><p>In a survey of 26 students at DKU, 11 ate breakfast.</p></li>
 <li><p>Is there evidence that breakfast rate is below 65.6%?</p>
 <ul>
 <li><span class="math inline">\(H_0: p = 0.656\)</span></li>
@@ -459,14 +459,14 @@ data-pipe="|&gt;">
 class="section level3">
 <h3>Step 2b: checking conditions - eating breakfast</h3>
 <ul>
-<li><p>Randomization Condition: The 24 students were a random selection
+<li><p>Randomization Condition: The 26 students were a random selection
 of DKU students</p></li>
-<li><p>10% Condition: 24 is fewer than 10% of the total number of all
+<li><p>10% Condition: 26 is fewer than 10% of the total number of all
 students who are of interest.</p></li>
 <li><p>Success/Failure Condition:</p></li>
-<li><p><span class="math inline">\(np_0 = (24)(0.656) = 16 &gt;
+<li><p><span class="math inline">\(np_0 = (26)(0.656) = 17 &gt;
 10\)</span>?</p></li>
-<li><p><span class="math inline">\(nq_0 = (24)(0.344) = 8 &gt;
+<li><p><span class="math inline">\(nq_0 = (26)(0.344) = 9 &gt;
 10\)</span>?</p></li>
 <li><p>The conditions are satisfied. We can use the Normal model and
 perform a 1-Proportion z-Test.</p></li>
@@ -477,20 +477,20 @@ perform a 1-Proportion z-Test.</p></li>
 <ul>
 <li>Claim: 65.6% students eat breakfast.
 <ul>
-<li>13 students in our class ate breakfast.</li>
+<li>11 students in our class ate breakfast.</li>
 </ul></li>
 <li>Find <span class="math inline">\(p\)</span> value
 <ul>
 <li><span
-class="math inline">\(SE(\hat{p})=\sqrt{\frac{0.656\cdot0.344}{24}}\)</span></li>
+class="math inline">\(SE(\hat{p})=\sqrt{\frac{0.656\cdot0.344}{26}}\)</span></li>
 <li><span class="math inline">\(z\)</span> score of difference = <span
-class="math inline">\(\frac{0.542 - 0.656}{0.097} = -1.179\)</span></li>
+class="math inline">\(\frac{0.423 - 0.656}{0.093} = -2.5\)</span></li>
 </ul></li>
 <li>Probability of seeing that large a difference: <span
-class="math inline">\(pnorm(-1.179)\rightarrow\)</span> 23.8% of the
-time we will see a difference from the mean this large or larger
+class="math inline">\(pnorm(-2.5)\rightarrow\)</span> 1.2% of the time
+we will see a difference from the mean this large or larger
 <ul>
-<li>76.2% of the time we will see a difference this small or
+<li>98.8% of the time we will see a difference this small or
 smaller.</li>
 <li>Note: <span class="math inline">\(p\)</span> values usually reported
 as “this large or larger”</li>
@@ -508,11 +508,11 @@ data-pipe="|&gt;">
 <h3>Step 4: conclusion</h3>
 <ul>
 <li><p>Is our sample different than the overall mean of students in the
-US? <span class="math inline">\(p\)</span> value = 0.238</p></li>
+US? <span class="math inline">\(p\)</span> value = 0.012</p></li>
 <li><p>What can be concluded? What does the <span
 class="math inline">\(p\)</span> value mean?</p>
 <ul>
-<li><p><span class="math inline">\(p\)</span> value = 0.238 <span
+<li><p><span class="math inline">\(p\)</span> value = 0.012 <span
 class="math inline">\(\rightarrow\)</span> Fail to Reject/Reject <span
 class="math inline">\(H_0\)</span></p></li>
 <li><p>The survey data does not provide strong evidence that the rate
@@ -711,8 +711,8 @@ survey.view.frac <- quantile(view.dist,probs=c(0.85))
 survey.view.z <- (survey.view.frac - mean(kc.house$view))/sqrt(view.frac*(1-view.frac)/100)
 survey.view.p <- pnorm(survey.view.z)
   
-p <- 13
-q <- 11
+p <- 11
+q <- 15
 p.frac <- p/(p+q)
 q.frac <- q/(p+q)
 p.null <- 0.656
@@ -781,7 +781,7 @@ learnr:::store_exercise_cache(structure(list(label = "picker1", global_setup = s
 "  labs(x=\"Sample proportion of houses that have a view\", y=\"Count\")", 
 "", "survey.view.frac <- quantile(view.dist,probs=c(0.85))", 
 "survey.view.z <- (survey.view.frac - mean(kc.house$view))/sqrt(view.frac*(1-view.frac)/100)", 
-"survey.view.p <- pnorm(survey.view.z)", "  ", "p <- 13", "q <- 11", 
+"survey.view.p <- pnorm(survey.view.z)", "  ", "p <- 11", "q <- 15", 
 "p.frac <- p/(p+q)", "q.frac <- q/(p+q)", "p.null <- 0.656", 
 "q.null <- 1-p.null", "se.p <- sqrt(p.null*q.null/(p+q))", "z.p <- (p.frac - 0.656)/se.p", 
 "p.val.p <- pnorm(z.p)", "", "p.frac <- round(p.frac, digits=3)", 
@@ -848,7 +848,7 @@ learnr:::store_exercise_cache(structure(list(label = "picker2", global_setup = s
 "  labs(x=\"Sample proportion of houses that have a view\", y=\"Count\")", 
 "", "survey.view.frac <- quantile(view.dist,probs=c(0.85))", 
 "survey.view.z <- (survey.view.frac - mean(kc.house$view))/sqrt(view.frac*(1-view.frac)/100)", 
-"survey.view.p <- pnorm(survey.view.z)", "  ", "p <- 13", "q <- 11", 
+"survey.view.p <- pnorm(survey.view.z)", "  ", "p <- 11", "q <- 15", 
 "p.frac <- p/(p+q)", "q.frac <- q/(p+q)", "p.null <- 0.656", 
 "q.null <- 1-p.null", "se.p <- sqrt(p.null*q.null/(p+q))", "z.p <- (p.frac - 0.656)/se.p", 
 "p.val.p <- pnorm(z.p)", "", "p.frac <- round(p.frac, digits=3)", 
@@ -915,7 +915,7 @@ learnr:::store_exercise_cache(structure(list(label = "picker3", global_setup = s
 "  labs(x=\"Sample proportion of houses that have a view\", y=\"Count\")", 
 "", "survey.view.frac <- quantile(view.dist,probs=c(0.85))", 
 "survey.view.z <- (survey.view.frac - mean(kc.house$view))/sqrt(view.frac*(1-view.frac)/100)", 
-"survey.view.p <- pnorm(survey.view.z)", "  ", "p <- 13", "q <- 11", 
+"survey.view.p <- pnorm(survey.view.z)", "  ", "p <- 11", "q <- 15", 
 "p.frac <- p/(p+q)", "q.frac <- q/(p+q)", "p.null <- 0.656", 
 "q.null <- 1-p.null", "se.p <- sqrt(p.null*q.null/(p+q))", "z.p <- (p.frac - 0.656)/se.p", 
 "p.val.p <- pnorm(z.p)", "", "p.frac <- round(p.frac, digits=3)", 
