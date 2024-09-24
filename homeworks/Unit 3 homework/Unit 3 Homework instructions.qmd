@@ -97,10 +97,10 @@ Another type of toy market your company is considering entering is that of puzzl
 
 ### Q3b Price of Ravensburger toys
 
--   If we observe that the price of Ravensburger toys in our sample is greater than the population average at $p$=0.06, should we reject the null hypothesis? Why or why not?
+-   If we observe that the price of Ravensburger toys in our sample is lower than the population average at $p$=0.06, should we reject the null hypothesis? Why or why not?
 -   Write out a specific hypothesis, fully specified with correct notation, as to whether the price of Ravensburger toys is lower than the population at an alpha of 0.05.
 -   Does this test pass the conditions for hypothesis testing?
--   Find the $p$ value for whether the price of Ravensburger toys from the sample is higher than the population average (calculate by hand and show work).
+-   Find the $p$ value for whether the price of Ravensburger toys from the sample is lower than the population average (calculate by hand and show work).
 -   What are some possible lurking variables that might make our conclusion unreliable?
 -   What can you conclude about the price of Ravensburger toys?
 
