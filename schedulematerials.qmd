@@ -253,7 +253,7 @@ Topics covered:
 
 ## Lab 3.1: Bootstrapping (Wednesday, September 25)
 
--   Lab files: [Lab 3.2]
+-   Lab files: [Lab 3.1](labs/Lab 3.1/lab.3.1.zip)
 
 ## Unit 3 homework (due Sunday, October 6 at 23:59:00)
 
