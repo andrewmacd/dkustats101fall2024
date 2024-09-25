@@ -1,0 +1,12 @@
+name: spr2024comparinggroups
+title: spr2024comparinggroups
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 11847403
+bundleId: 8533916
+url: https://andrewm.shinyapps.io/spr2024comparinggroups/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
