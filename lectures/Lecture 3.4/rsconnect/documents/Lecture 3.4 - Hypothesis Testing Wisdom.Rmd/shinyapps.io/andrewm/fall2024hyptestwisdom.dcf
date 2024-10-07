@@ -1,0 +1,12 @@
+name: fall2024hyptestwisdom
+title: fall2024hyptestwisdom
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12791896
+bundleId: 9133593
+url: https://andrewm.shinyapps.io/fall2024hyptestwisdom/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
