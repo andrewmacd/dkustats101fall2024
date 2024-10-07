@@ -318,8 +318,8 @@ Topics covered:
 
 ## Final project - progress check (due Sunday, October 13 at 23:59:00)
 
--   Homework files: [Final project instructions]
+-   Homework files: [Final project instructions](homeworks/Final project/final.project.zip)
 
 ## Final project (due Wednesday, October 16 at 23:59:00)
 
--   Homework files:  [Final project instructions]
+-   Homework files:  [Final project instructions](homeworks/Final project/final.project.zip)
