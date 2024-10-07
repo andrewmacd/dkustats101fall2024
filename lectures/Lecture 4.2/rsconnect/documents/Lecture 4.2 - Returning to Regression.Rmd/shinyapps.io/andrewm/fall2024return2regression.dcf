@@ -1,0 +1,12 @@
+name: fall2024return2regression
+title: fall2024return2regression
+username: andrewm
+account: andrewm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 12948568
+bundleId: 9194534
+url: https://andrewm.shinyapps.io/fall2024return2regression/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
