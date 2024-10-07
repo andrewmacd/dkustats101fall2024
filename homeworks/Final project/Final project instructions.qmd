@@ -1,0 +1,120 @@
+---
+title: "Stats 101 Fall 2024 Final"
+subtitle: "Ski resort report"
+author: "Anonymous"
+date: "today"
+output:
+  html_document:
+    toc: true
+format: 
+  html:
+    embed-resources: true
+    html-math-method: mathml
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# Put your libraries and dataset loading code here.
+```
+
+![](ski_resort.png){width="800"}
+
+# Assignment instructions
+
+Skiing in Europe has become an increasingly popular destination for [Chinese wintersport tourists](https://www.chinadailyhk.com/hk/article/381623). Imagine you have been newly hired by a Chinese development company interested in entering the European ski resort market. The company's plan is to expand into new regions and offer competitive day pass prices to attract a diverse range of visitors, including families, expert skiers, and beginners. While they have not yet made a final decision, they are considering Switzerland as a potential target due to its reputation for having the highest day pass prices in Europe. The company wants to determine whether Switzerland is the best market for their investment and if the premium pricing is justified by the features and facilities available at Swiss resorts compared to other European countries.
+
+Your job is to write a report that should evaluate the current pricing strategy for day passes at ski resorts across different European countries, with a focus on Switzerland. You will use a dataset that includes key information about various ski resorts, such as:
+
+Variables:
+
+- **Resort**: Name of the ski resort.
+- **Country**: Country where the resort is located.
+- **HighestPoint**: The highest elevation point at the resort (in meters).
+- **LowestPoint**: The lowest elevation point at the resort (in meters).
+- **DayPassPriceAdult**: The current adult day pass price (in Euro, dependent variable).
+- **BeginnerSlope**: Total length of beginner slopes (in km).
+- **IntermediateSlope**: Total length of intermediate slopes (in km).
+- **DifficultSlope**: Total length of difficult slopes (in km).
+- **TotalSlope**: Sum of BeginnerSlope, IntermediateSlope, and DifficultSlope (in km).
+- **Snowparks**: Whether the resort has one or more snowparks (Yes/No).
+- **NightSki**: Whether night skiing is available (Yes/No).
+- **SurfaceLifts**: Number of surface lifts available.
+- **ChairLifts**: Number of chair lifts available.
+- **GondolaLifts**: Number of gondola lifts available.
+- **TotalLifts**: Sum of SurfaceLifts, ChairLifts, and GondolaLifts.
+- **LiftCapacity**: Total capacity of all lifts (skiers per hour).
+- **SnowCannons**: Number of snow cannons available.
+
+
+You will need to use all the material we learned in class to:
+
+1.  Think carefully about the sampling frame, what your research expectations and questions are, and how the method of data collection can influence your findings
+2.  Interpret summary data
+3.  Examine important bi-variate relationships
+4.  Construct a high-quality regression model of `DayPassPriceAdult`
+5.  Interpret this model, including ALL relevant diagnostics and $p$ values.
+6.  Propose a plan to the developer of what country to focus on and why
+
+
+## Specific requirements
+
+-   Save this document as a new document (Save As...) and rename it `Ski_resort_report`.
+-   Rename the title of your report to `Ski resort report`
+-   Delete the `Assignment instructions` section and its subsections
+-   Final report should be between 2000 and 3000 words
+    -   Maximum 8 graphs
+    -   Maximum 6 tables
+-   Suggested structure:
+    -   Introduction
+    -   Literature review and hypotheses
+    -   Summary statistics
+    -   Regression interpretation
+    -   Regression diagnostics
+    -   Interpret coefficients
+    -   Proposed plan for the developer
+    -   Conclusion
+
+## Considerations
+
+Here's a **non-exhaustive** list of things you might want to do:
+
+-   Price Determinants: Analyze the relationship between each of the independent variables and the day pass price. Explain which features (e.g., number of slopes, lift capacity, snowparks) are the most influential for pricing.
+
+- Regional Analysis: How does the day pass price vary between Switzerland and other European countries? Is Switzerland’s high pricing justified based on the available facilities?
+
+- Variable Transformations: Consider applying transformations (e.g., log, square root) to some of the variables if they show non-linear relationships. This could improve the accuracy of your regression model.
+
+- Model Analysis and Real-World Implications: Discuss the results of your regression model. How well does it predict day pass pricing? What are the potential real-world factors that might influence pricing beyond those included in your dataset?
+
+- Recommendations: Based on your analysis, provide recommendations for the company regarding market entry. Should they focus on Switzerland, or are there other countries that offer a better value proposition for a new ski resort development? What improvements or new variables should be considered for future data collection to refine the pricing model?
+
+
+## Points of emphasis
+
+-   Do not exclude a variable just because it initially does not meet the regression requirements. However, consider carefully whether some variables are actually highly related to another predictor variable -- do not include collinear variables.
+
+-   You should focus your graphs and tables on that illustrating the most important information for drawing your conclusion. Choose your tables carefully such that they convey the key information needed to arrive at your conclusion. Do not make tables and graphs of irrelevant information or points that do not need discussing.
+
+-   Make sure to also interpret the coefficients. You need to interpret the impact of a one unit change in the coefficients on the response variable. You additionally need to examine whether changes in the predictor variables lead to a substantively large or small change in the predictor variable. One way to do this is examining whether changing the predictor variable from its Q1 to Q3 value leads to a large or small change in the response variable. You may want to make a table with this information.
+
+-   Your report should be a polished, quality product that you would be proud to show your boss/employer. No unnecessary printed code, poorly labeled graphs, or strange looking formatting. Use everything you have learned in this class to make a quality final product! Remember, this document is not a formal essay. Some of the differences between a business report and a formal essay are summarized in the table below and by this [link](https://students.unimelb.edu.au/academic-skills/resources/reading,-writing-and-referencing/reports/business-report-structure):
+
+![](businessreport.png){width="800"}
+
+# Introduction
+
+# Literature review and hypotheses
+
+# Summary statistics
+
+# Regression interpretation
+
+# Regression diagnostics
+
+# Interpret coefficients
+
+# Proposed plan for the developer
+
+# Conclusion

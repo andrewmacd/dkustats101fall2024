@@ -10,7 +10,7 @@ title: "Homework"
 # Unit 2 homework (due Tuesday, September 17 at 23:59:00) 
 
   - [Unit 2 homework](homeworks/Unit 2 homework/homework2.zip)
-  - [Unit 2 homework sample solutions]
+  - [Unit 2 homework sample solutions](homeworks/Unit 2 homework/solutions/homework2.solutions.zip)
 
 # Unit 3 homework (due Sunday, October 6 at 23:59:00) 
 
@@ -18,3 +18,5 @@ title: "Homework"
   - [Unit 3 homework sample solutions]
 
 # Final project (due Wednesday, October 16 at 23:59:00) 
+
+  - [Final project](homeworks/Final project/final.project.zip)
