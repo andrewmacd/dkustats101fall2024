@@ -297,7 +297,7 @@ Topics covered:
 
 ## Lab 4.1: Model building (Wednesday, October 9)
 
--   Lab tbd
+-   Lab - continuation of lecture 4.2 activity
 
 ## Final class 4.3: Interpretation activity (Thursday, October 10)
 
@@ -309,7 +309,7 @@ Topics covered:
 
 -   Determining possible weaknesses of the model
 
--   Final class activity: [Final class 4.3 activity]
+-   Final class activity: [Final class 4.3 activity](activities/Final class 4.3/article.analysis.zip)
 
 ## Online lab 4.1 (due on Friday, October 11 at 11:59:00)
 

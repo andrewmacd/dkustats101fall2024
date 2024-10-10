@@ -1,0 +1,64 @@
+---
+title: "Final class 4.3 - Article analysis"
+author: "Professor MacDonald"
+date: "10/10/2024"
+output:
+  html_document:
+    toc: true
+format: 
+  html:
+    embed-resources: true
+---
+
+![](student.sleep.jpg){width="800"}
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Instructions
+
+Please answer the following questions regarding the sleep study.
+
+## Background
+
++ Summarize the larger issue that the article is trying to understand.
+
+## Objective of the study
+
++ Summarize what the article is trying to find evidence for or against -- list the specific hypotheses.
+
+## Study protocol
+
++ Please describe how the data is collected, what the sample size is, the specific response variable definition, what predictor variables were measured, and a summary of the nonresponse.
++ What problems, if any, do you see with this study given the study protocol? 
++ Does the protocol provide a good test of the hypotheses? Why or why not?
++ Do you agree with how the variables are defined to match the study concepts? 
+
+## Summary data
+
++ What does the summary data indicate about the hypotheses? 
++ How easy is it, in your opinion, to generalize the result of this sample to other situations and contexts?
+
+## Two group comparisons
+
++ What do tables 2 & 3 indicate about good vs. poor sleepers? 
++ Are all the conditions of two-group comparisons are met for these tables?
+
+## Multiple regression
+
++ Are the conditions for regression met?
++ Which of the predictor variables are statistically significant? 
++ Which of the predictor variables has a substantively large impact on the response variable? 
++ Can you think of any lurking variables missing from this regression?
+
+## Discussion and conclusion
+
++ Do you feel the discussion and conclusion did a good job summarizing the statistical results? 
++ How serious do you think the limitations of this study are?
+
+## Additional questions
+
++ What are some areas that you felt the author(s) of the study were unclear on? 
++ What connections between the results and the argument were unclear? 
++ Write around 5 additional questions you still have after doing a careful analysis of the article.
