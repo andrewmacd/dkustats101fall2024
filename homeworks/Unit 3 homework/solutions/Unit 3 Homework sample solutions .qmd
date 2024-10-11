@@ -1,0 +1,615 @@
+---
+title: "Unit 3 Homework sample solutions"
+author: "Anonymous"
+date: "today"
+output:
+  html_document:
+    toc: true
+format:
+  html:
+    embed-resources: true
+subtitle: DKU Stats 101 Fall 2024
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+knitr::opts_chunk$set(message = FALSE)
+
+# put any setup code here
+library(naniar)
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+library(gridExtra)
+library(infer)
+library(lubridate)
+library(zoo)
+
+set.seed(123)
+
+toys <- read.csv("amazon.toys.csv")
+
+# Sets the graphical theme
+theme_set(theme_classic()+theme(plot.title = element_text(hjust = 0.5)))
+```
+
+# Part 1
+
+## Q1a: Literature review (5 points)
+
+> **Points of emphasis:**
+>
+> -   Any reasonable articles work here. Need clear expectations about specific variables.
+
+
+## Q1b: Exploratory data analysis (10 points)
+
+```{r}
+summary_stats <- toys %>%
+  rename(Stars = stars, Reviews = reviews, Price = price, `List price` = listPrice, `Bought in last month` = boughtInLastMonth) %>%
+  select(Stars, Reviews, Price, `List price`, `Bought in last month`) %>%
+  summarise_all(list(
+    mean = ~round(mean(.), 2),
+    median = ~median(.),
+    sd = ~round(sd(.), 2),
+    min = ~min(.),
+    max = ~max(.)
+  )) %>%
+  pivot_longer(cols = everything(),
+               names_to = c("Variable", ".value"),
+               names_sep = "_")
+kable(summary_stats, caption = "Summary Statistics")
+```
+
+```{r}
+p1 <- ggplot(toys, aes(stars)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Stars", y="Frequency")
+p2 <- ggplot(toys, aes(reviews)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Reviews", y="Frequency")
+p3 <- ggplot(toys, aes(price)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Price", y="Frequency")
+p4 <- ggplot(toys, aes(listPrice)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="List price", y="Frequency")
+p5 <- ggplot(toys, aes(boughtInLastMonth)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Bought in last month", y="Frequency")
+
+grid.arrange(p1,p2,p3,p4,p5)
+```
+
+> All the quantitative variables have a lot of skew. Stars is left-skewed, with most products in the 4-5 range, but with a long tail down to 1, and then another mode at 0. The other variables are all right-skewed, unimodal, with their mode at 0. This is because products with 0 stars are products for which the stars could not be found, meaning that it is effectively an NA. This is similarly true for reviews and price.
+
+> We could drop the 0s (note that this is only true for stars, reviews and price, as listPrice and boughtInLastMonth have no such warning) and then make the histograms, but even then, there will still be lots of values close to 0:
+
+```{r}
+p1 <- toys %>% filter(stars != 0) %>% ggplot(aes(stars)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Stars", y="Frequency")
+p2 <- toys %>% filter(reviews != 0) %>% ggplot(aes(reviews)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Reviews", y="Frequency")
+p3 <- toys %>% filter(price != 0) %>% ggplot(aes(price)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Price", y="Frequency")
+p4 <- toys %>% ggplot(aes(listPrice)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="List price", y="Frequency")
+p5 <- toys %>% ggplot(aes(boughtInLastMonth)) + geom_histogram(fill="lightblue",color="darkblue") + labs(x="Bought in last month", y="Frequency")
+
+grid.arrange(p1,p2,p3,p4,p5)
+```
+
+
+## Q2: Confidence intervals (20 points)
+
+### Q2a: Proportion of reviews that are 4.5 or greater
+
+- Find the 95% confidence interval of the proportion of reviews of Hot Wheels that have a star rating of greater than 4.5 (calculate by hand and show work).
+
+```{r, echo=TRUE}
+#| label: q2a
+
+hot_wheels <- toys %>% 
+  filter(grepl("Hot Wheels", title, ignore.case = T)) %>%
+  mutate(better_than_4.5 = as.numeric(stars > 4.5))
+
+p <- mean(hot_wheels$better_than_4.5)
+q <- 1-p
+
+n <- nrow(hot_wheels)
+         
+se <- round(sqrt(p*q / n), digits=4)
+cv <- round(qnorm(0.975), digits=4)
+moe <- round(cv * se, digits=4)
+p <- round(p, digits=4)
+q <- round(q, digits=4)
+
+ci.lower <- p - moe
+ci.upper <- p + moe
+```
+
+> The 95% confidence interval is:
+
+$$p\pm z_{0.975}\times \sqrt{\frac{p(1-p)}{n}}=`r p`\pm `r cv` \times `r moe`=(`r ci.lower`, `r ci.upper`)$$
+
+-   Check the conditions of the confidence interval
+
+> Conditions: Independence, Randomization, 10% Condition, Success/Failure Condition
+>
+> -   **Independence**: It's possible that some customers rated multiple toys, but given that the star ratings are based on a large number of reviews, it is reasonable to assume independence.
+> -   **Randomization**: As noted in the question, we don't have a random sample, but specifically all Hot Wheels toys. So from that point of view, we would have the whole population rather than a sample. However, odds are, these are not all of the Hot Wheels toys ever produced. But it's also conceivable that Amazon only sells a specific subset of that, for example the most profitable Hot Wheels toys, which means it might not be a random sample of the total product lineup of Hot Wheels. So, all in all, the condition is probably not met.
+> -   **10% condition**: If the total population is all Hot Wheels product lines ever produced by the company, then 60 is probably less than 10% of that. So the condition would be met.
+> -   **Success/failure**: Yes, the expected number of successes and failure are both greater than 10 (the number of failures is 11).
+
+> Note that in this case, doing the calculation with the R function prop.test yields different values, likely because the conditions above aren't properly met, in which case prop.test yields a more accurate value.
+
+-   Interpret your confidence interval
+
+> We are 95% confident that the proportion of Hot Wheels toys with a star rating greater than 4.5 is between `r ci.lower` and `r ci.upper`. In other words, most Hot Wheels toys tend to be fairly highly rated.
+
+-   What sample size would you need to say with 90% confidence that true proportion of Hot Wheels with ratings above 4.5 stars lies within a plus/minus 0.05 range?
+
+> With a MOE of 0.05, and assuming we know that $p=`r p`$, the sample size needs to be at least:
+
+$0.05=z_{0.95}\times \sqrt{\frac{p(1-p)}{n}}$
+
+$n=(\frac{1.64}{0.05})^2\times`r p`\times(1-`r p`)=`r round((1.64/0.05)^2 * p*q, digits=0)`$
+
+If we don't assume we know p, then the worst-case calculation would be:
+
+$n=(\frac{1.64}{0.05})^2\times`r 0.5`\times(1-0.5)=`r round((1.64/0.05)^2 * 0.5*0.5, digits=0)`$
+
+-   What are some ways this result could be misleading? What is some additional information you would be interested in collecting?
+
+> For example there are frequent reports that online vendors such as Amazon often take down negative reviews, while leaving even obviously bogus positive reviews intact. This would skew the proportion of positive reviews to be higher than it should be.
+
+> Any substantively informed and well-reasoned answer is good here.
+
+### Q2b: Price of toy cars
+
+-   Make a histogram of the price of Hot Wheels - what does this histogram indicate about the suitability of the data for making a confidence interval?
+
+```{r}
+#| label: q2b1
+ggplot(hot_wheels, aes(x=price)) + 
+  geom_histogram(fill="lightblue",color="darkblue")+
+  labs(title="Distribution of the price of Hot Wheels",
+       x="Price",
+       y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
+```
+
+> The distribution is not symmetric -- it is right-skewed, and has some large outliers at the higher end of the price range. Therefore the distribution is not normal. This may mean the sampling distribution will possibly not be normally distributed and therefore our estimates of the standard error will be biased.
+
+-   Find the 90% confidence interval of the price of Hot Wheels (calculate by hand and show work).
+
+```{r}
+#| label: q2b3
+#| echo: true
+
+xbar.price <- mean(hot_wheels$price, na.rm=T)
+sd.price <- sd(hot_wheels$price, na.rm=T)
+n.price <- sum(!is.na(hot_wheels$price))
+
+se <- sd.price / sqrt(n.price)
+cv <- qt(0.95, df=n.price-1)
+moe <- se*cv
+ci <- xbar.price + (c(-moe, moe))
+```
+
+> The 90% CI is:
+>
+> $$
+> \bar{x}\pm t_{0.95, df=`r n.price-1`} \frac{s}{\sqrt{n}}=`r round(xbar.price, 2)`\pm `r round(cv, 2)` \times \frac{`r round(sd.price, 2)`}{\sqrt{`r n.price` }}=(`r round(ci[1], 2)`, `r round(ci[2], 2)`)
+> $$
+
+-   Check the conditions of the confidence interval
+
+> -   **Randomization condition**: Same as above, randomization is questionable. Also, it is probable that they are not independent because sales will likely affect multiple items from the same brand. Similarly, if the store were to permanently increase/decrease the price of an item from the brand, it would likely apply that change to multiple items.
+> -   **Nearly normal condition**: As shown above, the distribution does not look entirely normal, so we should be careful about over-interpreting the size of the confidence interval given the small sample size.
+
+-   Interpret your confidence interval
+
+> We are 95% confident that the true mean price is between `r round(ci[1], 2)` and `r round(ci[2], 2)`. Given how widely the price of children's toys can vary, I would consider this to actually be fairly narrow. If a parent knows the present they'll have to buy for, say, a birthday, is in the range of about 20-30 dollars, they would probably be okay with promising to buy it.
+
+-   How much larger would $n$ have to be to decrease by a factor of four the size of your confidence interval?
+
+> It would have to be **16** times larger. The size of the confidence interval decreases according to the square of the sample size.
+
+### Q2c: Bootstrapping a confidence interval
+
+-   Using the existing data, create a 90% bootstrapped confidence interval for the price of Hot Wheels and show the code you used to create the bootstrapped confidence interval
+
+```{r, echo = TRUE}
+
+price.ci <- hot_wheels %>% 
+  specify(response=price) %>% 
+  generate(reps=10000, type="bootstrap") %>% 
+  calculate(stat="mean") %>% 
+  get_confidence_interval(level = 0.9, type = "percentile")
+kbl(price.ci, col.names = c("Lower Bound", "Upper Bound")) %>% 
+  kable_styling()
+```
+
+-   Compare the results of the bootstrapped confidence interval (with 10000 samples) to the confidence interval you calculated by hand in Q3b - why were your results similar to or different than what you achieved by hand?
+
+> The values are fairly similar (only off by a small amount) which is a bit surprising given that the conditions for a confidence interval were not met. This indicates (to me) that bootstrapping also works well to create confidence intervals.
+
+-   Given the data from Q2b, which method do you think produces a more accurate confidence interval? Why? What are the advantages in this case of bootstrapping?
+
+> -   **Bootstrap**: if our data does not meet some of the conditions of confidence intervals.
+> -   **Confidence Interval**: if the data meet the conditions for using a mathematical method for calculating confidence intervals, using it may be faster and more theoretically accurate than bootstrapping.
+
+> **Points of emphasis:**
+>
+> -   Know how to bootstrap and when to use it.
+
+## Q3: Hypothesis testing (20 points)
+
+### Q3a Proportion of Ravensburger toys with any sales
+
+-   Write a specific hypothesis, fully specified, as to whether the proportion of products that have any sales in the last month (that is, sales are greater than zero) is different than the overall toys dataset.
+
+```{r}
+#|label: q2c
+#|echo: TRUE
+
+ravensburger <- toys %>% 
+  filter(grepl("Ravensburger", title, ignore.case = T)) 
+
+p_anysales <- length(which(toys$boughtInLastMonth > 0))/nrow(toys)
+p_anysales_ravensburger  <- length(which(ravensburger$boughtInLastMonth > 0))/nrow(ravensburger)
+```
+
+> $H_0:p = `r round(p_anysales, digits=3)`, H_a: p \neq `r round(p_anysales, digits=3)`$
+
+-   What do you think is a reasonable critical value to select in this case? Choose your own critical value for your hypotheses tests. 
+
+> Answers may vary, remember that a critical value is the $z^*$ value, not $\alpha$. Here I assume the critical value is -1.96 or 1.96, and the coresponding confidence level is 0.95.
+
+-   In this case should you use a one-sided test or two-sided test?
+
+> I would use the **two-sided test**. Because we are looking for a "change" (could be increase or decrease) in $H_a$, in which case we should use two-side test. A one-tailed test looks for an "increase" or "decrease" in the parameter.
+
+-   Does this test pass the conditions for a hypothesis test?
+
+> -   **Randomization, Independence**: Randomization is same as above, probably not met. And similarly, for independence, when one product from a given manufacturer sells well, the others probably do too (for example because some influencer recommended them), so that condition is probably also violated.
+> -   **10% Condition**: Same as above. Ravensburger manufactures A LOT of puzzles if nothing else, so I'd imagine their entire catalogue is more than 680 products.
+> -   **Success/failure**: There are 41 successes and 27 failures, so this condition is also met.
+
+-   Find the $p$ value for the difference and interpret it with respect to your hypothesis test.
+
+```{r}
+#| label: q3a
+#| echo: TRUE
+
+true.p <- mean(p_anysales)
+p <- mean(p_anysales_ravensburger)
+n <- nrow(ravensburger)
+
+#z=(p−P)/σ
+z <- (p-true.p)/sqrt(true.p*(1-true.p)/n)
+z
+
+#calculate p-value
+p.value <- 2*pnorm(z)
+
+p.value
+```
+
+> $p$ is smaller than the 95% significance threshold we picked above, therefore we can reject the null hypothesis
+>
+> -   $p$ has **statistical significance**, it is smaller than $\alpha$ (0.05).
+> -   As to **practical significance**, the difference in proportions is about 20%, which is fairly large. So we would interpret this as a meaningful difference.
+
+-   What are some possible lurking variables that might make our conclusion unreliable?
+
+> There might have been a sale of some of the toys from other manufacturers, which might have made it more likely for them to have sold.
+
+-   What can you infer from the results of your hypothesis test?
+
+> The proportion of Ravensburger toys that have any sales in the last month is different from toys overall. Notably, this proportion is smaller, which might be because Ravensburger toys are more niche than the average toy.
+
+### Q3b Price of Ravensburger toys
+
+-   If we observe that the price of Ravensburger toys in our sample is lower than the population average at $p$=0.06, should we reject the null hypothesis? Why or why not?
+
+> It depends on the significance level. For example, we cannot reject the null hypothesis at a significance level of 0.05, but we can reject the null hypothesis at the 0.1 significance level. We need to know the $\alpha$ to make a conclusion.
+
+-   Write out a specific hypothesis, fully specified with correct notation, as to whether the price of Ravensburger toys is lower than the population at an alpha of 0.05.
+
+```{r}
+#| label: q3b1
+
+true.x <- mean(toys$price)
+```
+
+
+> $H_0:\mu = `r round(true.x, 2)`$
+>
+> $H_a:\mu > `r round(true.x, 2)`; \alpha=0.05$
+
+-   Does this test pass the conditions for hypothesis testing?
+
+> -   **Randomization, Independence, 10% condition**: Same as before.
+
+```{r}
+ggplot(ravensburger, aes(x=price)) + 
+    geom_histogram(fill="lightblue",color="darkblue")+
+    labs(title="Distibution of the price of Ravensburger toys",
+         x="Price",
+         y="Frequency") +
+    scale_x_continuous(labels = scales::comma) 
+```
+
+> -   **Nearly normal**: This distribution is closer to normal - at least if we ignore the one very large outlier.
+
+-   Find the p value for whether the price of Ravensburger toys from the sample is lower than the population average (calculate by hand and show work).
+
+```{r}
+#| label: q3b2
+#| echo: TRUE
+
+xbar.ravensburger.price <- mean(ravensburger$price)
+sd.price <- sd(ravensburger$price)
+n.price <- nrow(ravensburger)
+
+t <- (xbar.ravensburger.price-true.x)/
+  (sd.price/sqrt(n.price))
+t
+
+p.value.price = pt(t, df=n.price-1)
+p.value.price
+```
+
+> The test statistic is:
+>
+> $t=\frac{`r round(xbar.price, 2)`-`r round(true.x, 2)`}{\frac{`r round(sd.price, 2)`}{\sqrt{`r n.price`}}}=`r round(t, 2)`$
+> 
+> Note that since this is a lower-tail one-sided hypothesis test, $p$ needs to be < 0.05 
+> The p-value is **$`r round(p.value.price, digits=4)` < 0.05$, reject $H_0$**. That means there is sufficient evidence to say the price of Ravensburger toys is lower than the price of all toys at an $\alpha$ of 0.05.
+
+-   What are some possible lurking variables that might make our conclusion unreliable?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> - Not all toys are comparable. If Ravensburger mainly sells puzzles and board games, those are likely cheaper than some of the other items in this dataset such as various electric vehicles.
+> - Ravensburger may have had a sale at the time at which the data were observed.
+
+-   What can you conclude about the price of Ravensburger toys?
+
+> Answers may vary here but should be thoughtful and show a reasonable interpretation of the data
+
+> **Points of emphasis:**
+>
+> -   Know how to storytelling based on the numbers, interpret hypothesis test results clearly.
+> -   Know how to bulid hypothesis.
+
+## Q4: Hypothesis testing wisdom (10 points)
+
+```{r}
+frozen <- toys %>% 
+  filter(grepl("Frozen", title, ignore.case = T))
+```
+
+### Q4a Price of Frozen toys
+
+-   Write out the hypothesis for whether the price of Frozen toys is different than the population average price.
+
+```{r}
+#| label: q4a
+
+frozen.mean.price <- mean(frozen$price, na.rm=TRUE)
+toys.mean.price <- mean(toys$price, na.rm=TRUE)
+```
+
+
+> $H_0: \mu=`r round(toys.mean.price, 2)`$
+>
+> $H_a: \mu \neq `r round(toys.mean.price, 2)`$
+
+-   If we fail to reject the null hypothesis in this case, does that mean that the null hypothesis is true? Why?
+
+> No, failing to reject the null hypothesis just means we don't have enough **evidence** to say that the null hypothesis is not true. For example, it could still be possible that the true population mean price is different than the hypothesized average of `r round(toys.mean.price, 2)`, but our sample data was not large enough or significant enough to detect this difference.
+
+-   Explain what the difference between a Type I and a Type II error is here
+
+> -   **A type I**: null is true but we mistakenly reject it. We conclude that the average price is different from `r round(toys.mean.price, 2)` when it is `r round(toys.mean.price, 2)`.
+> -   **A type II**: the alternative is true but we mistakenly fail to reject the null hypothesis. We conclude the average price is `r round(toys.mean.price, 2)` when actually the price is different from `r round(toys.mean.price, 2)`.
+
+-   Which error type do you think would be more serious for a market analyst in this case? Why?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> If we make a type 1 error, we might assume that Frozen toys command a premium (and might thus be worth investing in), when they do not. Thus, our company would lose a lot of money. If we make a type 2 error, we would assume that Frozen toys don't sell for more when they do. So we would lose out on an investment opportunity. Which error is more costly probably depends on how much Disney charges in licensing fees. I would err on the side of caution (i.e. I'd rather make a type 2 error), because if there are already other products on the market, that means we would also have to deal with the competition.
+
+-   What are two ways we could reduce the possibility of a Type I error? What are the reasons we may not take those actions to reduce the error?
+
+> -   **Reducing the significance level**
+> -   **Increasing the sample size**
+
+> -   Reducing the significance level may decrease the power of the test: By setting a lower significance level, we are requiring stronger evidence before rejecting the null hypothesis. This makes it less likely to make a Type I error, but it also decreases the power of the test, making it more difficult to detect real differences or effects if they do exist.
+> -   Increasing the sample size can be expensive and time-consuming. In some cases, it may not be possible or practical to collect data from a larger sample.
+
+-   Let's say the data suggests that you should reject the null hypothesis. What size of difference in average price would you need to see to feel there is a *practically* significant difference?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> As noted above, this depends on the licensing fees, the expected margins we'd get above our production, taxes and marketing costs, and the number of units we'd expect to be able to sell.
+
+- Besides a Type I/II error in this case, what are some other factors that you would need to consider to answer the question posed by your boss?
+
+> The type of toys might once again matter here. Maybe Frozen-themed toys sell for more if they are the types of toys that tend to be marketed at girls compared to boys, for example. As in, a Frozen-themed doll house might sell for 30% more than a regular doll house, but a Frozen-themed monster truck might only sell for 5% more.
+
+
+### Q4b Doing the work
+
+-   Using the formulas from the textbook, calculate your hypothesis test and interpret the results (calculate by hand and show work).
+
+```{r, echo=TRUE}
+
+sd.frozen.price <- sd(frozen$price, na.rm=TRUE)
+n.frozen.price <- nrow(frozen)
+
+t <- (frozen.mean.price - toys.mean.price)/
+  (sd.frozen.price/sqrt(n.frozen.price))
+t
+
+p.value.frozen.price = pt(t, df=n.frozen.price-1)*2
+p.value.frozen.price
+```
+
+> The test statistic is:
+>
+> $t=\frac{`r round(frozen.mean.price, 2)`-`r round(toys.mean.price)`}{\frac{`r round(sd.frozen.price, 2)`}{\sqrt{`r n.frozen.price`}}}=`r round(t, 2)`$
+
+> The associated p-value is $p = `r round(p.value.frozen.price, 3)`$
+
+Therefore we would be able to reject the null hypothesis. Apparently, Frozen-themed toys do differ from other toys with regard to their price. There's just one problem: they sell for LESS, not more. So on the basis of this (reductionist) analysis alone, this would not be a sound business plan.
+
+## Q5 Two sample $t$ and $z$ test (20 points)
+
+### Q5a Proportion of discounted toys
+
+-   Write the appropriate hypotheses that there is a difference in the proportion of products that are discounted.
+
+> $H_0: p_{\text{Ravensburger}} = p_{\text{Hot Wheels}}$
+>
+> $H_a: p_{\text{Ravensburger}} \neq p_{\text{Hot Wheels}}$
+
+-   Are the assumptions and conditions necessary for inference satisfied?
+
+> -   **Independence**: This is the same as above. If a company chooses to put one of its items on sale, it might also put the rest on sale.
+> -   **Randomization**: Probably not, as explained above.
+> -   **Independent Groups**: If Ravensburger and Hot Wheels are direct competitors, they might react to one another's sales by putting their own products on sale as well. That being said, I don't think they really are direct competitors. One manufactures board games, the other toy cars.
+> -   **Success/failure**: both p and q are over 10 for both, so this should be okay.
+
+-   Test the hypothesis by calculating the p value of the difference and state your conclusion (calculate by hand and show work).
+
+```{r, echo = TRUE}
+
+hot_wheels$discounted <- as.numeric(hot_wheels$listPrice != 0)
+ravensburger$discounted <- as.numeric(ravensburger$listPrice != 0)
+
+p1 <- mean(hot_wheels$discounted, na.rm=T)
+p2 <- mean(ravensburger$discounted, na.rm=T)
+n1 <- sum(!is.na(hot_wheels$discounted))
+n2 <- sum(!is.na(ravensburger$discounted))
+
+est <- sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)
+
+z.discount.comp <- (p1-p2)/est
+
+p.discount.comp <- (pnorm(z.discount.comp, lower.tail = F))*2
+
+round(p.discount.comp, 4)
+```
+
+> The $p$ value is `r round(p.discount.comp, 4)` > 0.05, we **fail to reject the null hypothesis**.
+
+-   Explain in this context what your $p$ value means, both statistically and practically.
+
+> We have calculated a $p$ value of `r round(p.discount.comp, 4)`. This means that **assuming the null hypothesis were true**, we would expect to see `r round(p.discount.comp, 2)*100`% of samples have a difference this large or larger between the two groups just by chance.
+
+-   What factor(s) do you think lead to this result? What is some additional information that would be helpful to know to in understanding this difference?
+
+> The following is a reasonable sample answer. Other answers are acceptable.
+
+> This just doesn't seem to be that surprising. For there to be a difference, Ravensburger and Hot Wheels would have to be pursuing very different business strategies. Given that both are toy companies (that are both fairly well-established, too), it makes sense that their proportion of discounted products doesn't differ. For us to find out more we might want to collect data on the following variable:
+
+> -   **Proportion of brand's revenue generated during sales** There are many types of products that sell far more seasonally (e.g. during Christmas, Amazon Prime Day, etc.). Perhaps this might be true for Ravensburger, but not Hot Wheels (or vice versa).
+
+### Q5b Average discount
+
+*Note: for this question, only consider toys from either manufacturer that have any discount*
+
+-   Write the appropriate hypothesis for whether there is a difference in the average discount.
+
+> $H_0: p_{\text{Ravensburger}} = p_{\text{Hot Wheels}}$
+>
+> $H_a: p_{\text{Ravensburger}} \neq p_{\text{Wheels}}$
+
+-   Are the assumptions and conditions necessary for inference satisfied? Explain.
+
+> -   **Independence**: This seems unlikely again. For example, if Hot Wheels discounts one of its toys by 10%, then it's more likely to discount other toys by a similar amount.
+> -   **Randomization**: Probably not, these are not randomly selected cases.
+> -   **Independent Groups**: Same as above - it's possible that these two companies are reacting to each other, but probably not. But it is possible that they're both reacting to the same thing, such as seasonal sales.
+> -   **Nearly normal**: no, but CLT should hold here
+
+```{r}
+#| label: q5b1
+
+hotwheels.price.hist <- ggplot(hot_wheels, aes(x=price)) +
+  geom_histogram(fill="lightblue",color="darkblue") +
+  labs(title="Distribution of discount size in Hot Wheels toys", x="Discount", y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
+
+ravensburger.price.hist <- ggplot(ravensburger, aes(x=price)) + geom_histogram(fill="lightblue",color="darkblue") + 
+  labs(title="Distribution of discount size in Ravensburger toys", x="Discount", y="Frequency") +
+  scale_x_continuous(labels = scales::comma) 
+
+grid.arrange(hotwheels.price.hist, ravensburger.price.hist, ncol=1)
+```
+
+-   In this case, should you be using pooled variance?
+
+> **No**. Since this is a hypothesis of a difference in means (not proportions) and it is not an experiment, we should not be using pooled variance here.
+
+-   Create a 95% confidence interval for the difference (calculate by hand and show work, ok to use textbook shortcut for $df$).
+
+```{r, echo = TRUE}
+
+hot_wheels$discount <- hot_wheels$listPrice - hot_wheels$price
+hot_wheels$discount[hot_wheels$listPrice == 0] <- 0
+hot_wheels2 <- hot_wheels %>% filter(discount != 0)
+
+ravensburger$discount <- ravensburger$listPrice - ravensburger$price
+ravensburger$discount[ravensburger$listPrice == 0] <- 0
+ravensburger2 <- ravensburger %>% filter(discount != 0)
+
+hot_wheels.discount.data <- hot_wheels2 %>%
+  summarize(mean.discount = mean(discount, na.rm=TRUE),
+            size = nrow(hot_wheels2),
+            se.discount = sd(discount, na.rm=TRUE))
+
+ravensburger.discount.data <- ravensburger2 %>%
+  summarize(mean.discount = mean(discount, na.rm=TRUE),
+            size = nrow(ravensburger2),
+            se.discount = sd(discount, na.rm=TRUE))
+
+hot_wheels.discount.xbar <- hot_wheels.discount.data$mean.discount
+ravensburger.discount.xbar <- ravensburger.discount.data$mean.discount
+hot_wheels.discount.n <- hot_wheels.discount.data$size
+ravensburger.discount.n <- ravensburger.discount.data$size
+
+# Use the df of the smaller of the two sample sizes
+df <- ifelse(hot_wheels.discount.n > ravensburger.discount.n, ravensburger.discount.n, hot_wheels.discount.n)
+
+# formula is sqrt(se1^2/n1 + se2^2/n2)
+est.sigma <- sqrt((hot_wheels.discount.data$se.discount^2 / hot_wheels.discount.n) +
+                    (ravensburger.discount.data$se.discount^2 / ravensburger.discount.n))
+
+se <- round(est.sigma, digits=4)
+
+discount.diff <- hot_wheels.discount.xbar - ravensburger.discount.xbar
+conf.int <- c(discount.diff - qt(0.975, df=df)*est.sigma, 
+              discount.diff + qt(0.975, df=df)*est.sigma)
+
+conf.int
+```
+
+> The 95% confidence interval is (`r round(conf.int[1], 2)`, `r round(conf.int[2], 2)`).
+
+-   Interpret your interval with respect to your hypothesis.
+
+> We are 95% confident that the true difference in discount in Hot Wheels toys and Ravensburger toys is between `r round(conf.int[1], 2)` and `r round(conf.int[2], 2)`. Notably, this includes 0, so we would probably conclude that there is no difference. This is not surprising, given that the mean discount of Ravensburger is `r round(ravensburger.discount.data$mean.discount, 2)`, and the mean discount of Hot Wheels is `r round(hot_wheels.discount.data$mean.discount, 2)`. Add to that the fact that our sample size is very small here, and so of course, the confidence interval ends up being far too large.
+
+-   What are some reasons that the conclusions you draw from this test might not be valid?
+
+> *Following* is an example analysis. As long as your analysis is reasonable/logical, that is fine.
+
+> -   **Sample bias**: We assumed that the sample is representative, but if not representative, or if there were factors that influenced the selection of the sample, then the results of the test may not be generalized to the entire population.
+> -   **Non-random sampling**: We assumed that the sampling is random, but we need further information.
+> -   **Sample size** The sample size is so small that it's very unlikely that we'll find a statistically significant difference, or a confidence interval that doesn't include 0.
+
+> **Points of emphasis:**
+>
+> -   Know when to use pooled variance.
+> -   Know how to deal with two sample $t$ and $z$ test.
+
+## Q6: Putting it all together (15 points)
+
+> **Points of emphasis:**
+>
+> -   Know how to summarize all data and give overall business recommendations.
+> -   Know how to tell your story clearly.

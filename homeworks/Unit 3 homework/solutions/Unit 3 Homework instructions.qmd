@@ -1,0 +1,158 @@
+---
+title: "Unit 3 Homework Instructions"
+author: "Anonymous"
+date: "9/18/2024"
+format:
+  html:
+    html-math-method: mathml
+    embed-resources: true
+    toc: true
+subtitle: DKU Stats 101 Fall 2024
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+# put any setup code here
+```
+
+![Amazon toys](photos/amazontoys.png){width="800"}
+
+# Assignment Background
+
+Amazon is one of the largest and most profitable companies in the world and is especially popular for selling children’s toys. Consider yourself an analyst hired by a major Chinese toy company that is considering expanding overseas and selling on Amazon. You are given a database of toys sold on Amazon and need to consider whether your client’s higher quality, name brand, toys will sell enough on Amazon to be worth the effort of expansion. To do this, you will analyze the products of some of their major competitors.
+
+The dataset is courtesy of Kaggle user [asaniczka](https://www.kaggle.com/datasets/asaniczka/amazon-products-dataset-2023-1-4m-products?select=amazon_products.csv).
+
+# Assignment Instructions
+
+-   Save this document as a new document (Save As...) and rename it `Unit 3 Homework answers`.
+-   Delete the Assignment Background and Assignment Instructions sections.
+-   If I say "Interpret..." that means I want at least 1-2 good quality sentences that show that you really understand your output and try to say something meaningful about what you see. Short, incomplete sentences that fail to demonstrate you understand your output or you are just repeating or rephrasing your output will have points deducted.
+-   Remember to appropriately label all of your graphs, construct easy to read tables, and nicely format your document. While the homework isn't a published document, it is the final product of exploratory data analysis so should be written as if you are presenting it to someone not familiar with the dataset.
+- Submit ONE qmd file and ONE html file (with embed-resources: true) and nothing else.
+
+***Note:*** For questions in this dataset, we are going to consider the file `amazon.toys.csv` as the entire population of toys. Each question will ask you about a small subset of the toys available. You should take these subsets as your sample. You do not need to create another sample or use the sample commands unless the question directly asks you to do so.
+
+# Part 1: Up to Q3b - must submit for checking by Sunday, September 22nd at 11:59 pm (except Q2c)
+
+## Q1a: Literature review (5 points)
+
+Find a news articles online that discuss some trends in toy sales. Provide a link to the article and briefly summarize it. Based on these articles, what should we expect to find in this dataset and why? Make a bulleted list below with three specific expectations according to the data we have in our dataset.
+
+## Q1b: Exploratory data analysis (10 points)
+
+First, summarize the key variables of toys so you can better understand the market. Make a set of histograms of each of the quantitative variables and combine them together with the `grid.arrange()` function of the `gridExtra` package (you can see some example [here](https://cran.r-project.org/web/packages/egg/vignettes/Ecosystem.html)).
+
+What, if anything stands out to you in this data? Are there any obvious mistake values or problems that need to be corrected in the data? What can you conclude about the market for toys on Amazon?
+
+## Q2: Confidence intervals (20 points)
+
+![Hot Wheels](photos/hotwheels.jpg){width="800"}
+
+One of the more popular toys your company makes is small models of cars. Therefore, one of your possible competitor toys is Hot Wheels, a popular type of toy car in the U.S. To answer the following questions, you will need to create your "sample" - it is not a random sample but simply all the toys with Hot Wheels in the name. You can find this subset by using the `filter()` verb and the `grepl()` command as specified in this [guide](https://www.geeksforgeeks.org/how-to-check-if-characters-are-present-in-a-string-in-r/). Make sure to use the option `ignore.case = TRUE`.
+
+### Q2a: Proportion of reviews that are 4.5 or greater
+
+If your company is planning on challenging Hot Wheels, it will need a product lineup of toy cars that can get at least an equal percentage of products above the 4.5 star rating.
+
+-   Find the 95% confidence interval of the proportion of reviews of Hot Wheels that have a star rating of greater than 4.5 (calculate by hand and show work).
+-   Check the conditions of the confidence interval
+-   Interpret your confidence interval
+-   What sample size would you need to say with 90% confidence that true proportion of Hot Wheels with ratings above 4.5 stars lies within a plus/minus 0.05 range?
+-   What are some ways the confidence interval could be misleading? What are some additional data you would be interested in collecting to better understand the toy car market?
+
+### Q2b: Price of toy cars
+
+Another important question is what is the average price of the toy cars sold.
+
+-   Make a histogram of the price of Hot Wheels - what does this histogram indicate about the suitability of the data for making a confidence interval?
+-   Find the 90% confidence interval of the price of Hot Wheels (calculate by hand and show work).
+-   Check the conditions of the confidence interval
+-   Interpret your confidence interval
+-   How much larger would $n$ have to be to decrease by a factor of four the size of your confidence interval?
+
+### Q2c: Bootstrapping a confidence interval
+
+-   Using the existing data, create a 90% bootstrapped confidence interval for the price of Hot Wheels and show the code you used to create the bootstrapped confidence interval
+-   Compare the results of the bootstrapped confidence interval (with 10000 samples) to the confidence interval you calculated by hand in Q2b - why were your results similar to or different than what you achieved by hand?
+-   Given the data from Q2b, which method do you think produces a more accurate confidence interval? Why? What are the advantages in this case of boostrapping?
+
+## Q3: Hypothesis testing (20 points)
+
+![Ravensburger puzzle](photos/ravensburger.jpg){width="800"}
+
+Another type of toy market your company is considering entering is that of puzzles and board games. One of the most famous makers of these types of toys is the company Ravensburger. As before, please consider this subset to be your sample. You do not need to sample from this group. For this question, your boss is interested in how these types of products compare to the general market for toys.
+
+### Q3a Proportion of Ravensburger toys with any sales
+
+-   Write a specific hypothesis, fully specified, as to whether the proportion of products that have any sales in the last month (that is, sales are greater than zero) is different than the overall toys dataset.
+-   What do you think is a reasonable critical value to select in this case? Why? Consider the tradeoffs here and what it would mean for the task given to you.
+-   In this case should you use a one-sided test or two-sided test?
+-   Does this test pass the conditions for a hypothesis test?
+-   Find the $p$ value for the difference and interpret it with respect to your hypothesis test (calculate by hand and show work).
+-   What are some possible lurking variables that might make our conclusion unreliable?
+-   What can you infer from the results of your hypothesis test?
+
+### Q3b Price of Ravensburger toys
+
+-   If we observe that the price of Ravensburger toys in our sample is lower than the population average at $p$=0.06, should we reject the null hypothesis? Why or why not?
+-   Write out a specific hypothesis, fully specified with correct notation, as to whether the price of Ravensburger toys is lower than the population at an alpha of 0.05.
+-   Does this test pass the conditions for hypothesis testing?
+-   Find the $p$ value for whether the price of Ravensburger toys from the sample is lower than the population average (calculate by hand and show work).
+-   What are some possible lurking variables that might make our conclusion unreliable?
+-   What can you conclude about the price of Ravensburger toys?
+
+# Part 2: Finish by assigment deadline on Sunday, October 6th at 23:59 (all parts after this plus Q2c)
+
+## Q4: Hypothesis testing wisdom (10 points)
+
+![Frozen main characters](photos/frozen.jpeg){width="800"}
+
+Your company is also considering whether it should pay the licensing fees to Disney to obtain the right to make Frozen-themed toys, as this might produce extra revenue for the company. Your boss asks you to investigate this issue.
+
+### Q4a Price of Frozen toys
+
+-   Write out the hypothesis for whether the price of Frozen toys is different than the population average price
+-   If we fail to reject the null hypothesis in this case, does that mean that the null hypothesis is true? Why?
+-   Explain what the difference between a Type I and a Type II error is here
+-   Which error type do you think would be more serious for a market analyst in this case? Why?
+-   What are two ways we could reduce the possibility of a Type I error? What are the reasons we may not take those actions to reduce the error?
+-   Let's say the data suggests that you should reject the null hypothesis. What size of difference in average price would you need to see to feel there is a *practically* significant difference?
+-   Besides a Type I/II error in this case, what are some other factors that you would need to consider to answer the question posed by your boss?
+
+### Q4b Doing the work
+
+-   Using the formulas from the textbook, calculate your hypothesis test and interpret the results (calculate by hand and show work).
+
+## Q5 Two sample $t$ and $z$ test (20 points)
+
+Now let's compare the Hot Wheels vs. Ravensburger toys. Another thing your boss is interested in is whether either company's product has to offer discounts on their toys or not to generate sales, and how large those discounts are. If a toy has a list price of zero, you can treat it as the item not being sold at a discount (it is being sold at full price).
+
+![Ravensburger/Hot Wheels crossover](photos/ravensburger.hotwheels.jpg){width="800"}
+
+### Q5a Proportion of discounted toys
+
+-   Write the appropriate hypotheses that there is a difference in the proportion of products that are discounted.
+-   Are the assumptions and conditions necessary for inference satisfied?
+-   Test the hypothesis by calculating the $p$ value of the difference and state your conclusion (calculate by hand and show work).
+-   Explain in this context what your $p$ value means, both statistically and practically.
+-   What factor(s) do you think lead to this result? What is some additional information that would be helpful to know to in understanding this difference?
+
+### Q5b Average discount
+
+*Note: for this question, only consider toys from either manufacturer that have any discount*
+
+-   Write the appropriate hypothesis for whether there is a difference in the average discount.
+-   Are the assumptions and conditions necessary for inference satisfied? Explain.
+-   In this case, should you be using pooled variance?
+-   Create a 95% confidence interval for the difference (calculate by hand and show work, ok to use textbook shortcut for $df$).
+-   Interpret your interval with respect to your hypothesis.
+-   What are some reasons that the conclusions you draw from this test might not be valid?
+
+## Q6: Putting it all together (15 points)
+
+Through the analysis conducted in the previous section **and through at least one additional investigation of your own (an additional graph, table, or calculation)**, write at least three paragraphs outlining what you think are the main findings from Q1-Q5 and your own additional analysis. **Note**: your additional analysis should be related to one of your expectations specified in Q1a or a follow-up question about something additional you felt your boss should consider from questions 2-5. It can be another hypothesis test, regression result, or exploratory table or graph but it must be relevant to your investigation.
+
+Overall, based on these results, what would you recommend to your company? What information, if any, are we missing in this dataset that you would need to see before your company makes any major investments?
